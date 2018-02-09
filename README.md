@@ -9,7 +9,6 @@ ITrack is a MEAN stack application that gives a user the ability to track fishin
 * AngularJS
 * Angular Material
 * Sweet alerts
-* MongoDB
 * ngTable
 * Heroku
 * SQL Server
