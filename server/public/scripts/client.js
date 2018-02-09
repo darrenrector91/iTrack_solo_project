@@ -1,21 +1,17 @@
-var myApp = angular.module('myApp', ['ngRoute'])
-
-// Available palettes: 
-// red, pink, purple, deep-purple, indigo, blue, light-blue, 
-// cyan, teal, green,light-green, lime, yellow, amber, orange, 
-// deep-orange, brown, grey, blue-grey
-
-.config(function ($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('grey')
-    .warnPalette('red')
-    .accentPalette('lime')
-    .backgroundPalette('grey');
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial'])
+  .config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('grey')
+      .warnPalette('red')
+      .accentPalette('lime')
+      .backgroundPalette('grey');
     // .dark();
-});
+  });
+
+
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   console.log('myApp -- config')
   $routeProvider
     .when('/', {
@@ -33,7 +29,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/user.html',
       controller: 'UserController as vm',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -42,7 +38,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/info.html',
       controller: 'InfoController as vm',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }

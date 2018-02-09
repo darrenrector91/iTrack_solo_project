@@ -5,7 +5,15 @@ body, html {
   font-size: 14px;
 }
 
-.instructions .container h1 {
+.txtSignin {
+  margin: 10px;
+}
+
+.btnTxtSignin {
+  margin: 10px;
+}
+
+/* .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;
 }
@@ -14,7 +22,7 @@ body, html {
   background-color: #333333;
   color: #DDDDDD;
   padding: 15px;
-}
+} */
 
 #entryForm {
   margin-top: 14px;
