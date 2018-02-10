@@ -49,10 +49,11 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
         alert('Item has been added!')
       })
       .catch(function(err) {
-        self.message = "Something went wrong. Please try again."; ---> to send a message on failure to add item.
+        self.message = "Something went wrong. Please try again."; 
       })
   }
 
+  //Delete item from table
   self.removeItem = function (id) {
     $http.delete(`/api/data/removeItem/${id}`)
     .then(function (response) {
