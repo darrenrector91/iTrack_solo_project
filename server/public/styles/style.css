@@ -17,6 +17,35 @@ body, html {
   margin: 10px;
 }
 
+#shelfItems {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  /* margin-left: 10%; */
+}
+
+#shelfItems td,
+#shelfItems th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#shelfItems tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#shelfItems tr:hover {
+  background-color: #ddd;
+}
+
+#shelfItems th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(38, 126, 226);
+  color: white;
+}
+
 /* .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;

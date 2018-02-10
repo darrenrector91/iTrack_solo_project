@@ -60,4 +60,29 @@
         <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
+    <div class="grid shelfTable" layout="horizontal" layout-align="center center" layout-wrap>
+            <!-- <h1 class="title">Shelved Items:</h1> -->
+            <table id="shelfItems">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Id</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Rod</th>
+                        <th>Reel</th>
+                        <th>Tackle/Bait</th>
+                        <th>Body of Water</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="items in vm.items.list">
+                    <tr>
+                        <td>{{items.person[0].username}}</td>
+                        <td>{{items.description}}</td>
+                        <td><img ng-src="{{items.url}}" alt=""></td>
+                        <td><button ng-click="vm.removeItem(items._id)">Delete Row</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 </div>
