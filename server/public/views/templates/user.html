@@ -1,6 +1,63 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div class="container">
 
-    <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
-</div>
+    <!-- <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1> -->
 
+    <form name="fishForm">
+
+        <md-input-container>
+            <label>Enter date</label>
+            <md-datepicker ng-model="ctrl.myDate" name="dateField"></md-datepicker>
+            <div ng-messages="myForm.dateField.$error">
+                <div ng-message="valid">The entered value is not a date!</div>
+                <div ng-message="required">This date is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <label>City</label>
+                <input name="city" ng-model="city">
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <label>State</label>
+                <input name="state" ng-model="state">
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Species</label>
+            <input name="species" ng-model="species" required>
+            <div ng-messages="colorForm.species.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <label>Rod</label>
+                <input name="rod" ng-model="rod">
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <label>Reel</label>
+                <input name="reel" ng-model="reel">
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <div>
+                <label>Tackle/Bait</label>
+                <input name="tackle_bait" ng-model="tackle_bait">
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Body of Water</label>
+            <input name="body_of_water" ng-model="body_of_water" required>
+            <div ng-messages="colorForm.body_of_water.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-button class="md-raised md-accent btnTxtSignin" ng-click="">Submit
+        </md-button>
+    </form>
+</div>
