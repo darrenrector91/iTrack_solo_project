@@ -1,12 +1,12 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial'])
-  .config(function ($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .warnPalette('red')
-      .accentPalette('lime')
-      .backgroundPalette('grey');
-    // .dark();
-  });
+.config(function ($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue')
+    .warnPalette('red')
+    .accentPalette('lime')
+    .backgroundPalette('grey');
+  // .dark();
+});
 
 
 

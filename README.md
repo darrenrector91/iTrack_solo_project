@@ -52,8 +52,8 @@ High level list of items completed.
 
 
 - { } Design User Intro/Login View
-- { } Passport, using Local Strategy
-- { } Design and implement Register User View
+- {x} Passport, using Local Strategy
+- {x} Design and implement Register User View
 - { } Add Track/Add Fish View
 - { } Add table to Track/Add Fish View with header data,edit button and delete button
 - { } Add track catch information form to Track/Add Fish View
