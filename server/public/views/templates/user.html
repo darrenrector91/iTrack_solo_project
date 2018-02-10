@@ -21,7 +21,7 @@
         <md-input-container>
             <div>
                 <label>State</label>
-                <input name="state" ng-model="vm.newItem.state"md-maxlength="2">
+                <input name="state" ng-model="vm.newItem.state" md-maxlength="2">
                 <div ng-message="md-maxlength">Only use two letter state abbreviation!</div>
             </div>
         </md-input-container>
@@ -61,28 +61,43 @@
         </md-button>
     </form>
     <div class="grid shelfTable" layout="horizontal" layout-align="center center" layout-wrap>
-            <!-- <h1 class="title">Shelved Items:</h1> -->
-            <table id="shelfItems">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Id</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Rod</th>
-                        <th>Reel</th>
-                        <th>Tackle/Bait</th>
-                        <th>Body of Water</th>
-                    </tr>
-                </thead>
-                <tbody ng-repeat="items in vm.items.list">
-                    <tr>
-                        <td>{{items.person[0].username}}</td>
-                        <td>{{items.description}}</td>
-                        <td><img ng-src="{{items.url}}" alt=""></td>
-                        <td><button ng-click="vm.removeItem(items._id)">Delete Row</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- <h1 class="title">Shelved Items:</h1> -->
+        <table id="shelfItems">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Rod</th>
+                    <th>Reel</th>
+                    <th>Tackle/Bait</th>
+                    <th>Body of Water</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="items in vm.items.list">
+                <tr>
+                    <td>{{items.date}}</td>
+                    <td>{{items.city}}</td>
+                    <td>{{items.state}}</td>
+                    <td>{{items.rod}}</td>
+                    <td>{{items.reel}}</td>
+                    <td>{{items.tackle_bait}}</td>
+                    <td>{{items.body_of_water}}</td>
+                    <!-- <td>
+                        <button ng-click="vm.removeItem(items._id)">Delete </button>
+                    </td> -->
+                    <td>
+                        <md-button class="md-raised md-primary btnTxtSignin" ng-click="vm.editItem(items._id)">Edit
+                        </md-button>
+                    </td>
+                    <td>
+                        <md-button class="md-raised md-danger btnTxtSignin" ng-click="vm.removeItem(items._id)">Delete
+                        </md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

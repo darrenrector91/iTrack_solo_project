@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/', function(req, res) {
-    console.log('hit get koalas');
+router.get('/', function (req, res) {
+    console.log('hit get events');
 
-    const queryText = 'SELECT * FROM koala ORDER BY id';
+    const queryText = 'SELECT * FROM event ORDER BY id';
     pool.query(queryText)
         .then((result) => {
             console.log('query results:', result);
@@ -18,10 +18,10 @@ router.get('/', function(req, res) {
         });
 });
 
-router.get('/:id', function(req, res) {
-    console.log('hit get koalas');
+router.get('/:id', function (req, res) {
+    console.log('hit get event');
 
-    const queryText = 'SELECT * FROM koala WHERE id=$1';
+    const queryText = 'SELECT * FROM event WHERE id=$1';
     pool.query(queryText, [req.params.id])
         .then((result) => {
             console.log('query results:', result);
@@ -34,8 +34,8 @@ router.get('/:id', function(req, res) {
 });
 
 router.put('/update/:id', (req, res) => {
-    const queryText = 'UPDATE koala SET name = $1, age = $2, gender = $3, ready_to_transfer = $4, notes = $5 WHERE id = $6';
-    pool.query(queryText, [req.body.name, req.body.age, req.body.gender, req.body.ready_to_transfer, req.body.notes, req.params.id])
+    const queryText = 'UPDATE event SET date = $1, city = $2, state = $3, rod = $4, reel = $5, tackle_bait = $6, body_of_water = $7 WHERE id = $8';
+    pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
         .then((result) => {
             console.log('result:', result.rows);
             res.sendStatus(200);
@@ -46,35 +46,22 @@ router.put('/update/:id', (req, res) => {
         });
 });
 
-router.put('/:id', (req, res) => {
-    const queryText = 'UPDATE koala SET ready_to_transfer = $1 WHERE id = $2';
-    pool.query(queryText, [req.body.ready_to_transfer, req.params.id])
-        .then((result) => {
-            console.log('result:', result.rows);
-            res.sendStatus(200);
-        })
-        .catch((err) => {
-            console.log('error:', err);
-            res.sendStatus(500);
-        });
+router.post('/', function (req, res) {
+        const queryText = 'INSERT INTO event (date, city, state, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+        pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+            .then((result) => {
+                console.log('result:', result.rows);
+                res.send(result.rows);
+            })
+            .catch((err) => {
+                console.log('error:', err);
+                res.sendStatus(500);
+            });
 });
 
-router.post('/', function(req, res) {
-    const queryText = 'INSERT INTO koala (name, gender, age, ready_to_transfer, notes) VALUES ($1, $2, $3, $4, $5)';
-    pool.query(queryText, [req.body.name, req.body.gender, req.body.age, req.body.ready_to_transfer, req.body.notes])
-        .then((result) => {
-            console.log('result:', result.rows);
-            res.send(result.rows);
-        })
-        .catch((err) => {
-            console.log('error:', err);
-            res.sendStatus(500);
-        });
-});
-
-router.delete('/:id', function(req,res) {
-    const queryText = 'DELETE FROM koala WHERE id = $1';
-    pool.query(queryText,[req.params.id])
+router.delete('/:id', function (req, res) {
+    const queryText = 'DELETE FROM event WHERE id = $1';
+    pool.query(queryText, [req.params.id])
         .then((result) => {
             console.log('result:', result.rows);
             res.sendStatus(200);
