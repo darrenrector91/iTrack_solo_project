@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial'])
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable'])
 .config(function ($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('blue')

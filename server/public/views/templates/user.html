@@ -4,7 +4,6 @@
     <!-- <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1> -->
 
     <form name="fishForm">
-
         <md-input-container>
             <label>Enter date</label>
             <md-datepicker ng-model="ctrl.myDate" name="dateField"></md-datepicker>
@@ -22,7 +21,8 @@
         <md-input-container>
             <div>
                 <label>State</label>
-                <input name="state" ng-model="state">
+                <input name="state" ng-model="state"md-maxlength="2">
+                <div ng-message="md-maxlength">Only use two letter state abbreviation!</div>
             </div>
         </md-input-container>
         <md-input-container>
