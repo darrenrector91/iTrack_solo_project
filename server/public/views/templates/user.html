@@ -6,7 +6,7 @@
     <form name="fishForm">
         <md-input-container>
             <label>Enter date</label>
-            <md-datepicker ng-model="ctrl.myDate" name="dateField"></md-datepicker>
+            <md-datepicker ng-model="vm.newItem.date" name="dateField"></md-datepicker>
             <div ng-messages="myForm.dateField.$error">
                 <div ng-message="valid">The entered value is not a date!</div>
                 <div ng-message="required">This date is required!</div>
@@ -15,19 +15,19 @@
         <md-input-container>
             <div>
                 <label>City</label>
-                <input name="city" ng-model="city">
+                <input name="city" ng-model="vm.newItem.city">
             </div>
         </md-input-container>
         <md-input-container>
             <div>
                 <label>State</label>
-                <input name="state" ng-model="state"md-maxlength="2">
+                <input name="state" ng-model="vm.newItem.state"md-maxlength="2">
                 <div ng-message="md-maxlength">Only use two letter state abbreviation!</div>
             </div>
         </md-input-container>
         <md-input-container>
             <label>Species</label>
-            <input name="species" ng-model="species" required>
+            <input name="species" ng-model="vm.newItem.species" required>
             <div ng-messages="colorForm.species.$error">
                 <div ng-message="required">This is required!</div>
             </div>
@@ -35,29 +35,29 @@
         <md-input-container>
             <div>
                 <label>Rod</label>
-                <input name="rod" ng-model="rod">
+                <input name="rod" ng-model="vm.newItem.rod">
             </div>
         </md-input-container>
         <md-input-container>
             <div>
                 <label>Reel</label>
-                <input name="reel" ng-model="reel">
+                <input name="reel" ng-model="vm.newItem.reel">
             </div>
         </md-input-container>
         <md-input-container>
             <div>
                 <label>Tackle/Bait</label>
-                <input name="tackle_bait" ng-model="tackle_bait">
+                <input name="tackle_bait" ng-model="vm.newItem.tackle_bait">
             </div>
         </md-input-container>
         <md-input-container>
             <label>Body of Water</label>
-            <input name="body_of_water" ng-model="body_of_water" required>
+            <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
             <div ng-messages="colorForm.body_of_water.$error">
                 <div ng-message="required">This is required!</div>
             </div>
         </md-input-container>
-        <md-button class="md-raised md-accent btnTxtSignin" ng-click="">Submit
+        <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
 </div>
