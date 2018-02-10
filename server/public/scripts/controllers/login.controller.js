@@ -3,6 +3,10 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
     var self = this;
     self.user = {
       username: '',
+      first_name: '',
+      last_name: '',
+      city: '',
+      state: '',
       password: ''
     };
     self.message = '';
@@ -31,8 +35,8 @@ myApp.controller('LoginController', ['$http', '$location', 'UserService', functi
     };
 
     self.registerUser = function () {
-      if (self.user.username === '' || self.user.password === '') {
-        self.message = "Choose a username and password!";
+      if (self.user.username === '' || self.user.first_name === '' || self.user.last_name === '' || self.user.city === '' || self.user.state === '' || self.user.password === '') {
+        self.message = "All inputs required";
       } else {
         console.log('sending to server...', self.user);
         $http.post('/api/user/register', self.user).then(function (response) {
