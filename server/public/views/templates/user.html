@@ -1,8 +1,8 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
+<div class="userInfo">
+</div>
+{{vm.first_name}}
 <div class="container">
-
-    <!-- <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1> -->
-
     <form name="fishForm">
         <md-input-container>
             <label>Enter date</label>
@@ -60,14 +60,15 @@
         <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
-    <div class="grid shelfTable" layout="horizontal" layout-align="center center" layout-wrap>
+    <div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
         <!-- <h1 class="title">Shelved Items:</h1> -->
-        <table id="shelfItems">
+        <table id="catchItems">
             <thead>
                 <tr>
                     <th>Date</th>
                     <th>City</th>
                     <th>State</th>
+                    <th>Species</th>
                     <th>Rod</th>
                     <th>Reel</th>
                     <th>Tackle/Bait</th>
@@ -81,6 +82,7 @@
                     <td>{{items.date}}</td>
                     <td>{{items.city}}</td>
                     <td>{{items.state}}</td>
+                    <td>{{items.species}}</td>
                     <td>{{items.rod}}</td>
                     <td>{{items.reel}}</td>
                     <td>{{items.tackle_bait}}</td>

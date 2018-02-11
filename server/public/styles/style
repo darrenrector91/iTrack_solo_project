@@ -5,12 +5,8 @@ body, html {
   font-size: 14px;
 }
 
-.h1test {
-  color: blue;
-}
 .containerHome {
-  background-image: url(../images/fishing_closeup.jpg);
-  background-color: aquamarine;
+  background-image: url("/images/fishing_closeup.jpg");
 }
 
 .txtSignin {
@@ -21,28 +17,28 @@ body, html {
   margin: 10px;
 }
 
-#catchItems {
+#shelfItems {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border: 2px solid #000;
+  border-collapse: collapse;
   width: 100%;
   /* margin-left: 10%; */
 }
 
-#catchItems td,
-#catchItems th {
+#shelfItems td,
+#shelfItems th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#catchItems tr:nth-child(even) {
+#shelfItems tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-#catchItems tr:hover {
+#shelfItems tr:hover {
   background-color: #ddd;
 }
 
-#catchItems th {
+#shelfItems th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;

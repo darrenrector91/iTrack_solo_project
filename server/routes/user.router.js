@@ -26,8 +26,8 @@ router.post('/register', (req, res, next) => {
   const last_name = req.body.last_name;
   const city = req.body.city;
   const state = req.body.state;
-  
-  
+
+
 
   var saveUser = {
     username: req.body.username,
@@ -36,18 +36,17 @@ router.post('/register', (req, res, next) => {
     last_name: req.body.last_name,
     city: req.body.city,
     state: req.body.state,
-    
+
   };
   console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-    [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
-      if (err) {
-        console.log("Error inserting data: ", err);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(201);
-      }
-    });
+  pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
+    if (err) {
+      console.log("Error inserting data: ", err);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(201);
+    }
+  });
 });
 
 // Handles login form authenticate/login POST
@@ -63,6 +62,90 @@ router.get('/logout', (req, res) => {
   // Use passport's built-in method to log out the user
   req.logout();
   res.sendStatus(200);
+});
+
+router.get('/', (req, res) => {
+  // query DB
+  const queryText = 'SELECT * FROM events';
+  pool.query(queryText)
+    // runs on successful query
+    .then((result) => {
+      console.log('query results', result);
+      res.send(result.rows);
+    })
+    // error handling
+    .catch((err) => {
+      console.log('error making select query:', err);
+      res.sendStatus(500);
+    });
+});
+// router.get('/', function (req, res) {
+//     console.log('hit get events');
+
+//     const queryText = 'SELECT * FROM events';
+//     pool.query(queryText)
+//         .then((result) => {
+//             console.log('query results:', result);
+//             res.send(result.rows);
+//         })
+//         .catch((err) => {
+//             console.log('error making query:', err);
+//             res.sendStatus(500);
+//         });
+// });
+
+router.get('/:id', function (req, res) {
+  console.log('hit get event');
+
+  const queryText = 'SELECT * FROM events WHERE id=$1';
+  pool.query(queryText, [req.params.id])
+    .then((result) => {
+      console.log('query results:', result);
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('error making query:', err);
+      res.sendStatus(500);
+    });
+});
+
+router.put('/update/:id', (req, res) => {
+  const queryText = 'UPDATE events SET date = $1, city = $2, state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE id = $9';
+  pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
+});
+
+router.post('/', function (req, res) {
+  const queryText = 'INSERT INTO events (date, city, state, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+  pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
+});
+
+router.delete('/:id', function (req, res) {
+  const queryText = 'DELETE FROM events WHERE id = $1';
+  pool.query(queryText, [req.params.id])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

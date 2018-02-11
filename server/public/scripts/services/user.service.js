@@ -29,22 +29,27 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
     });
   }
 
-  // self.getItems = function () {
-  //   $http.get('/api/data')
-  //     .then(function (response) {
-  //       self.items.list = response.data
-  //     },
-  //   function(response) {
-  //   });
-  // }
-  // self.getItems();
+  self.getCatch = function() {
+    console.log('service getting catch data');
+    $http.get('/api/user')
+        .then(function (response) {
+            console.log('service has catch data');
+            console.log(response);
+            self.item.list = response.data;
+        })
+        .catch(function (response) {
+            console.log('error on get request');
+        });
+}
+  self.getCatch();
+  
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
     $http.post('/api/data/addItem', data)
       .then(function(response) {
         // PUT GET REQUEST HERE TO REFRESH THE LIST
-        // self.getItems();
+        self.getItems();
         self.newItem = ''
         alert('Item has been added!')
       })
@@ -54,13 +59,13 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
   }
 
   //Delete item from table
-  // self.removeItem = function (id) {
-  //   $http.delete(`/api/data/removeItem/${id}`)
-  //   .then(function (response) {
-  //       self.getItems();  
-  //   })
-  //   .catch(function (response) {
-  //   })
-// }
+  self.removeItem = function (id) {
+    $http.delete(`/api/data/removeItem/${id}`)
+    .then(function (response) {
+        self.getItems();  
+    })
+    .catch(function (response) {
+    })
+}
 
 }]);
