@@ -93,7 +93,7 @@ router.get('/:id', function (req, res) {
     });
 });
 
-router.put('/update/:id', (req, res) => {
+router.put('/user/:id', (req, res) => {
   const queryText = 'UPDATE events SET date = $1, city = $2, state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE id = $9';
   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
     .then((result) => {
@@ -121,7 +121,7 @@ router.post('/', function (req, res) {
     });
 });
 
-router.delete('/:id', function (req, res) {
+router.delete('/user/:id', function (req, res) {
   const queryText = 'DELETE FROM events WHERE id = $1';
   pool.query(queryText, [req.params.id])
     .then((result) => {

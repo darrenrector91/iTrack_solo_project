@@ -8,10 +8,6 @@ body, html {
 .h1test {
   color: blue;
 }
-.homeContainer {
-  background-image: url("/server/public/images/langing.jpg"); 
-  background-color: aquamarine;
-}
 
 .txtSignin {
   margin: 10px;

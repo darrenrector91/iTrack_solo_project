@@ -1,11 +1,11 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .warnPalette('red')
+      .primaryPalette('orange')
+      .warnPalette('grey')
       .accentPalette('lime')
-      .backgroundPalette('grey');
-    // .dark();
+      .backgroundPalette('grey')
+      .dark();
   });
 
 
@@ -46,6 +46,24 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     .when('/info', {
       templateUrl: '/views/templates/info.html',
       controller: 'InfoController as vm',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/editUser', {
+      templateUrl: '/views/templates/editUser.html',
+      controller: 'editUserController as vm',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/editCatch', {
+      templateUrl: '/views/templates/editCatch.html',
+      controller: 'editCatchController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();
