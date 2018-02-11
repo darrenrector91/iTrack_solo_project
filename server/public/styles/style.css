@@ -8,8 +8,8 @@ body, html {
 .h1test {
   color: blue;
 }
-.containerHome {
-  background-image: url(../images/fishing_closeup.jpg);
+.homeContainer {
+  background-image: url("/server/public/images/langing.jpg"); 
   background-color: aquamarine;
 }
 

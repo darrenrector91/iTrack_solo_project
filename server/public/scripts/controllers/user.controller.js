@@ -12,8 +12,6 @@ myApp.controller('UserController', ['UserService', function(UserService) {
   }
 
   self.removeItem = function (id) {
-    // if (confirm('Are you sure you want to remove this from the Shelf?') == true) {
       UserService.removeItem(id);  
-    // } 
   } 
 }]);

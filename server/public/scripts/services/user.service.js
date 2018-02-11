@@ -2,6 +2,8 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
   console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
+  self.items = {list: []};
+
 
   self.getuser = function(){
     console.log('UserService -- getuser');
@@ -35,7 +37,8 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
         .then(function (response) {
             console.log('service has catch data');
             console.log(response);
-            self.item.list = response.data;
+            self.item.list = response.data.data;
+            
         })
         .catch(function (response) {
             console.log('error on get request');
@@ -46,7 +49,8 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
-    $http.post('/api/data/addItem', data)
+    console.log('service adding catch data');
+    $http.post('/api/event/addItem', data)
       .then(function(response) {
         // PUT GET REQUEST HERE TO REFRESH THE LIST
         self.getItems();

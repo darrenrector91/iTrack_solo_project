@@ -20,9 +20,9 @@
         </md-input-container>
         <md-input-container>
             <div>
-                <label>State</label>
+                <label>State - 2 letter abbrev.</label>
                 <input name="state" ng-model="vm.newItem.state" md-maxlength="2">
-                <div ng-message="md-maxlength">Only use two letter state abbreviation!</div>
+                <!-- <div ng-message="md-maxlength">Only use two letter state abbreviation!</div> -->
             </div>
         </md-input-container>
         <md-input-container>
@@ -53,7 +53,7 @@
         <md-input-container>
             <label>Body of Water</label>
             <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
-            <div ng-messages="colorForm.body_of_water.$error">
+            <div ng-messages="fishForm.body_of_water.$error">
                 <div ng-message="required">This is required!</div>
             </div>
         </md-input-container>

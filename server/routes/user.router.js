@@ -27,8 +27,6 @@ router.post('/register', (req, res, next) => {
   const city = req.body.city;
   const state = req.body.state;
 
-
-
   var saveUser = {
     username: req.body.username,
     password: encryptLib.encryptPassword(req.body.password),
@@ -79,20 +77,6 @@ router.get('/events', (req, res) => {
       res.sendStatus(500);
     });
 });
-// router.get('/', function (req, res) {
-//     console.log('hit get events');
-
-//     const queryText = 'SELECT * FROM events';
-//     pool.query(queryText)
-//         .then((result) => {
-//             console.log('query results:', result);
-//             res.send(result.rows);
-//         })
-//         .catch((err) => {
-//             console.log('error making query:', err);
-//             res.sendStatus(500);
-//         });
-// });
 
 router.get('/:id', function (req, res) {
   console.log('hit get event');
@@ -123,6 +107,8 @@ router.put('/update/:id', (req, res) => {
 });
 
 router.post('/', function (req, res) {
+  console.log('in POST router');
+  
   const queryText = 'INSERT INTO events (date, city, state, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7)';
   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
     .then((result) => {
