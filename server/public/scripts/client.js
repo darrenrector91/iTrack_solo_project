@@ -54,7 +54,7 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     })
     .when('/editUser', {
       templateUrl: '/views/templates/editUser.html',
-      controller: 'editUserController as vm',
+      controller: 'EditUserController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();
@@ -63,7 +63,7 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     })
     .when('/editCatch', {
       templateUrl: '/views/templates/editCatch.html',
-      controller: 'editCatchController as vm',
+      controller: 'EditCatchController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();
