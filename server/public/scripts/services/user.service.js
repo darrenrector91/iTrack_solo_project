@@ -31,7 +31,7 @@ myApp.service('UserService', ['$http', '$location', function($http, $location){
 
   self.getCatch = function() {
     console.log('service getting catch data');
-    $http.get('/api/user')
+    $http.get('/api/user/events')
         .then(function (response) {
             console.log('service has catch data');
             console.log(response);

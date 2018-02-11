@@ -1,12 +1,12 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable'])
-.config(function ($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('blue')
-    .warnPalette('red')
-    .accentPalette('lime')
-    .backgroundPalette('grey');
-  // .dark();
-});
+  .config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue')
+      .warnPalette('red')
+      .accentPalette('lime')
+      .backgroundPalette('grey');
+    // .dark();
+  });
 
 
 
@@ -27,6 +27,15 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
+      controller: 'UserController as vm',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/events', {
+      templateUrl: '/views/templates/events.html',
       controller: 'UserController as vm',
       resolve: {
         getuser: function (UserService) {

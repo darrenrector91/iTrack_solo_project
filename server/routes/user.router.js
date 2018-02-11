@@ -64,7 +64,7 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/', (req, res) => {
+router.get('/events', (req, res) => {
   // query DB
   const queryText = 'SELECT * FROM events';
   pool.query(queryText)
