@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable'])
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable', 'ngMessages'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('orange')
@@ -36,6 +36,15 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     })
     .when('/events', {
       templateUrl: '/views/templates/events.html',
+      controller: 'UserController as vm',
+      resolve: {
+        getuser: function (UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/addItem', {
+      templateUrl: '/views/templates/addItem.html',
       controller: 'UserController as vm',
       resolve: {
         getuser: function (UserService) {
