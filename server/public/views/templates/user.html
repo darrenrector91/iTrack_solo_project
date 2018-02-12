@@ -64,6 +64,7 @@
         <table id="catchItems">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Date</th>
                     <th>City</th>
                     <th>State</th>
@@ -78,6 +79,7 @@
             </thead>
             <tbody ng-repeat="items in vm.items.list">
                 <tr>
+                    <td>{{items.id}}</td>
                     <td>{{items.date}}</td>
                     <td>{{items.city}}</td>
                     <td>{{items.state}}</td>
@@ -91,7 +93,7 @@
                         </md-button>
                     </td>
                     <td>
-                        <md-button class="md-raised md-danger btnTxtSignin" ng-click="vm.removeItem(items._id)">Delete
+                        <md-button class="md-raised md-danger btnTxtSignin" ng-click="vm.deleteItem(items._id)">Delete
                         </md-button>
                     </td>
                 </tr>

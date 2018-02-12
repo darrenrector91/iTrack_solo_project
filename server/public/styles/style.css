@@ -22,6 +22,7 @@ body, html {
   border: 2px solid #000;
   height: 200px;
   width: 100%;
+  text-align: center;
   /* margin-left: 10%; */
 }
 
@@ -29,6 +30,7 @@ body, html {
 #catchItems th {
   border: 1px solid #ddd;
   padding: 8px;
+
 }
 
 #catchItems tr:nth-child(even) {
@@ -36,7 +38,7 @@ body, html {
 }
 
 #catchItems tr:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
 #catchItems th {
@@ -45,6 +47,8 @@ body, html {
   text-align: left;
   background-color: rgb(38, 126, 226);
   color: white;
+  text-align: center;
+
 }
 
 .md-input-message-animation {

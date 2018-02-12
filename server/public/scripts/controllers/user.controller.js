@@ -12,7 +12,7 @@ myApp.controller('UserController', ['UserService', function(UserService) {
     
   }
   // Service to delete item
-  self.removeItem = function (id) {
-      UserService.removeItem(id);  
+  self.deleteItem = function (id) {
+      UserService.deleteItem(id);  
   } 
 }]);

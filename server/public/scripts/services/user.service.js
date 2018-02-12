@@ -12,7 +12,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         if (response.data.username) {
           // user has a current session on the server
           self.userObject.userName = response.data.username;
-          // console.log('UserService -- getuser -- User Data: ', response.data.username);
+          // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
           // user has no session, bounce them back to the login page
@@ -51,10 +51,10 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
     console.log('service adding catch data');
-    $http.post('/api/user/events', data)
+    $http.post('/api/user/addItem', data)
       .then(function (response) {
         console.log('service has added catch');
-        self.getItems();
+        self.getCatch();
         self.newItem = '';
         alert('Item has been added!')
       })
@@ -64,8 +64,10 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   }
 
   //Delete item from table
-  self.removeItem = function (id) {
-    $http.delete(`/api/data/removeItem/${id}`)
+  self.deleteItem = function(id) {
+    console.log(id);
+    
+    $http.delete(`/api/data/deleteItem/${id}`)
       .then(function (response) {
         self.getItems();
       })
