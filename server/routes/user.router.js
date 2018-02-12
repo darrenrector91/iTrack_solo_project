@@ -121,7 +121,9 @@ router.post('/addItem', function (req, res) {
     });
 });
 
-router.delete('/user/:id', function (req, res) {
+router.delete('/deleteItem/:id', function (req, res) {
+  console.log('in router.delete');
+  
   const queryText = 'DELETE FROM events WHERE id = $1';
   pool.query(queryText, [req.params.id])
     .then((result) => {
