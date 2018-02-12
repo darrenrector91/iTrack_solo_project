@@ -6,8 +6,8 @@ myApp.controller('EditCatchController', ['UserService', function(UserService) {
     self.items = UserService.items
   
     // Service to add the item
-    self.addItem = function (data) {
-      UserService.addItem(data);
+    self.editCatch = function (data) {
+      UserService.editCatch(data);
       self.newItem = UserService.newItem
     }
   }]);

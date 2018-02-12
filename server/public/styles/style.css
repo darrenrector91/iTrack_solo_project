@@ -9,6 +9,14 @@ body, html {
   color: blue;
 }
 
+.backImage {
+  background-image: url("/images/landing.jpg");
+}
+
+.cityInfo {
+  text-align: center;
+}
+
 .txtSignin {
   margin: 10px;
 }

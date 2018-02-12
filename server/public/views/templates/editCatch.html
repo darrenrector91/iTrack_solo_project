@@ -2,7 +2,71 @@
 <div ng-include="'views/partials/nav.html'"></div>
 
 <div class="container">
-  <p>
-    In edit catch
-  </p>
+
+  <div ng-controller="EditCatchController" layout="column" ng-cloak class="md-inline-form">
+
+    <md-content layout-padding>
+      <div>
+        <form name="userForm" class="userForm">
+          <h3> Edit Catch Information
+          </h3>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
+              <label class="editLabel">Date</label>
+              <input ng-model="user.date">
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">City</label>
+              <input ng-model="user.city">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
+              <label class="editLabel">State</label>
+              <input ng-model="user.state">
+              <div ng-messages="userForm.name.$error">
+                <p ng-message="minlength">Use 2 letter state abbreviation</p>
+                <p ng-message="maxlength">Use 2 letter state abbreviation</p>
+                <p ng-message="required">State is required</p>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">Species</label>
+              <input ng-model="user.species">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">Tackle/Bait</label>
+              <input ng-model="user.tackle_rod">
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">Rod</label>
+              <input ng-model="user.rod">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">Reel</label>
+              <input ng-model="user.reel">
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm required>
+              <label class="editLabel">Body of water</label>
+              <input ng-model="user.body_of_water">
+            </md-input-container>
+          </div>
+          <div layout-gt-sm="row">
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="">Save
+            </md-button>
+            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">Cancel
+            </md-button>
+          </div>
+
+      </div>
+      </form>
+  </div>
+  </md-content>
+</div>
 </div>

@@ -3,6 +3,16 @@
 <div class="userInfo">
 </div>
 <div class="container">
+    <div class="backImage">
+        
+    </div>
+    <hr>
+    <div class="userInfo">
+        <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
+        <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}</h3>
+
+    </div>
+    <hr>
     <form name="fishForm">
         <md-input-container>
             <label>Enter date</label>
@@ -60,6 +70,7 @@
         <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
+    <hr>
     <div ng-controller="UserController as vm" class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
         <table id="catchItems">
             <thead>
@@ -80,7 +91,7 @@
             <tbody ng-repeat="items in vm.items.list">
                 <tr>
                     <td>{{items.id}}</td>
-                    <td>{{items.date}}</td>
+                    <td>{{items.date | date:'MM-dd-yyyy'}}</td>
                     <td>{{items.city}}</td>
                     <td>{{items.state}}</td>
                     <td>{{items.species}}</td>

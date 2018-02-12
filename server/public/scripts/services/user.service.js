@@ -12,6 +12,12 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         if (response.data.username) {
           // user has a current session on the server
           self.userObject.userName = response.data.username;
+          self.userObject.first_name = response.data.first_name;
+          self.userObject.last_name = response.data.last_name;
+          self.userObject.city = response.data.city;
+          self.userObject.state = response.data.state;
+
+
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
@@ -61,6 +67,26 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .catch(function (err) {
         console.log('error on post request - adding item');
       })
+  }
+
+  self.editCatch = function(id) {
+    console.log(id);
+
+    $http.edit(`/api/user/editCatch/${id}`)
+    .then(function (response) {
+    })
+    .catch(function(response) {})
+    
+  }
+
+  self.editCatch = function(id) {
+    console.log(id);
+
+    $http.edit(`/api/user/editCatch/${id}`)
+    .then(function (response) {
+    })
+    .catch(function(response) {})
+    
   }
 
   //Delete item from table

@@ -38,11 +38,18 @@
               <label class="editLabel">State</label>
               <input ng-model="user.state">
               <div ng-messages="userForm.name.$error">
-                  <p ng-message="minlength">Use 2 letter state abbreviation</p>
-                  <p ng-message="maxlength">Use 2 letter state abbreviation</p>
-                  <p ng-message="required">State is required</p>
+                <p ng-message="minlength">Use 2 letter state abbreviation</p>
+                <p ng-message="maxlength">Use 2 letter state abbreviation</p>
+                <p ng-message="required">State is required</p>
               </div>
             </md-input-container>
+
+          </div>
+          <div layout-gt-sm="row">
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="">Save
+            </md-button>
+            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">Cancel
+            </md-button>
           </div>
         </form>
       </div>
