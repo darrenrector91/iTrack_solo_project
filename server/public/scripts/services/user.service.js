@@ -1,5 +1,5 @@
 myApp.service('UserService', ['$http', '$location', function ($http, $location) {
-  console.log('UserService Loaded');
+  // console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
   self.items = {
@@ -7,12 +7,12 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   };
 
   self.getuser = function () {
-      console.log('UserService -- getuser');
+      // console.log('UserService -- getuser');
       $http.get('/api/user').then(function (response) {
         if (response.data.username) {
           // user has a current session on the server
           self.userObject.userName = response.data.username;
-          console.log('UserService -- getuser -- User Data: ', response.data.username);
+          // console.log('UserService -- getuser -- User Data: ', response.data.username);
         } else {
           console.log('UserService -- getuser -- failure');
           // user has no session, bounce them back to the login page
@@ -32,13 +32,14 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
-  self.getCatch = function () {
-    console.log('service getting catch data');
+  self.getCatch = function (data) {
+    // console.log('service getting catch data');
     $http.get('/api/user/events')
       .then(function (response) {
-        console.log('service has catch data');
+        // console.log('service has catch data');
         console.log(response);
-        self.item.list = response.data.data;
+        self.items.list = response.data;
+        console.log('response.data', response.data);
       })
       .catch(function (response) {
         console.log('error on get request');

@@ -1,6 +1,7 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="userInfo"></div>
+<div class="userInfo">
+</div>
 <div class="container">
     <form name="fishForm">
         <md-input-container>
@@ -59,8 +60,7 @@
         <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
-    <div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
-        <!-- <h1 class="title">Shelved Items:</h1> -->
+    <div ng-controller="UserController as vm" class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
         <table id="catchItems">
             <thead>
                 <tr>
@@ -76,7 +76,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="items in vm.item.list">
+            <tbody ng-repeat="items in vm.items.list">
                 <tr>
                     <td>{{items.date}}</td>
                     <td>{{items.city}}</td>
@@ -86,9 +86,6 @@
                     <td>{{items.reel}}</td>
                     <td>{{items.tackle_bait}}</td>
                     <td>{{items.body_of_water}}</td>
-                    <!-- <td>
-                        <button ng-click="vm.removeItem(items._id)">Delete </button>
-                    </td> -->
                     <td>
                         <md-button class="md-raised md-primary btnTxtSignin" ng-click="vm.editItem(items._id)">Edit
                         </md-button>
