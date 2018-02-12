@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div ng-include="'views/partials/nav.html'"></div>
-<div class="userInfo">
-</div>
+<div class="userInfo"></div>
 <div class="container">
     <form name="fishForm">
         <md-input-container>
@@ -77,7 +76,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="items in vm.items.list">
+            <tbody ng-repeat="items in vm.item.list">
                 <tr>
                     <td>{{items.date}}</td>
                     <td>{{items.city}}</td>

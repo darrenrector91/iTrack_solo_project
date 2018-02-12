@@ -12,7 +12,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         if (response.data.username) {
           // user has a current session on the server
           self.userObject.userName = response.data.username;
-          console.log('UserService -- getuser -- User Data: ', self.userObject.username);
+          console.log('UserService -- getuser -- User Data: ', response.data.username);
         } else {
           console.log('UserService -- getuser -- failure');
           // user has no session, bounce them back to the login page
@@ -27,7 +27,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     self.logout = function () {
       console.log('UserService -- logout');
       $http.get('/api/user/logout').then(function (response) {
-        console.log('UserService -- logout -- logged out');
+        console.log('UserService logged out');
         $location.path("/home");
       });
     }
@@ -38,7 +38,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .then(function (response) {
         console.log('service has catch data');
         console.log(response);
-        self.item.list = response.data;
+        self.item.list = response.data.data;
       })
       .catch(function (response) {
         console.log('error on get request');
