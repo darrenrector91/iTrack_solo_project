@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable', 'ngMessages'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('orange')
+      .primaryPalette('blue')
       .warnPalette('grey')
       .accentPalette('lime')
       .backgroundPalette('grey')

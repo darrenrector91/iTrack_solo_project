@@ -1,16 +1,20 @@
 <div class="instructions">
-    <md-toolbar class="md-primary md-whiteframe-z5" md-colors="">
+    <md-toolbar class="md-primary md-whiteframe-z5">
         <div class="md-toolbar-tools">
-            <h1 md-truncate flex class="bannerTitle">
-                <b>iTrack Fish</b>
+            <h1 class="bannerTitle">
+                iTrack Fish
             </h1>
-            <input class="txtSignin" type="text" placeholder="username" ng-model="vm.user.username">
-            <input class="txtSignin" type="password" placeholder="password" ng-model="vm.user.password">
-            <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.login()">Login</md-button>
-            <a class="loginRegister" href="#!register">Register?</a>
+            <div class="signinpass">
+                <input class="txtSignin" type="text" placeholder="username" ng-model="vm.user.username">
+                <input class="txtSignin" type="password" placeholder="password" ng-model="vm.user.password">
+                <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.login()">Login</md-button>
+                <a class="loginRegister" href="#!register">Register?</a>
+            </div>
         </div>
         <div class="warningMessage">
             <h1 class="alert alert-danger" role="alert" ng-if="vm.message != ''">{{vm.message}}</h1>
         </div>
     </md-toolbar>
 </div>
+
+<!-- md-colors="{color: 'red-A100', 'border-color': 'primary-600'}" -->
