@@ -1,39 +1,61 @@
 .userViewUsernameCity {
-    text-align: center;
+  text-align: center;
+}
+
+.userBackImage {
+  color: white;
 }
 
 .userImage {
   height: 400px;
   width: 100%;
   object-fit: cover;
+  border-bottom: 2px solid lightgrey;
+}
 
+.imageTitle {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5em;
+  text-shadow: black 0.1em 0.1em 0.2em;
+  letter-spacing: 2px;
 }
 
 #catchTable {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border: 2px solid #000;
-    height: 200px;
-    width: 100%;
-    text-align: center;
-    /* margin-left: 10%; */
-  }
-  
-  #catchTable td,
-  #catchTable th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #catchTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  #catchTable th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(38, 126, 226);
-    color: white;
-    text-align: center;
-  }
-  
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border: 2px solid #000;
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  /* margin-left: 10%; */
+}
+
+#catchTable td,
+#catchTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#catchTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#catchTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(38, 126, 226);
+  color: white;
+  text-align: center;
+}
+
+.fa-user-circle {
+  margin-top: 10px;
+}
+
+.fa-pencil-alt {
+  margin-left: 5px;
+  color: #fff;
+}

@@ -2,11 +2,17 @@
 <div class="container">
     <div class="userBackImage">
         <img class="userImage" src="../images/reel.jpg" alt="" />
+        <div class="imageTitle">fish.  catch.  itrack.</div>
+
     </div>
-    <hr>
     <div class="userViewUsernameCity">
+        <i class="fas fa-user-circle fa-10x"></i>
         <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
-        <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}</h3>
+        <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
+            <a href="#!editUser">
+                <i class="fas fa-pencil-alt" ng-click=""></i>
+            </a>
+        </h3>
 
     </div>
     <hr>
