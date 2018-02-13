@@ -1,0 +1,18 @@
+router.get('/', function (req, res) {
+  console.log('hit get event');
+  if (req.isAuthenticated()) {
+    const queryText = 'SELECT * FROM events JOIN users on users.id = events.userid WHERE users.id = $1;';
+    pool.query(queryText, [req.user.id])
+      .then((result) => {
+        console.log('query results:', result);
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.log('error making query:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // Error finding item(passport)
+    res.sendStatus(403);
+  }
+});

@@ -20,31 +20,36 @@ router.get('/', (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
-  const username = req.body.username;
-  const password = encryptLib.encryptPassword(req.body.password);
-  const first_name = req.body.first_name;
-  const last_name = req.body.last_name;
-  const city = req.body.city;
-  const state = req.body.state;
+  if (req.isAuthenticated()) {
+    const username = req.body.username;
+    const password = encryptLib.encryptPassword(req.body.password);
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const city = req.body.city;
+    const state = req.body.state;
 
-  var saveUser = {
-    username: req.body.username,
-    password: encryptLib.encryptPassword(req.body.password),
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    city: req.body.city,
-    state: req.body.state,
+    var saveUser = {
+      username: req.body.username,
+      password: encryptLib.encryptPassword(req.body.password),
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      city: req.body.city,
+      state: req.body.state,
 
-  };
-  console.log('new user:', saveUser);
-  pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
-    if (err) {
-      console.log("Error inserting data: ", err);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(201);
-    }
-  });
+    };
+    console.log('new user:', saveUser);
+    pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
+      if (err) {
+        console.log("Error inserting data: ", err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(201);
+      }
+    });
+  }else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
+  }
 });
 
 // Handles login form authenticate/login POST
@@ -62,35 +67,23 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/events', (req, res) => {
-  // query DB
-  const queryText = 'SELECT * FROM events';
-  pool.query(queryText)
-    // runs on successful query
-    .then((result) => {
-      console.log('query results', result);
-      res.send(result.rows);
-    })
-    // error handling
-    .catch((err) => {
-      console.log('error making select query:', err);
-      res.sendStatus(500);
-    });
-});
-
-router.get('/:id', function (req, res) {
+router.get('/events', function (req, res) {
   console.log('hit get event');
-
-  const queryText = 'SELECT * FROM events WHERE id=$1';
-  pool.query(queryText, [req.params.id])
-    .then((result) => {
-      console.log('query results:', result);
-      res.send(result.rows);
-    })
-    .catch((err) => {
-      console.log('error making query:', err);
-      res.sendStatus(500);
-    });
+  if (req.isAuthenticated()) {
+    const queryText = 'SELECT * FROM events JOIN users on users.id = events.userid WHERE users.id = $1;';
+    pool.query(queryText, [req.user.id])
+      .then((result) => {
+        console.log('query results:', result);
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.log('error making query:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // Error finding item(passport)
+    res.sendStatus(403);
+  }
 });
 
 router.put('/user/:id', (req, res) => {
@@ -108,7 +101,7 @@ router.put('/user/:id', (req, res) => {
 
 router.post('/addItem', function (req, res) {
   console.log('in POST router');
-  
+
   const queryText = 'INSERT INTO events (date, city, state, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
     .then((result) => {
@@ -123,7 +116,7 @@ router.post('/addItem', function (req, res) {
 
 router.delete('/deleteItem/:id', function (req, res) {
   console.log('in router.delete');
-  
+
   const queryText = 'DELETE FROM events WHERE id = $1';
   pool.query(queryText, [req.params.id])
     .then((result) => {

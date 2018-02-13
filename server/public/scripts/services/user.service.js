@@ -38,11 +38,13 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
+
+  //Get fish for track fish table
   self.getCatch = function (data) {
-    // console.log('service getting catch data');
+    console.log('service getting catch data');
     $http.get('/api/user/events')
       .then(function (response) {
-        // console.log('service has catch data');
+        console.log('service has catch data');
         console.log(response);
         self.items.list = response.data;
         console.log('response.data', response.data);
@@ -68,15 +70,12 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
   }
 
-  self.editCatch = function(id) {
-    console.log(id);
 
-    $http.edit(`/api/user/editCatch/${id}`)
-    .then(function (response) {
-    })
-    .catch(function(response) {})
-    
-  }
+
+
+
+
+
 
   self.editCatch = function(id) {
     console.log(id);
@@ -87,6 +86,10 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     .catch(function(response) {})
     
   }
+
+
+
+
 
   //Delete item from table
   self.deleteItem = function(id) {

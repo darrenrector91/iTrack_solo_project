@@ -93,7 +93,7 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="items in vm.items.list">
+            <tbody ng-repeat="items in vm.items.list track by $index">
                 <tr>
                     <td>{{items.id}}</td>
                     <td>{{items.date | date:'MM-dd-yyyy'}}</td>
