@@ -1,10 +1,8 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
-<div class="userInfo">
-</div>
 <div class="container">
     
     <hr>
-    <div class="userInfo">
+    <div class="userViewUsernameCity">
         <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}</h3>
 
@@ -66,12 +64,12 @@
                 <div ng-message="required">This is required!</div>
             </div>
         </md-input-container>
-        <md-button class="md-raised md-accent btnTxtSignin" ng-click="vm.addItem(vm.newItem)">Submit
+        <md-button class="md-raised md-accent generalButton" ng-click="vm.addItem(vm.newItem)">Submit
         </md-button>
     </form>
     <hr>
     <div ng-controller="UserController as vm" class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
-        <table id="catchItems">
+        <table id="catchTable">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -99,11 +97,11 @@
                     <td>{{items.tackle_bait}}</td>
                     <td>{{items.body_of_water}}</td>
                     <td>
-                        <md-button class="md-raised md-primary btnTxtSignin" ng-click="vm.editItem(items.id)">Edit
+                        <md-button class="md-raised md-primary generalButton" ng-click="vm.editItem(items.id)">Edit
                         </md-button>
                     </td>
                     <td>
-                        <md-button class="md-raised md-danger btnTxtSignin" ng-click="vm.deleteItem(items.id)">Delete
+                        <md-button class="md-raised md-danger generalButton" ng-click="vm.deleteItem(items.id)">Delete
                         </md-button>
                     </td>
                 </tr>

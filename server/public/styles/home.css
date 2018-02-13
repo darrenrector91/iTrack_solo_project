@@ -1,0 +1,20 @@
+.homeContainer {
+    position: relative;
+    text-align: center;
+}
+
+.backImage {
+    position: relative;
+    text-align: center;
+    object-fit: fill;
+}
+
+.imageTitle {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    letter-spacing: 2px;
+}
