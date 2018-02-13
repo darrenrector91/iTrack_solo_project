@@ -6,12 +6,13 @@
 .backImage {
     position: relative;
     text-align: center;
-    object-fit: fill;
+    object-fit: cover;
+  
 }
 
 .imageTitle {
     position: absolute;
-    top: 40%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 5em;
