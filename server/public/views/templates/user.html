@@ -1,11 +1,8 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
-<div ng-include="'views/partials/nav.html'"></div>
 <div class="userInfo">
 </div>
 <div class="container">
-    <div class="backImage">
-        
-    </div>
+    
     <hr>
     <div class="userInfo">
         <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
@@ -13,6 +10,8 @@
 
     </div>
     <hr>
+    <div ng-include="'views/partials/nav.html'"></div>
+
     <form name="fishForm">
         <md-input-container>
             <label>Enter date</label>

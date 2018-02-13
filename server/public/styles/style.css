@@ -10,7 +10,8 @@ body, html {
 }
 
 .backImage {
-  background-image: url("/images/landing.jpg");
+  object-fit: fill;
+  width: 1000px;
 }
 
 .cityInfo {
@@ -64,16 +65,19 @@ body, html {
   color: #000;
 }
 
+.instructions {
+  background-color: #333333;
+  color: #DDDDDD;
+  box-shadow: 0 5px 5px #999;
+  /* padding: 15px; */
+}
+
 /* .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;
 }
 
-.instructions {
-  background-color: #333333;
-  color: #DDDDDD;
-  padding: 15px;
-} */
+
 
 /* #entryForm {
   margin-top: 14px;

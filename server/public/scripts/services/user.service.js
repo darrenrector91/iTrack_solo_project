@@ -62,7 +62,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         console.log('service has added catch');
         self.getCatch();
         self.newItem = '';
-        alert('Item has been added!')
       })
       .catch(function (err) {
         console.log('error on post request - adding item');
