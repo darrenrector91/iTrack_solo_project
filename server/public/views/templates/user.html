@@ -82,8 +82,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Date</th>
-                    <th>City</th>
-                    <th>State</th>
+                    <th>Event City</th>
+                    <th>Event State</th>
+                    <th>UserID</th>
                     <th>Species</th>
                     <th>Rod</th>
                     <th>Reel</th>
@@ -93,12 +94,13 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="items in vm.items.list">
+            <tbody ng-repeat="items in vm.items.list track by $index">
                 <tr>
                     <td>{{items.id}}</td>
                     <td>{{items.date | date:'MM-dd-yyyy'}}</td>
-                    <td>{{items.city}}</td>
-                    <td>{{items.state}}</td>
+                    <td>{{items.event_city}}</td>
+                    <td>{{items.event_state}}</td>
+                    <td>{{items.userid}}</td>
                     <td>{{items.species}}</td>
                     <td>{{items.rod}}</td>
                     <td>{{items.reel}}</td>

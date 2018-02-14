@@ -66,32 +66,24 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .catch(function (err) {
         console.log('error on post request - adding item');
       })
-  }
+    self.getCatch();
 
-  self.editCatch = function(id) {
+  }
+  self.editCatch = function (id) {
     console.log(id);
 
     $http.edit(`/api/user/editCatch/${id}`)
-    .then(function (response) {
-    })
-    .catch(function(response) {})
-    
+      .then(function (response) {})
+      .catch(function (response) {})
+
+
   }
 
-  self.editCatch = function(id) {
-    console.log(id);
-
-    $http.edit(`/api/user/editCatch/${id}`)
-    .then(function (response) {
-    })
-    .catch(function(response) {})
-    
-  }
 
   //Delete item from table
-  self.deleteItem = function(id) {
+  self.deleteItem = function (id) {
     console.log(id);
-    
+
     $http.delete(`/api/user/deleteItem/${id}`)
       .then(function (response) {
         self.getCatch();
