@@ -45,7 +45,7 @@ router.post('/register', (req, res, next) => {
         res.sendStatus(201);
       }
     });
-  }else {
+  } else {
     // failure best handled on the server. do redirect here.
     res.sendStatus(403);
   }
@@ -81,6 +81,9 @@ router.get('/events', (req, res) => {
         console.log('error making select query:', err);
         res.sendStatus(500);
       });
+  } else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
   }
 });
 
@@ -88,63 +91,80 @@ router.post('/addItem', function (req, res) {
   console.log('in POST router');
   if (req.isAuthenticated()) {
     //add catch event to user data table
-  const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
-  pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
-    .then((result) => {
-      console.log('result:', result.rows);
-      res.send(result.rows);
-    })
-    // erorr handling
-    .catch((err) => {
-      console.log('error:', err);
-      res.sendStatus(500);
-    });
+    const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+    pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+      .then((result) => {
+        console.log('result:', result.rows);
+        res.send(result.rows);
+      })
+      // erorr handling
+      .catch((err) => {
+        console.log('error:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
   }
 });
 
 router.put('/user/:id', (req, res) => {
-  const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
-  pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
-    .then((result) => {
-      console.log('result:', result.rows);
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.log('error:', err);
-      res.sendStatus(500);
-    });
+  if (isAuthenticated()) {
+    const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
+    pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
+      .then((result) => {
+        console.log('result:', result.rows);
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        console.log('error:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
+  }
 });
 
 router.delete('/deleteItem/:id', function (req, res) {
   console.log('in router.delete');
   //delete data from table and datbase
-  const queryText = 'DELETE FROM events WHERE id = $1';
-  pool.query(queryText, [req.params.id])
-    .then((result) => {
-      console.log('result:', result.rows);
-      res.sendStatus(200);
-    })
-    //error handling
-    .catch((err) => {
-      console.log('error:', err);
-      res.sendStatus(500);
-    });
+  if (isAuthenticated()) {
+    const queryText = 'DELETE FROM events WHERE id = $1';
+    pool.query(queryText, [req.params.id])
+      .then((result) => {
+        console.log('result:', result.rows);
+        res.sendStatus(200);
+      })
+      //error handling
+      .catch((err) => {
+        console.log('error:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
+  }
 });
 
-// router.get('/:id', function (req, res) {
-//   console.log('hit get event');
-
-//   const queryText = 'SELECT * FROM events WHERE id=$1';
-//   pool.query(queryText, [req.params.id])
-//     .then((result) => {
-//       console.log('query results:', result);
-//       res.send(result.rows);
-//     })
-//     .catch((err) => {
-//       console.log('error making query:', err);
-//       res.sendStatus(500);
-//     });
-// });
+router.get('/:id', function (req, res) {
+  console.log('in get event');
+  if (isAuthenticated()) {
+    const queryText = 'SELECT date, event_city, event_state, species, tackle_bait, rod, reel, body_of_water FROM events WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+      .then((result) => {
+        console.log('query results:', result);
+        res.send(result.rows);
+      })
+      .catch((err) => {
+        console.log('error making query:', err);
+        res.sendStatus(500);
+      });
+  } else {
+    // failure best handled on the server. do redirect here.
+    res.sendStatus(403);
+  }
+});
 
 
 

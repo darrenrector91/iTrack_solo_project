@@ -3,7 +3,7 @@
 
 <div class="container">
 
-  <div ng-controller="EditCatchController" layout="column" ng-cloak class="md-inline-form">
+  <div ng-controller="EditCatchController as vm" layout="column" ng-cloak class="md-inline-form">
 
     <md-content layout-padding>
       <div>
@@ -13,54 +13,63 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
               <label class="editLabel">Date</label>
-              <input ng-model="user.date">
+              {{items.date}}
+              <input ng-model="vm.editItem.date">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">City</label>
-              <input ng-model="user.city">
+              {{items.event_city}}
+              <input ng-model="vm.editItem.city">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
               <label class="editLabel">State</label>
-              <input ng-model="user.state">
+              <input ng-model="vm.editItem.state">
               <div ng-messages="userForm.name.$error">
                 <p ng-message="minlength">Use 2 letter state abbreviation</p>
                 <p ng-message="maxlength">Use 2 letter state abbreviation</p>
                 <p ng-message="required">State is required</p>
               </div>
+              {{items.event_state}}
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Species</label>
-              <input ng-model="user.species">
+              {{items.species}}
+              <input ng-model="vm.editItem.species">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Tackle/Bait</label>
-              <input ng-model="user.tackle_rod">
+              {{items.tackle_bait}}
+              <input ng-model="vm.editItem.tackle_rod">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Rod</label>
-              <input ng-model="user.rod">
+              {{items.rod}}
+              <input ng-model="vm.editItem.rod">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Reel</label>
-              <input ng-model="user.reel">
+              {{items.reel}}
+              <input ng-model="vm.editItem.reel">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Body of water</label>
-              <input ng-model="user.body_of_water">
+              {{items.body_of_water}}
+              <input ng-model="vm.editItem.body_of_water">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
-            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="">Save
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.editCatch(vm.editItem)">Save
             </md-button>
-            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click=""><a href="#!user">Cancel</a>
+            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">
+              <a href="#!user">Cancel</a>
             </md-button>
           </div>
 

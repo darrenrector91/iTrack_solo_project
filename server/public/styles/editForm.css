@@ -35,3 +35,8 @@ body {
     margin-left: 23%;
 }
 
+a {
+    text-decoration: none;
+    color: #000;
+}
+
