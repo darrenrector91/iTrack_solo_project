@@ -1,5 +1,5 @@
 myApp.service('UserService', ['$http', '$location', function ($http, $location) {
-  // console.log('UserService Loaded');
+  console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
   self.items = {
@@ -70,13 +70,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
   }
 
-
-
-
-
-
-
-
   self.editCatch = function(id) {
     console.log(id);
 
@@ -84,12 +77,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     .then(function (response) {
     })
     .catch(function(response) {})
-    
   }
-
-
-
-
 
   //Delete item from table
   self.deleteItem = function(id) {
