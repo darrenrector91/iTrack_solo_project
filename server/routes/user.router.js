@@ -129,22 +129,17 @@ router.put('/user/:id', (req, res) => {
 router.delete('/deleteItem/:id', function (req, res) {
   console.log('in router.delete');
   //delete data from table and datbase
-  if (isAuthenticated()) {
-    const queryText = 'DELETE FROM events WHERE id = $1';
-    pool.query(queryText, [req.params.id])
-      .then((result) => {
-        console.log('result:', result.rows);
-        res.sendStatus(200);
-      })
-      //error handling
-      .catch((err) => {
-        console.log('error:', err);
-        res.sendStatus(500);
-      });
-  } else {
-    // failure best handled on the server. do redirect here.
-    res.sendStatus(403);
-  }
+  const queryText = 'DELETE FROM events WHERE id = $1';
+  pool.query(queryText, [req.params.id])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.sendStatus(200);
+    })
+    //error handling
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
 });
 
 router.get('/:id', function (req, res) {

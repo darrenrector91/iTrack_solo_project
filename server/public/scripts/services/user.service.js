@@ -16,6 +16,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
           self.userObject.last_name = response.data.last_name;
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
+          self.getCatch();
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
@@ -36,7 +37,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
-  self.getCatch = function (data) {
+  self.getCatch = function () {
     // console.log('service getting catch data');
     $http.get('/api/user/events')
       .then(function (response) {
@@ -49,7 +50,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         console.log('error on get request');
       });
   }
-  self.getCatch();
+  // self.getCatch();
 
 
   // Send item list to server to be authenticated before adding
@@ -59,7 +60,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .then(function (response) {
         console.log('service has added catch');
         self.getCatch();
-        self.newItem = '';
+        // self.newItem = '';
       })
       .catch(function (err) {
         console.log('error on post request - adding item');

@@ -14,4 +14,6 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.deleteItem = function (id) {
     UserService.deleteItem(id);
   }
+
+// UserService.getCatch();
 }]);
