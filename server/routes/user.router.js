@@ -35,7 +35,6 @@ router.post('/register', (req, res, next) => {
       last_name: req.body.last_name,
       city: req.body.city,
       state: req.body.state,
-
     };
     console.log('new user:', saveUser);
     pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
@@ -88,12 +87,14 @@ router.get('/events', (req, res) => {
 router.post('/addItem', function (req, res) {
   console.log('in POST router');
   if (req.isAuthenticated()) {
+    //add catch event to user data table
   const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
   pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
     .then((result) => {
       console.log('result:', result.rows);
       res.send(result.rows);
     })
+    // erorr handling
     .catch((err) => {
       console.log('error:', err);
       res.sendStatus(500);
@@ -101,15 +102,29 @@ router.post('/addItem', function (req, res) {
   }
 });
 
+router.put('/user/:id', (req, res) => {
+  const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
+  pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
+});
+
 router.delete('/deleteItem/:id', function (req, res) {
   console.log('in router.delete');
-
+  //delete data from table and datbase
   const queryText = 'DELETE FROM events WHERE id = $1';
   pool.query(queryText, [req.params.id])
     .then((result) => {
       console.log('result:', result.rows);
       res.sendStatus(200);
     })
+    //error handling
     .catch((err) => {
       console.log('error:', err);
       res.sendStatus(500);
@@ -131,18 +146,7 @@ router.delete('/deleteItem/:id', function (req, res) {
 //     });
 // });
 
-// router.put('/user/:id', (req, res) => {
-//   const queryText = 'UPDATE events SET date = $1, city = $2, state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE id = $9';
-//   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
-//     .then((result) => {
-//       console.log('result:', result.rows);
-//       res.sendStatus(200);
-//     })
-//     .catch((err) => {
-//       console.log('error:', err);
-//       res.sendStatus(500);
-//     });
-// });
+
 
 
 

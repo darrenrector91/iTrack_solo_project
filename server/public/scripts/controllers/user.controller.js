@@ -10,10 +10,10 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.addItem = function (data) {
     UserService.addItem(data);
   }
-  // Service to delete item
-  self.editCatch = function (id) {
-    UserService.editCatch(id);
-  }
+  // // Service to delete item
+  // self.editCatch = function (id) {
+  //   UserService.editCatch(id);
+  // }
   // Service to delete item
   self.deleteItem = function (id) {
     UserService.deleteItem(id);

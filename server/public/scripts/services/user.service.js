@@ -16,8 +16,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
           self.userObject.last_name = response.data.last_name;
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
-
-
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
@@ -72,22 +70,18 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   
   self.editCatch = function (id) {
     console.log(id);
-
     $http.edit(`/api/user/editCatch/${id}`)
       .then(function (response) {})
       .catch(function (response) {})
   }
 
-
   //Delete item from table
   self.deleteItem = function (id) {
-    console.log(id);
-
+    console.log('deleted row');
     $http.delete(`/api/user/deleteItem/${id}`)
       .then(function (response) {
         self.getCatch();
       })
       .catch(function (response) {})
   }
-
 }]);
