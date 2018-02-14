@@ -1,5 +1,5 @@
 myApp.service('UserService', ['$http', '$location', function ($http, $location) {
-  console.log('UserService Loaded');
+  // console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
   self.items = {
@@ -38,13 +38,11 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
-
-  //Get fish for track fish table
   self.getCatch = function (data) {
-    console.log('service getting catch data');
+    // console.log('service getting catch data');
     $http.get('/api/user/events')
       .then(function (response) {
-        console.log('service has catch data');
+        // console.log('service has catch data');
         console.log(response);
         self.items.list = response.data;
         console.log('response.data', response.data);
@@ -68,21 +66,23 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .catch(function (err) {
         console.log('error on post request - adding item');
       })
-  }
+    self.getCatch();
 
-  self.editCatch = function(id) {
+  }
+  
+  self.editCatch = function (id) {
     console.log(id);
 
     $http.edit(`/api/user/editCatch/${id}`)
-    .then(function (response) {
-    })
-    .catch(function(response) {})
+      .then(function (response) {})
+      .catch(function (response) {})
   }
 
+
   //Delete item from table
-  self.deleteItem = function(id) {
+  self.deleteItem = function (id) {
     console.log(id);
-    
+
     $http.delete(`/api/user/deleteItem/${id}`)
       .then(function (response) {
         self.getCatch();

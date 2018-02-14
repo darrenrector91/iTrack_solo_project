@@ -67,28 +67,45 @@ router.get('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
-router.get('/events', function (req, res) {
-  console.log('hit get event');
+router.get('/events', (req, res) => {
+  // query DB
   if (req.isAuthenticated()) {
-    const queryText = 'SELECT * FROM events JOIN users on users.id = events.userid WHERE users.id = $1;';
+    const queryText = 'SELECT * FROM events JOIN users on users.id = events.userid WHERE users.id = $1';
     pool.query(queryText, [req.user.id])
+      // runs on successful query
       .then((result) => {
-        console.log('query results:', result);
+        console.log('query results', result);
         res.send(result.rows);
       })
+      // error handling
       .catch((err) => {
-        console.log('error making query:', err);
+        console.log('error making select query:', err);
         res.sendStatus(500);
       });
-  } else {
-    // Error finding item(passport)
-    res.sendStatus(403);
   }
 });
 
-router.put('/user/:id', (req, res) => {
-  const queryText = 'UPDATE events SET date = $1, city = $2, state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE id = $9';
-  pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
+router.post('/addItem', function (req, res) {
+  console.log('in POST router');
+  if (req.isAuthenticated()) {
+  const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
+  pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
+  }
+});
+
+router.delete('/deleteItem/:id', function (req, res) {
+  console.log('in router.delete');
+
+  const queryText = 'DELETE FROM events WHERE id = $1';
+  pool.query(queryText, [req.params.id])
     .then((result) => {
       console.log('result:', result.rows);
       res.sendStatus(200);
@@ -99,26 +116,24 @@ router.put('/user/:id', (req, res) => {
     });
 });
 
-// router.post('/addItem', function (req, res) {
-//   console.log('in POST router');
+// router.get('/:id', function (req, res) {
+//   console.log('hit get event');
 
-//   const queryText = 'INSERT INTO events (date, city, state, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
-//   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+//   const queryText = 'SELECT * FROM events WHERE id=$1';
+//   pool.query(queryText, [req.params.id])
 //     .then((result) => {
-//       console.log('result:', result.rows);
+//       console.log('query results:', result);
 //       res.send(result.rows);
 //     })
 //     .catch((err) => {
-//       console.log('error:', err);
+//       console.log('error making query:', err);
 //       res.sendStatus(500);
 //     });
 // });
 
-// router.delete('/deleteItem/:id', function (req, res) {
-//   console.log('in router.delete');
-
-//   const queryText = 'DELETE FROM events WHERE id = $1';
-//   pool.query(queryText, [req.params.id])
+// router.put('/user/:id', (req, res) => {
+//   const queryText = 'UPDATE events SET date = $1, city = $2, state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE id = $9';
+//   pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
 //     .then((result) => {
 //       console.log('result:', result.rows);
 //       res.sendStatus(200);
@@ -128,5 +143,9 @@ router.put('/user/:id', (req, res) => {
 //       res.sendStatus(500);
 //     });
 // });
+
+
+
+
 
 module.exports = router;

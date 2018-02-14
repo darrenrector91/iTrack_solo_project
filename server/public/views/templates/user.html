@@ -30,13 +30,13 @@
         <md-input-container>
             <div>
                 <label>City</label>
-                <input name="city" ng-model="vm.newItem.city">
+                <input name="city" ng-model="vm.newItem.event_city">
             </div>
         </md-input-container>
         <md-input-container>
             <div>
                 <label>State - 2 letter abbrev.</label>
-                <input name="state" ng-model="vm.newItem.state" md-maxlength="2">
+                <input name="state" ng-model="vm.newItem.event_state" md-maxlength="2">
                 <!-- <div ng-message="md-maxlength">Only use two letter state abbreviation!</div> -->
             </div>
         </md-input-container>
@@ -82,8 +82,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Date</th>
-                    <th>City</th>
-                    <th>State</th>
+                    <th>Event City</th>
+                    <th>Event State</th>
+                    <th>UserID</th>
                     <th>Species</th>
                     <th>Rod</th>
                     <th>Reel</th>
@@ -97,8 +98,9 @@
                 <tr>
                     <td>{{items.id}}</td>
                     <td>{{items.date | date:'MM-dd-yyyy'}}</td>
-                    <td>{{items.city}}</td>
-                    <td>{{items.state}}</td>
+                    <td>{{items.event_city}}</td>
+                    <td>{{items.event_state}}</td>
+                    <td>{{items.userid}}</td>
                     <td>{{items.species}}</td>
                     <td>{{items.rod}}</td>
                     <td>{{items.reel}}</td>
