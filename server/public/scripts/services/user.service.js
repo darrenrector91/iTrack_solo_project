@@ -42,16 +42,16 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     $http.get('/api/user/events')
       .then(function (response) {
         // console.log('service has catch data');
-        console.log(response);
+        // console.log(response);
         self.items.list = response.data;
         console.log('response.data', response.data);
+        // console.log(self.items.list);
+        
       })
       .catch(function (response) {
         console.log('error on get request');
       });
   }
-  // self.getCatch();
-
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
@@ -60,7 +60,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .then(function (response) {
         console.log('service has added catch');
         self.getCatch();
-        // self.newItem = '';
       })
       .catch(function (err) {
         console.log('error on post request - adding item');
@@ -69,7 +68,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   }
 
-  self.editCatch = function () {
+  self.editCatch = function (eventid) {
     console.log('in edit catch service');
     $http.get(`/api/user/editCatch/${eventid}`)
       .then(function (response) {

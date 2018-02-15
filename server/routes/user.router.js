@@ -74,6 +74,8 @@ router.get('/events', (req, res) => {
       // runs on successful query
       .then((result) => {
         console.log('query results', result);
+        // console.log(eventid);
+        
         res.send(result.rows);
       })
       // error handling
@@ -142,7 +144,7 @@ router.delete('/deleteItem/:id', function (req, res) {
     });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/:eventid', function (req, res) {
   console.log('in get event');
   if (isAuthenticated()) {
     const queryText = 'SELECT eventid FROM events WHERE userid = $1';
