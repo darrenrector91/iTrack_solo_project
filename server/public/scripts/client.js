@@ -74,8 +74,8 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
       templateUrl: '/views/templates/editCatch.html',
       controller: 'UserController as vm',
       resolve: {
-        getuser: function (UserService) {
-          return UserService.getuser();
+        getCatch: function (UserService) {
+          return UserService.getCatch();
         }
       }
     })

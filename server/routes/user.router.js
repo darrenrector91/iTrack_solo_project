@@ -144,7 +144,7 @@ router.delete('/deleteItem/:id', function (req, res) {
     });
 });
 
-router.get('/editCatch/:eventid', function (req, res) {
+router.get('/editCatch', function (req, res) {
   console.log('in get event');
   const queryText = 'SELECT eventid FROM events WHERE userid = $1';
   pool.query(queryText, [req.params.id])

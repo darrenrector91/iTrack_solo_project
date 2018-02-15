@@ -72,7 +72,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     console.log('in edit catch service');
     $http.get(`/api/user/editCatch/${eventid}`)
       .then(function (response) {
-        console.log(eventid);
+        console.log('event ID', eventid);
         console.log(response);
       })
       .catch(function (response) {
