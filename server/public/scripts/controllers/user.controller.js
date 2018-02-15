@@ -14,11 +14,9 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.deleteItem = function (id) {
     UserService.deleteItem(id);
   }
-
   // Service to edit the catch data
-  self.editCatch = function (data) {
-    UserService.editCatch(data);
-    self.newItem = UserService.newItem
+  self.editCatch = function (eventid) {
+    UserService.editCatch(eventid);
   }
 
 // UserService.getCatch();

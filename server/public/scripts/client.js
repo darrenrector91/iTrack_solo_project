@@ -70,7 +70,16 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
         }
       }
     })
-    .when('/editCatch', {
+    // .when('/editCatch/', {
+    //   templateUrl: '/views/templates/editCatch.html',
+    //   controller: 'UserController as vm',
+    //   resolve: {
+    //     getuser: function (UserService) {
+    //       return UserService.getuser();
+    //     }
+    //   }
+    // })
+    .when('/editCatch/:eventid', {
       templateUrl: '/views/templates/editCatch.html',
       controller: 'UserController as vm',
       resolve: {

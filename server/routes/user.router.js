@@ -142,10 +142,10 @@ router.delete('/deleteItem/:id', function (req, res) {
     });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/editCatch:eventid', function (req, res) {
   console.log('in get event');
   if (isAuthenticated()) {
-    const queryText = 'SELECT date, event_city, event_state, species, tackle_bait, rod, reel, body_of_water FROM events WHERE id=$1';
+    const queryText = 'SELECT date, event_city, event_state, species, tackle_bait, rod, reel, body_of_water FROM events WHERE eventid=$1';
     pool.query(queryText, [req.params.id])
       .then((result) => {
         console.log('query results:', result);

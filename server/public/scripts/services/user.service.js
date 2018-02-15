@@ -69,12 +69,18 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   }
   
-  self.editCatch = function (id) {
+  self.editCatch = function (eventid) {
     console.log('in edit catch service');
-    console.log(id);
-    $http.edit(`/api/user/editCatch/${id}`)
-      .then(function (response) {})
-      .catch(function (response) {})
+    
+    $http.get(`/api/user/editCatch/${eventid}`)
+      .then(function (response) {
+        console.log(eventid);
+
+      })
+      .catch(function (response) {
+        console.log('error on get request - editCatch');
+
+      })
   }
 
   //Delete item from table
