@@ -2,7 +2,7 @@
 <div class="container">
     <div class="userBackImage">
         <img class="userImage" src="../images/reel.jpg" alt="" />
-        <div class="imageTitle">fish.  catch.  itrack.</div>
+        <div class="imageTitle">fish. catch. itrack.</div>
 
     </div>
     <div class="userViewUsernameCity">
@@ -107,11 +107,14 @@
                     <td>{{items.tackle_bait}}</td>
                     <td>{{items.body_of_water}}</td>
                     <td>
-                        <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch(items.eventid)"><i class="fas fa-edit"></i>
+                        <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch(items.eventid)">
+                            <i class="fas fa-edit"></i>
+                            <a href="#!editCatch">Edit Catch Page</a>
                         </md-button>
                     </td>
                     <td>
-                        <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.id)"><i class="far fa-trash-alt"></i>
+                        <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.id)">
+                            <i class="far fa-trash-alt"></i>
                         </md-button>
                     </td>
                 </tr>

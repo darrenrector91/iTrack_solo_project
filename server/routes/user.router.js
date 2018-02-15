@@ -75,7 +75,7 @@ router.get('/events', (req, res) => {
       .then((result) => {
         console.log('query results', result);
         // console.log(eventid);
-        
+
         res.send(result.rows);
       })
       // error handling
@@ -144,23 +144,18 @@ router.delete('/deleteItem/:id', function (req, res) {
     });
 });
 
-router.get('/:eventid', function (req, res) {
+router.get('/editCatch/:eventid', function (req, res) {
   console.log('in get event');
-  if (isAuthenticated()) {
-    const queryText = 'SELECT eventid FROM events WHERE userid = $1';
-    pool.query(queryText, [req.params.id])
-      .then((result) => {
-        console.log('query results:', result);
-        res.send(result.rows);
-      })
-      .catch((err) => {
-        console.log('error making query:', err);
-        res.sendStatus(500);
-      });
-  } else {
-    // failure best handled on the server. do redirect here.
-    res.sendStatus(403);
-  }
+  const queryText = 'SELECT eventid FROM events WHERE userid = $1';
+  pool.query(queryText, [req.params.id])
+    .then((result) => {
+      console.log('query results:', result);
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('error making query:', err);
+      res.sendStatus(500);
+    });
 });
 
 
