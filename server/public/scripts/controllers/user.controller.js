@@ -11,15 +11,12 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.addItem(data);
   }
   // Service to delete item
-  self.deleteItem = function (id) {
-    UserService.deleteItem(id);
+  self.deleteItem = function (eventid) {
+    UserService.deleteItem(eventid);
   }
 
   // Service to edit the catch data
-  self.editCatch = function (data) {
-    UserService.editCatch(data);
-    self.newItem = UserService.newItem
+  self.editCatch = function (eventid) {
+    UserService.editCatch(eventid);
   }
-
-// UserService.getCatch();
 }]);

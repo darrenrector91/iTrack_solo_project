@@ -12,7 +12,7 @@ if (process.env.DATABASE_URL) {
   // Heroku gives a url, not a connection object
   // https://github.com/brianc/node-pg-pool
   var params = url.parse(process.env.DATABASE_URL);
-  console.log('params:', params);
+  // console.log('params:', params);
   
   var auth = params.auth.split(':');
 
