@@ -72,7 +72,7 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     })
     .when('/editCatch', {
       templateUrl: '/views/templates/editCatch.html',
-      controller: 'EditCatchController as vm',
+      controller: 'UserController as vm',
       resolve: {
         getuser: function (UserService) {
           return UserService.getuser();
