@@ -6,8 +6,7 @@ myApp.controller('EditCatchController', ['UserService', function (UserService) {
   self.items = UserService.items
 
   // Service to edit the catch data
-  self.editCatch = function ($index) {
-    console.log('in edit catch controller');
-    UserService.editCatch($index);
-  }
+  // self.editCatch = function (editCatch) {
+  //   UserService.editCatch(editCatch);
+  // }
 }]);
