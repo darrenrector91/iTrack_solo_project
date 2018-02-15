@@ -69,11 +69,7 @@ router.get('/logout', (req, res) => {
 router.get('/events', (req, res) => {
   // query DB
   if (req.isAuthenticated()) {
-<<<<<<< HEAD
-    const queryText = 'SELECT eventid, date, userid, species, event_city, event_state, rod, reel, tackle_bait, body_of_water FROM events JOIN users on users.id = events.userid WHERE users.id = $1';
-=======
     const queryText = 'SELECT eventid, date, userid, species, event_city, event_state, rod, reel, tackle_bait, body_of_water FROM events JOIN users on users.id = events.userid WHERE users.id =$1;';
->>>>>>> dev
     pool.query(queryText, [req.user.id])
       // runs on successful query
       .then((result) => {

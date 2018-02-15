@@ -16,15 +16,9 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   }
 
   // Service to edit the catch data
-<<<<<<< HEAD
-  self.editCatch = function (eventid) {
-    UserService.editCatch(eventid);
-    // self.newItem = UserService.newItem
-=======
   self.editCatch = function (data) {
     UserService.editCatch(data);
     self.newItem = UserService.newItem
->>>>>>> dev
   }
 
 // UserService.getCatch();
