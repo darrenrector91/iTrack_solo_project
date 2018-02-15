@@ -13,14 +13,12 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
               <label class="editLabel">Date</label>
-              {{items.date}}
               <input ng-model="vm.editItem.date">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">City</label>
-              {{items.event_city}}
               <input ng-model="vm.editItem.city">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
@@ -31,42 +29,36 @@
                 <p ng-message="maxlength">Use 2 letter state abbreviation</p>
                 <p ng-message="required">State is required</p>
               </div>
-              {{items.event_state}}
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Species</label>
-              {{items.species}}
               <input ng-model="vm.editItem.species">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Tackle/Bait</label>
-              {{items.tackle_bait}}
               <input ng-model="vm.editItem.tackle_rod">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Rod</label>
-              {{items.rod}}
               <input ng-model="vm.editItem.rod">
             </md-input-container>
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Reel</label>
-              {{items.reel}}
               <input ng-model="vm.editItem.reel">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Body of water</label>
-              {{items.body_of_water}}
               <input ng-model="vm.editItem.body_of_water">
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
-            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.editCatch(vm.editItem)">Save
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.editCatch(editItem)">Save
             </md-button>
             <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">
               <a href="#!user">Cancel</a>

@@ -6,9 +6,8 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.items = UserService.items
 
   // Service to add item
-  self.newItem = UserService.newItem;
-  self.addItem = function (data) {
-    UserService.addItem(data);
+  self.addItem = function (id) {
+    UserService.addItem(id);
   }
   // Service to delete item
   self.deleteItem = function (id) {

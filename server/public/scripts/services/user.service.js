@@ -69,10 +69,10 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   }
   
-  self.editCatch = function (id) {
+  self.editCatch = function ($index) {
     console.log('in edit catch service');
     console.log(id);
-    $http.edit(`/api/user/editCatch/${id}`)
+    $http.edit(`/api/user/editCatch/${$index}`)
       .then(function (response) {})
       .catch(function (response) {})
   }
