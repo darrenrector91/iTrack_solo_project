@@ -5,9 +5,9 @@ myApp.controller('EditCatchController', ['UserService', function(UserService) {
     self.userObject = UserService.userObject;
     self.items = UserService.items
   
-    // Service to edit the cathc
-    self.editCatch = function (eventid) {
-      UserService.editCatch(eventid);
+    // Service to edit the catch
+    self.editCatch = function (data) {
+      UserService.editCatch(data);
     }
   }]);
   

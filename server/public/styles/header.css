@@ -1,14 +1,24 @@
-.headerButton {
-    margin: 10px;
+.headerInput {
+    margin: 30px;
 }
 
 .header {
-    background-color: rgba(228, 228, 228, 0.35);
+    background-color: rgba(18, 18, 235, 0.283);
     color: #DDDDDD;
     box-shadow: 0 5px 5px rgb(71, 71, 71);
     padding: 15px;
 }
 
-.bannerTitle {
-    text-shadow: rgb(235, 37, 37) 0.1em 0.1em 0.2em;
+.loginRegister {
+    text-shadow: rgb(142, 142, 142) 0.1em 0.1em 0.2em;
+}
+
+.loginHeader {
+    background-color: #0487D9;
+    box-shadow: 5px 3px 9px #000;
+    width: 100%;
+}
+
+.md-toolbar-tools {
+    box-shadow: 6px 6px 10px black;
 }

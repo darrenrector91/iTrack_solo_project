@@ -20,6 +20,7 @@ body {
     background-color: rgb(134, 133, 133);
     color: #000;
     margin-left: 25%;
+    box-shadow: 4px 4px 8px #1b3554;
 }
 
 .md-block {

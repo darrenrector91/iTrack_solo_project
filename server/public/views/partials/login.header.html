@@ -1,13 +1,13 @@
 <div class="header" layout="column" layout-align="top-left">
     <md-toolbar class="md-primary md-whiteframe-z5">
-        <div class="md-toolbar-tools">
+        <div class="md-toolbar-tools loginHeader">
             <img class="appLogo" src="../images/logo.png" alt="fish logo">
-            <h1 md-truncate flex>
-                iTrack Fish
+            <h1 class="md-truncate flex">
+                iTrack
             </h1>
             <div class="signinpass">
-                <input class="headerButton" type="text" placeholder="username" ng-model="vm.user.username">
-                <input class="headerButton" type="password" placeholder="password" ng-model="vm.user.password">
+                <input class="headerInput" type="text" placeholder="username" ng-model="vm.user.username">
+                <input class="headerInput" type="password" placeholder="password" ng-model="vm.user.password">
                 <md-button class="md-raised md-accent generalButton" ng-click="vm.login()">Login</md-button>
                 <a class="loginRegister" href="#!register">Register?</a>
             </div>
