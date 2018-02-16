@@ -23,12 +23,36 @@ body {
     position: absolute;
     /* top: 10%; */
     left: 50%;
-    bottom: 40%;
+    bottom: 30%;
     transform: translate(-50%, -50%);
     font-size: 5em;
-    text-shadow: black 0.1em 0.1em 0.2em;
+    text-shadow: black 0.1em 0.1em 0.9em;
     letter-spacing: 2px;
     color: #fff;
+}
+
+.imageTitle2 {
+    position: absolute;
+    /* top: 10%; */
+    left: 50%;
+    bottom: 62%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    letter-spacing: 2px;
+    color: #000;
+}
+
+.imageTitle3 {
+    position: absolute;
+    /* top: 10%; */
+    left: 50%;
+    bottom: 65%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    letter-spacing: 2px;
+    color: #000;
 }
 
 .md-truncate.flex {

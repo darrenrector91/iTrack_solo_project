@@ -82,9 +82,9 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   }
 
   //Delete item from table
-  self.deleteItem = function (id) {
+  self.deleteItem = function (eventid) {
     console.log('deleted row');
-    $http.delete(`/api/user/deleteItem/${id}`)
+    $http.delete(`/api/user/deleteItem/${eventid}`)
       .then(function (response) {
         self.getCatch();
       })
