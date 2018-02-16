@@ -116,10 +116,11 @@ router.post('/addItem', function (req, res) {
   }
 });
 
-router.put('/user/:id', (req, res) => {
+router.put('/editCatch', (req, res) => {
   if (isAuthenticated()) {
+    const name = req.body;
     const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
-    pool.query(queryText, [req.body.date, req.body.city, req.body.state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water, req.params.id])
+    pool.query(queryText, [name.date, name.city, name.state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water, req.params.id])
       .then((result) => {
         console.log('result:', result.rows);
         res.sendStatus(200);

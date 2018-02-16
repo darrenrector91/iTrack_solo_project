@@ -3,7 +3,10 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   var self = this;
   self.userService = UserService;
   self.userObject = UserService.userObject;
-  self.items = UserService.items
+  self.items = UserService.items;
+  self.editCatchData = UserService.editCatchData;
+  self.editCatch = UserService.editCatch;
+  // self.editCatchData = {};
 
   // Service to add item
   self.newItem = UserService.newItem;
