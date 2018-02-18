@@ -17,8 +17,8 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.deleteItem(eventid);
   }
 
-  self.updateItem = function(id, items) {
-    UserService.updateItem(id, items);
+  self.updateItem = function(eventid) {
+    UserService.updateItem(eventid);
   }
 
   

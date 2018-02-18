@@ -82,7 +82,7 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     .otherwise({
       template: '<h1>404</h1>'
     })
-    .when('/updateItem/:eventid', {
+    .when('/updateItem/:eventId', {
       templateUrl: '/views/templates/updateItem.html',
       controller: 'UserController as vm',
       resolve: {
