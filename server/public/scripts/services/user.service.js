@@ -69,8 +69,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   }
 
-  
-
   self.editCatch = function (items) {
     console.log('passed items', items);
     self.editCatchData.item = items.items;
@@ -85,17 +83,4 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
       .catch(function (response) {})
   }
-
-  // self.editCatch = function (eventid) {
-  //   console.log('getting table row data with event id of: ', eventid);
-  //   $http.get(`/api/user/editCatch/${eventid}`)
-  //     .then(function (response) {
-  //       self.editCatchData = response.data;
-  //       console.log('event ID', eventid);
-  //       console.log(response);
-  //     })
-  //     .catch(function (response) {
-  //       console.log('error on edit request - editCatch');
-  //     })
-  // }
 }]);
