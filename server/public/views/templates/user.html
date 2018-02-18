@@ -94,7 +94,7 @@
             <tbody ng-repeat="items in vm.items.list track by $index">
                 <tr>
                     <td>{{items.eventid}}</td>
-                    <td>{{items.date | date:'MM-dd-yyyy'}}</td>
+                    <td>{{items.date | date:'MMMM dd, yyyy'}}</td>
                     <td>{{items.event_city}}</td>
                     <td>{{items.event_state}}</td>
                     <td>{{items.userid}}</td>
@@ -111,7 +111,7 @@
                         </md-button>
                     </td>
                     <td>
-                        <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.id)">
+                        <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
                             <i class="far fa-trash-alt"></i>
                         </md-button>
                     </td>

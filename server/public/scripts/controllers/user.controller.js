@@ -6,7 +6,6 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.items = UserService.items;
   self.editCatchData = UserService.editCatchData;
   self.editCatch = UserService.editCatch;
-  // self.editCatchData = {};
 
   // Service to add item
   self.newItem = UserService.newItem;
@@ -16,6 +15,10 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   // Service to delete item
   self.deleteItem = function (eventid) {
     UserService.deleteItem(eventid);
+  }
+
+  self.updateItem = function(id, items) {
+    UserService.updateItem(id, items);
   }
 
   

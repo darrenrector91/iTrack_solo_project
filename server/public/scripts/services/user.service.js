@@ -2,10 +2,9 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   // console.log('UserService Loaded');
   var self = this;
   self.userObject = {};
-  self.items = {
-    list: []
-  };
-  self.editCatchData = {item: {}};
+  self.items = {list:[]};
+  self.editCatchData = {item:{}};
+  self.updateItem = {catchItem:{}};
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
@@ -59,6 +58,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     console.log('service adding catch data');
     $http.post('/api/user/addItem', data)
       .then(function (response) {
+        swal("Good job!", "You added catch data!", "success");
         console.log('service has added catch');
         self.getCatch();
       })
@@ -83,4 +83,19 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
       .catch(function (response) {})
   }
+
+  self.updateItem = function(items) {
+    console.log('updated catch item: ', items);
+    self.updateItem.catchItem = items.items;
+    $http.put('/updateItem/', items)
+        .then(function (response) {
+            self.getGames();
+        })
+        .catch(function (response) {
+            console.log('error on put updated catch item', response);
+        });
+};
+
+  // self.editTaskObject.duedate = $filter('date')(self.editTaskObject.duedate, "MM-dd-yyyy");
+  // self.editTaskObject.duedate = new Date(self.editTaskObject.duedate);
 }]);

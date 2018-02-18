@@ -79,16 +79,16 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
         }
       }
     })
-    // .when('/editCatch/', {
-    //   templateUrl: '/views/templates/editCatch.html',
-    //   controller: 'EditCatchController as vm',
-    //   resolve: {
-    //     getCatch: function (UserService) {
-    //       return UserService.getCatch();
-    //     }
-    //   }
-    // })
     .otherwise({
       template: '<h1>404</h1>'
-    });
+    })
+    .when('/updateItem/:eventid', {
+      templateUrl: '/views/templates/updateItem.html',
+      controller: 'UserController as vm',
+      resolve: {
+        getCatch: function (UserService) {
+          return UserService.getCatch();
+        }
+      }
+    }) 
 }]);
