@@ -135,13 +135,11 @@ router.put('/updateItem', (req, res) => {
   }
 });
 
-router.delete('/deleteItem/:eventid', function (req, res) {
-  console.log('in router.delete');
-  //delete data from table and datbase
+router.delete('/:eventid', function (req, res) {
+  //delete data from table and database
   const queryText = 'DELETE FROM events WHERE eventid = $1';
-  pool.query(queryText, [req.params.id])
+  pool.query(queryText, [req.params.eventid])
     .then((result) => {
-      console.log('result:', result.rows);
       res.sendStatus(200);
     })
     //error handling
