@@ -14,7 +14,7 @@
         </h3>
     </div>
     <hr>
-    <div ng-include="'views/partials/nav.html'"></div>
+    <!-- <div ng-include="'views/partials/nav.html'"></div> -->
     <form name="fishForm">
         <md-input-container>
             <label>Enter date</label>
@@ -73,7 +73,7 @@
         </md-button>
     </form>
     <hr>
-    <div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
+    <div ng-controller="UserController as vm" class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
         <table id="catchTable">
             <thead>
                 <tr>
@@ -107,12 +107,13 @@
                         <!-- <p><a ng-href="#!game/{{game._id}}">{{game.name}}</a></p> -->
                         <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
                             <i class="fas fa-edit"></i>
-                            <a ng-href="#!editCatch/{{items.eventid}}">Edit Catch Data</a>
+                            <a ng-href="#!editCatch/{{items.eventid}}">Edit</a>
                         </md-button>
                     </td>
                     <td>
-                        <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(eventid)">
+                        <md-button class="md-raised md-warn generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.id)">
                             <i class="far fa-trash-alt"></i>
+                            Delete
                         </md-button>
                     </td>
                 </tr>
