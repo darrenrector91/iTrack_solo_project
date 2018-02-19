@@ -120,7 +120,7 @@ router.put('/editCatch', (req, res) => {
   if (isAuthenticated()) {
     const name = req.body;
     const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
-    pool.query(queryText, [name.date, name.city, name.state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water])
+    pool.query(queryText, [name.date, name.event_city, name.event_state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water])
       .then((result) => {
         console.log('result:', result.rows);
         res.sendStatus(200);
