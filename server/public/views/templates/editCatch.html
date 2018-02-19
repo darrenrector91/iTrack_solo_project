@@ -8,8 +8,8 @@
     <md-content layout-padding>
       <div>
         <form name="userForm" class="userForm">
-          <h3> Edit Catch Information  
-              <!-- {{vm.editCatchData}} -->
+          <h3> Edit Catch Information {{vm.editCatchData.item.eventid}}
+            {{vm.editCatchData}}
           </h3>
           <div layout-gt-sm="row">
             <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
@@ -60,7 +60,8 @@
           </div>
           {{editCatchData}}
           <div layout-gt-sm="row">
-            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.saveCatchEdit({editCatchData})">Save
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.saveCatchEdit(vm.editCatchData)">
+              <a ng-href="#!user">Save</a>
             </md-button>
             <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">
               <a href="#!user">Cancel</a>

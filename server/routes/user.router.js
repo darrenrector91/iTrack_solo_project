@@ -116,10 +116,10 @@ router.post('/addItem', function (req, res) {
   }
 });
 
-router.put('/editCatch', (req, res) => {
-  if (isAuthenticated()) {
+//saving data from edit catch view form back to database
+router.put('/saveCatchEdit/:eventid', (req, res) => {
     const name = req.body;
-    const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, userid = $4, species = $5, rod = $6, reel = $7, tackle_bait = $8, body_of_water = $9 WHERE id = $10';
+    const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE eventid = $9';
     pool.query(queryText, [name.date, name.event_city, name.event_state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water])
       .then((result) => {
         console.log('result:', result.rows);
@@ -129,29 +129,10 @@ router.put('/editCatch', (req, res) => {
         console.log('error:', err);
         res.sendStatus(500);
       });
-  } else {
-    // failure best handled on the server. do redirect here.
-    res.sendStatus(403);
-  }
-});
+});//end saving data
 
-router.delete('/:eventid', function (req, res) {
-  console.log('This is the req.body for DELETE: ',req.params.eventid);
-  //delete data from table and datbase
-  const queryText = 'DELETE FROM events WHERE eventid = $1';
-  pool.query(queryText, [req.params.eventid])
-    .then((result) => {
-      console.log('result:', result.rows);
-      res.sendStatus(200);
-    })
-    //error handling
-    .catch((err) => {
-      console.log('error:', err);
-      res.sendStatus(500);
-    });
-});
-
-router.get('/editCatch/:eventid', function (req, res) {
+//getting data from database for edit catch view form
+router.get('/editCatch', function (req, res) {
   if (isAuthenticated()) {
     console.log('in get event');
     const queryText = 'SELECT date, event_city, event_state, species, tackle_bait, rod, reel, body_of_water FROM events WHERE eventid = $1';
@@ -165,11 +146,11 @@ router.get('/editCatch/:eventid', function (req, res) {
         res.sendStatus(500);
       });
   }
-});
+});//end getting data for edit catch view form
 
+//delete table/database row
 router.delete('/deleteItem/:eventid', function (req, res) {
   console.log('in router.delete');
-  
   const queryText = 'DELETE FROM events WHERE eventid = $1';
   pool.query(queryText, [req.params.eventid])
     .then((result) => {
@@ -180,6 +161,22 @@ router.delete('/deleteItem/:eventid', function (req, res) {
       console.log('error:', err);
       res.sendStatus(500);
     });
-});
+});//end delete row
+
+// router.delete('/:eventid', function (req, res) {
+//   console.log('This is the req.body for DELETE: ',req.params.eventid);
+//   //delete data from table and datbase
+//   const queryText = 'DELETE FROM events WHERE eventid = $1';
+//   pool.query(queryText, [req.params.eventid])
+//     .then((result) => {
+//       console.log('result:', result.rows);
+//       res.sendStatus(200);
+//     })
+//     //error handling
+//     .catch((err) => {
+//       console.log('error:', err);
+//       res.sendStatus(500);
+//     });
+// });
 
 module.exports = router;

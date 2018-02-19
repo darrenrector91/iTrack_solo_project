@@ -34,7 +34,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         $location.path("/home");
       });
     },
-
     self.logout = function () {
       console.log('UserService -- logout');
       $http.get('/api/user/logout').then(function (response) {
@@ -43,6 +42,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
+  // getting table data for user view table from events table in database
   self.getCatch = function () {
     // console.log('service getting catch data');
     $http.get('/api/user/events')
@@ -52,12 +52,11 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         self.items.list = response.data;
         console.log('response.data', response.data);
         // console.log(self.items.list);
-
       })
       .catch(function (response) {
         console.log('error on get request');
       });
-  }
+  }//end getting table data
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
@@ -71,26 +70,33 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         console.log('error on post request - adding item');
       })
     self.getCatch();
+  }//end add item
 
-  }
-
+  //send table row data from user view to edit catch view form
   self.editCatch = function (items) {
     console.log('passed items', items);
     self.editCatchData.item = items.items;
-  }
+  }//end edit catch
 
-  self.saveCatchEdit = function (editCatchData) {
-    self.saveCatchEdit = editCatchData;
-  }
+  //save catch edit in form and return to user view
+  self.saveCatchEdit = function (eventid) {
+    console.log('returned data from CatchEdit', eventid);
+    $http.put(`/api/user/saveCatchEdit/${eventid}`)
+    .then(function (response) {
+      console.log('saveCatchEdit', response);
+      // self.getCatch();
+    })  
+    .catch(function (error) {
+      console.log('save catch edit', error);
+    })  
+  }//end catch edit in form
 
-  //Delete item from table
+  //Delete item from table/database
   self.deleteItem = function(eventid) {
-    console.log(eventid);
-    
+    console.log('deleteItem eventid ',eventid);
     $http.delete(`/api/user/deleteItem/${eventid}`)
       .then(function (response) {
         self.getCatch();
       })
-      .catch(function (response) {})
-  }
+  }//end delete table/database row
 }]);
