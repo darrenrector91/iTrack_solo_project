@@ -5,8 +5,12 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   self.items = {
     list: []
   };
-  self.editCatchData = {item: {}};
-  self.editedCatchData = {item: {}};
+  self.editCatchData = {
+    item: {}
+  };
+  self.saveCatchEdit = {
+    item: {}
+  };
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
@@ -48,7 +52,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         self.items.list = response.data;
         console.log('response.data', response.data);
         // console.log(self.items.list);
-        
+
       })
       .catch(function (response) {
         console.log('error on get request');
@@ -75,17 +79,19 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     self.editCatchData.item = items.items;
   }
 
-  self.editedCatch = function(items) {
-    self.editedCatchData.items = items.items;
+  self.saveCatchEdit = function (editCatchData) {
+    self.saveCatchEdit = editCatchData;
   }
 
   //Delete item from table
   self.deleteItem = function (eventid) {
-    console.log('deleted row');
-    $http.delete(`/api/user/deleteItem/${eventid}`)
+    $http.delete(`/api/user/events/${eventid}`)
       .then(function (response) {
-        self.getCatch();
+        console.log('successful catch data delete');
+        getCatch();
       })
-      .catch(function (response) {})
+      .catch(function (error) {
+        console.log('error deleting catch data row', error);
+      })
   }
 }]);
