@@ -84,15 +84,13 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   }
 
   //Delete item from table
-  self.deleteItem = function (deleteRow) {
-    console.log('this is the data being deleted', deleteRow);
-    $http.delete(`/api/user/events/${deleteRow.eventid}`)
+  self.deleteItem = function(eventid) {
+    console.log(eventid);
+    
+    $http.delete(`/api/user/deleteItem/${eventid}`)
       .then(function (response) {
-        console.log('successful catch data delete', response);
-        getCatch();
+        self.getCatch();
       })
-      .catch(function (error) {
-        console.log('error deleting catch data row', error);
-      })
+      .catch(function (response) {})
   }
 }]);

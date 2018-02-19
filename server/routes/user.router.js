@@ -167,4 +167,19 @@ router.get('/editCatch/:eventid', function (req, res) {
   }
 });
 
+router.delete('/deleteItem/:eventid', function (req, res) {
+  console.log('in router.delete');
+  
+  const queryText = 'DELETE FROM events WHERE eventid = $1';
+  pool.query(queryText, [req.params.eventid])
+    .then((result) => {
+      console.log('result:', result.rows);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('error:', err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

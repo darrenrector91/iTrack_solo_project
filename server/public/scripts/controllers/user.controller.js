@@ -14,11 +14,7 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.addItem(data);
   }
   // Service to delete item
-  self.deleteItem = function (deleteRow) {
-    UserService.deleteItem(deleteRow);
-  }
-
-  self.removeFavorite = function(toDelete) {
-    MangaService.removeFavorite(toDelete)
-}
+  self.deleteItem = function (eventid) {
+    UserService.deleteItem(eventid);  
+} 
 }]);
