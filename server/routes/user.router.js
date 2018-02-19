@@ -139,7 +139,7 @@ router.delete('/deleteItem/:eventid', function (req, res) {
   console.log('in router.delete');
   //delete data from table and datbase
   const queryText = 'DELETE FROM events WHERE eventid = $1';
-  pool.query(queryText, [req.params.id])
+  pool.query(queryText, [req.params.eventid])
     .then((result) => {
       console.log('result:', result.rows);
       res.sendStatus(200);
