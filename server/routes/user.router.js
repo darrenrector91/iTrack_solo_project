@@ -135,8 +135,8 @@ router.put('/editCatch', (req, res) => {
   }
 });
 
-router.delete('/events/:eventid', function (req, res) {
-  console.log('in router.delete');
+router.delete('/:eventid', function (req, res) {
+  console.log('This is the req.body for DELETE: ',req.params.eventid);
   //delete data from table and datbase
   const queryText = 'DELETE FROM events WHERE eventid = $1';
   pool.query(queryText, [req.params.id])
