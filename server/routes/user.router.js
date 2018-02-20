@@ -119,7 +119,8 @@ router.post('/addItem', function (req, res) {
 router.put('/saveCatchEdit', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveCatchEdit router');
-    const queryText = `UPDATE events SET date = $1,
+    const queryText = `UPDATE events SET
+    date = $1,
     event_city = $2,
     event_state = $3,
     species = $4,
@@ -128,7 +129,16 @@ router.put('/saveCatchEdit', (req, res) => {
     tackle_bait = $7,
     body_of_water = $8
     WHERE eventid = $9`;
-    pool.query(queryText, [req.body.item.date, req.body.item.event_city, req.body.item.event_state, req.body.item.species, req.body.item.rod, req.body.item.reel, req.body.item.tackle_bait, req.body.item.body_of_water, req.body.item.eventid])
+    pool.query(queryText, [
+      req.body.item.date,
+      req.body.item.event_city,
+      req.body.item.event_state,
+      req.body.item.species,
+      req.body.item.rod,
+      req.body.item.reel,
+      req.body.item.tackle_bait,
+      req.body.item.body_of_water,
+      req.body.item.eventid])
       .then((result) => {
         console.log('result:', result);
         res.send(result);
@@ -144,8 +154,20 @@ router.put('/saveCatchEdit', (req, res) => {
 router.put('/saveUserInfo', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveUserInfo router');
-    const queryText = 'UPDATE user SET username = $1, first_name = $2, last_name = $3, city = $4, state = $5 WHERE userid = $6';
-    pool.query(queryText, [req.body.username, req.body.first_name, req.body.last_name, req.body.city, req.body.state, req.user.id])
+    const queryText = `UPDATE user SET
+    username = $1,
+    first_name = $2,
+    last_name = $3,
+    city = $4,
+    state = $5
+    WHERE userid = $6`;
+    pool.query(queryText, [
+      req.body.username,
+      req.body.first_name,
+      req.body.last_name,
+      req.body.city,
+      req.body.state,
+      req.user.id])
       .then((result) => {
         console.log('result:', result);
         res.send(result.rows);
@@ -163,7 +185,18 @@ router.put('/saveUserInfo', (req, res) => {
 router.get('/editCatch', function (req, res) {
   if (isAuthenticated()) {
     console.log('in get event');
-    const queryText = 'SELECT date, event_city, event_state, species, tackle_bait, rod, reel, body_of_water FROM events WHERE eventid = $1';
+    const queryText =
+    `SELECT
+    date,
+    event_city,
+    event_state,
+    species,
+    tackle_bait,
+    rod,
+    reel,
+    body_of_water
+    FROM events
+    WHERE eventid = $1`;
     pool.query(queryText, [req.params.id])
       .then((result) => {
         console.log('query results:', result);
@@ -190,21 +223,4 @@ router.delete('/deleteItem/:eventid', function (req, res) {
       res.sendStatus(500);
     });
 }); //end delete row
-
-// router.delete('/:eventid', function (req, res) {
-//   console.log('This is the req.body for DELETE: ',req.params.eventid);
-//   //delete data from table and datbase
-//   const queryText = 'DELETE FROM events WHERE eventid = $1';
-//   pool.query(queryText, [req.params.eventid])
-//     .then((result) => {
-//       console.log('result:', result.rows);
-//       res.sendStatus(200);
-//     })
-//     //error handling
-//     .catch((err) => {
-//       console.log('error:', err);
-//       res.sendStatus(500);
-//     });
-// });
-
 module.exports = router;
