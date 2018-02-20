@@ -67,10 +67,10 @@ router.get('/logout', (req, res) => {
 });
 
 /* 
-**********************************
-***********LOGIC ROUTES***********
-********************************** 
-*/
+ **********************************
+ ***********LOGIC ROUTES***********
+ ********************************** 
+ */
 
 router.get('/events', (req, res) => {
   // query DB
@@ -81,7 +81,6 @@ router.get('/events', (req, res) => {
       .then((result) => {
         console.log('query results', result);
         // console.log(eventid);
-
         res.send(result.rows);
       })
       // error handling
@@ -102,8 +101,8 @@ router.post('/addItem', function (req, res) {
     const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
     pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
       .then((result) => {
-        console.log('result:', result.rows);
-        res.send(result.rows);
+        console.log('result:', result);
+        res.send(result);
       })
       // erorr handling
       .catch((err) => {
@@ -118,7 +117,8 @@ router.post('/addItem', function (req, res) {
 
 //saving data from edit catch view form back to database
 router.put('/saveCatchEdit', (req, res) => {
-  console.log('in saveCatchEdit router');
+  if (req.isAuthenticated()) {
+    console.log('in saveCatchEdit router');
     const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE eventid = $9';
     pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
       .then((result) => {
@@ -129,7 +129,8 @@ router.put('/saveCatchEdit', (req, res) => {
         console.log('error:', err);
         res.sendStatus(500);
       });
-});//end saving data
+  }
+}); //end saving data
 
 //getting data from database for edit catch view form
 router.get('/editCatch', function (req, res) {
@@ -146,7 +147,7 @@ router.get('/editCatch', function (req, res) {
         res.sendStatus(500);
       });
   }
-});//end getting data for edit catch view form
+}); //end getting data for edit catch view form
 
 //delete table/database row
 router.delete('/deleteItem/:eventid', function (req, res) {
@@ -161,7 +162,7 @@ router.delete('/deleteItem/:eventid', function (req, res) {
       console.log('error:', err);
       res.sendStatus(500);
     });
-});//end delete row
+}); //end delete row
 
 // router.delete('/:eventid', function (req, res) {
 //   console.log('This is the req.body for DELETE: ',req.params.eventid);

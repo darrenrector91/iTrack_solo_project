@@ -44,14 +44,9 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   // getting table data for user view table from events table in database
   self.getCatch = function () {
-    // console.log('service getting catch data');
     $http.get('/api/user/events')
       .then(function (response) {
-        // console.log('service has catch data');
-        // console.log(response);
         self.items.list = response.data;
-        // console.log('response.data', response.data);
-        // console.log(self.items.list);
       })
       .catch(function (response) {
         console.log('error on get request');
@@ -60,14 +55,14 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
-    console.log('service adding catch data');
+    // console.log('service adding catch data', data);
     $http.post('/api/user/addItem', data)
       .then(function (response) {
-        console.log('service has added catch');
+        // console.log('service has added catch');
         self.getCatch();
       })
       .catch(function (err) {
-        console.log('error on post request - adding item');
+        // console.log('error on post request - adding item');
       })
     self.getCatch();
   } //end add item
@@ -81,12 +76,11 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   
   //save catch edit in form and return to user view
   self.saveCatchEdit = function (data) {
-    console.log('returned data from CatchEdit', data);
-    $http.put(`/api/user/saveCatchEdit`, data)
+    console.log('returned data from CatchEdit: ', data.item.body_of_water);
+    $http.put('/api/user/saveCatchEdit', data)
       .then(function (response) {
-        self.saveCatchEdit.item = response.data.item;
+        self.saveCatchEdit.item = response.data;
         console.log('response.data: ', response.data);
-        // self.getCatch();
       })
       .catch(function (error) {
         console.log('save catch edit', error);
