@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div class="container">
     <div class="userBackImage">
-        <img class="userImage" src="../images/fly-rod.jpg" alt="" />
         <div class="imageTitle">fish. catch. itrack.</div>
     </div>
     <div class="userViewUsernameCity">
@@ -17,7 +16,7 @@
     <hr>
     <!-- <div ng-include="'views/partials/nav.html'"></div> -->
     <form name="fishForm">
-        <md-input-container>
+        <md-input-container  class="fishForm">
             <label>Enter date</label>
             <md-datepicker ng-model="vm.newItem.date" name="dateField"></md-datepicker>
             <div ng-messages="myForm.dateField.$error">

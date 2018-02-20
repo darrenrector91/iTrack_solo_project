@@ -4,14 +4,18 @@
 
 .userBackImage {
   color: white;
+  background-image: url(/../images/fly-rod.jpg);
+  height: 30vh;
+  border-bottom: 2px solid lightgrey;
 }
 
-.userImage {
+/* .userImage {
   height: 400px;
   width: 100%;
   object-fit: cover;
   border-bottom: 2px solid lightgrey;
-}
+  
+} */
 
 .imageTitle {
   position: absolute;
@@ -22,7 +26,6 @@
   text-shadow: black 0.1em 0.1em 0.2em;
   letter-spacing: 2px;
   color: #fff;
-
 }
 
 #catchTable {
@@ -72,7 +75,7 @@
 }
 
 .swal-modal {
-  background-color: rgb(59,126,219);
+  background-color: rgb(59, 126, 219);
   border: 3px solid white;
   color: #fff;
 }
@@ -94,4 +97,8 @@
 
 .cityInfo {
   font-size: 25px;
+}
+.fishform {
+  margin: auto;
+  text-align: center;
 }
