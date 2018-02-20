@@ -118,12 +118,12 @@ router.post('/addItem', function (req, res) {
 
 //saving data from edit catch view form back to database
 router.put('/saveCatchEdit', (req, res) => {
-    const name = req.body;
+  console.log('in saveCatchEdit router');
     const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE eventid = $9';
-    pool.query(queryText, [name.date, name.event_city, name.event_state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water])
+    pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
       .then((result) => {
-        console.log('result:', result.rows);
-        res.sendStatus(200);
+        console.log('result:', result);
+        res.send(result);
       })
       .catch((err) => {
         console.log('error:', err);
@@ -139,7 +139,7 @@ router.get('/editCatch', function (req, res) {
     pool.query(queryText, [req.params.id])
       .then((result) => {
         console.log('query results:', result);
-        res.send(result.rows);
+        res.send(result);
       })
       .catch((err) => {
         console.log('error making query:', err);
