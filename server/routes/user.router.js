@@ -72,6 +72,9 @@ router.get('/logout', (req, res) => {
  ********************************** 
  */
 
+ /***********************************
+Get data from dB for user catch table
+ ********************************* */
 router.get('/events', (req, res) => {
   // query DB
   if (req.isAuthenticated()) {
@@ -94,6 +97,10 @@ router.get('/events', (req, res) => {
   }
 });
 
+/***********************************
+****ADD ITEM TO USER CATCH TABLE****
+ ***********************************
+Insert catch data into table */
 router.post('/addItem', function (req, res) {
   console.log('in POST router');
   if (req.isAuthenticated()) {
@@ -115,7 +122,9 @@ router.post('/addItem', function (req, res) {
   }
 });
 
-//saving data from edit catch view form back to database
+/* *******************************
+**********SAVE CATCH EDIT*********
+saving data from edit catch view form back to database */
 router.put('/saveCatchEdit', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveCatchEdit router');
@@ -150,7 +159,9 @@ router.put('/saveCatchEdit', (req, res) => {
   }
 }); //end saving data
 
-//saving data from updating user data to database
+/* *******************************
+**********SAVE USER INFO**********
+saving data from updating user data to database */
 router.put('/saveUserInfo', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveUserInfo router');
@@ -180,8 +191,10 @@ router.put('/saveUserInfo', (req, res) => {
 }); //end saving data
 
 
-
-//getting data from database for edit catch view form
+/* ***************************
+**********EDIT CATCH**********
+******************************
+getting data from database for edit catch view form */
 router.get('/editCatch', function (req, res) {
   if (isAuthenticated()) {
     console.log('in get event');
@@ -209,7 +222,10 @@ router.get('/editCatch', function (req, res) {
   }
 }); //end getting data for edit catch view form
 
-//delete table/database row
+/* ***************************
+*******DELETE CATCH ROW*******
+******************************
+delete table/database row */
 router.delete('/deleteItem/:eventid', function (req, res) {
   console.log('in router.delete');
   const queryText = 'DELETE FROM events WHERE eventid = $1';
