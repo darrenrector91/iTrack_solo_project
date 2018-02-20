@@ -79,11 +79,13 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   }//end edit catch
 
   //save catch edit in form and return to user view
-  self.saveCatchEdit = function (eventid) {
-    console.log('returned data from CatchEdit', eventid);
-    $http.put(`/api/user/saveCatchEdit/${eventid}`)
+  self.saveCatchEdit = function (data) {
+    console.log('returned data from CatchEdit', data);
+    $http.put(`/api/user/saveCatchEdit`)
     .then(function (response) {
       console.log('saveCatchEdit', response);
+      console.log('data', data.item.body_of_water);
+      
       // self.getCatch();
     })  
     .catch(function (error) {

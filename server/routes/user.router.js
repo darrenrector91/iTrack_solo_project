@@ -117,7 +117,7 @@ router.post('/addItem', function (req, res) {
 });
 
 //saving data from edit catch view form back to database
-router.put('/saveCatchEdit/:eventid', (req, res) => {
+router.put('/saveCatchEdit', (req, res) => {
     const name = req.body;
     const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE eventid = $9';
     pool.query(queryText, [name.date, name.event_city, name.event_state, req.user.id, name.species, name.rod, name.reel, name.tackle_bait, name.body_of_water])
