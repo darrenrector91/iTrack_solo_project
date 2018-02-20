@@ -5,8 +5,8 @@
         <div class="imageTitle">fish. catch. itrack.</div>
     </div>
     <div class="userViewUsernameCity">
-        <i class="fas fa-user-circle fa-10x"></i>
-        <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
+        <!-- <i class="fas fa-user-circle fa-10x"></i> -->
+        <h1 class="userNames">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
             <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
                 <i class="fas fa-pencil-alt" ng-click=""></i>
@@ -82,7 +82,7 @@
                     <th>Date</th>
                     <th>Event City</th>
                     <th>Event State</th>
-                    <th>UserID</th>
+                    <!-- <th>UserID</th> -->
                     <th>Species</th>
                     <th>Rod</th>
                     <th>Reel</th>
@@ -98,7 +98,7 @@
                     <td>{{items.date | date:'MM-dd-yyyy'}}</td>
                     <td>{{items.event_city}}</td>
                     <td>{{items.event_state}}</td>
-                    <td>{{items.userid}}</td>
+                    <!-- <td>{{items.userid}}</td> -->
                     <td>{{items.species}}</td>
                     <td>{{items.rod}}</td>
                     <td>{{items.reel}}</td>
