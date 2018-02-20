@@ -23,7 +23,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
           self.getCatch();
-          console.log(self.userObject);
+          // console.log(self.userObject);
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');

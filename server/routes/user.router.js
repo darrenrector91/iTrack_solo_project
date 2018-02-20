@@ -119,8 +119,16 @@ router.post('/addItem', function (req, res) {
 router.put('/saveCatchEdit', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveCatchEdit router');
-    const queryText = 'UPDATE events SET date = $1, event_city = $2, event_state = $3, species = $4, rod = $5, reel = $6, tackle_bait = $7, body_of_water = $8 WHERE eventid = $9';
-    pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+    const queryText = `UPDATE events SET date = $1,
+    event_city = $2,
+    event_state = $3,
+    species = $4,
+    rod = $5,
+    reel = $6,
+    tackle_bait = $7,
+    body_of_water = $8
+    WHERE eventid = $9`;
+    pool.query(queryText, [req.body.item.date, req.body.item.event_city, req.body.item.event_state, req.body.item.species, req.body.item.rod, req.body.item.reel, req.body.item.tackle_bait, req.body.item.body_of_water, req.body.item.eventid])
       .then((result) => {
         console.log('result:', result);
         res.send(result);
@@ -140,7 +148,7 @@ router.put('/saveUserInfo', (req, res) => {
     pool.query(queryText, [req.body.username, req.body.first_name, req.body.last_name, req.body.city, req.body.state, req.user.id])
       .then((result) => {
         console.log('result:', result);
-        res.send(result);
+        res.send(result.rows);
       })
       .catch((err) => {
         console.log('error:', err);

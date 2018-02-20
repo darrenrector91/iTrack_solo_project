@@ -19,7 +19,7 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.deleteItem(eventid);
   }
 
-  // self.saveCatchEdit = function (data) {
-  //   UserService.saveCatchEdit(data);
-  // }
+  self.saveCatchEdit = function (data) {
+    UserService.saveCatchEdit(data);
+  }
 }]);
