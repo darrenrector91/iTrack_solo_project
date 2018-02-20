@@ -14,7 +14,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
-      $http.get('/api/user').then(function (response) {
+      return $http.get('/api/user').then(function (response) {
         if (response.data.username) {
           // user has a current session on the server
           self.userObject.userName = response.data.username;
@@ -45,19 +45,20 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   // getting table data for user view table from events table in database
   self.getCatch = function () {
-    $http.get('/api/user/events')
+    return $http.get('/api/user/events')
       .then(function (response) {
         self.items.list = response.data;
       })
       .catch(function (response) {
         console.log('error on get request');
       });
+      //return promises*****************
   } //end getting table data
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
     // console.log('service adding catch data', data);
-    $http.post('/api/user/addItem', data)
+    return $http.post('/api/user/addItem', data)
       .then(function (response) {
         // console.log('service has added catch');
         self.getCatch();
@@ -74,11 +75,10 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     self.editCatchData.item = items.items;
   } //end edit catch
 
-
   //save catch edit in form and return to user view
   self.saveCatchEdit = function (data) {
     console.log('returned data from CatchEdit: ', data.item.body_of_water);
-    $http.put('/api/user/saveCatchEdit', data)
+    return $http.put('/api/user/saveCatchEdit', data)
       .then(function (response) {
         self.saveCatchEdit.item = response.data;
         console.log('response.data: ', response.data);
@@ -90,8 +90,8 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   //save catch edit in form and return to user view
   self.saveUserInfo = function (data) {
-    console.log('returned data from Updating User: ', data.userObject.first_name);
-    $http.put('/api/user/saveUserInfo', data)
+    console.log('returned data from Updating User: ', self.userObject.first_name);
+    return $http.put('/api/user/saveUserInfo', data)
       .then(function (response) {
         self.saveUserInfo.item = response.data;
         console.log('response.data: ', response.data);
@@ -100,8 +100,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         console.log('error in save user info: ', error);
       })
   } //end catch edit in form
-
-
 
   //Delete item from table/database
   self.deleteItem = function (eventid) {
@@ -113,7 +111,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
       .then((deleting) => {
         if (deleting) {
-          $http.delete(`/api/user/deleteItem/${eventid}`).then(function (response) {
+          return $http.delete(`/api/user/deleteItem/${eventid}`).then(function (response) {
               swal("Catch data was deleted!")
               self.getCatch();
             })

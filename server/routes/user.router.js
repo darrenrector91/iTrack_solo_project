@@ -165,13 +165,13 @@ saving data from updating user data to database */
 router.put('/saveUserInfo', (req, res) => {
   if (req.isAuthenticated()) {
     console.log('in saveUserInfo router');
-    const queryText = `UPDATE user SET
+    const queryText = `UPDATE users SET
     username = $1,
     first_name = $2,
     last_name = $3,
     city = $4,
     state = $5
-    WHERE userid = $6`;
+    WHERE id = $6`;
     pool.query(queryText, [
       req.body.username,
       req.body.first_name,
