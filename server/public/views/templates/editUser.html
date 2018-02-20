@@ -1,9 +1,6 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
-<div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-
   <div ng-controller="EditUserController" layout="column" ng-cloak class="md-inline-form">
-
     <md-content layout-padding>
       <div>
         <form name="userForm" class="userForm">
@@ -12,43 +9,41 @@
           <div layout-gt-sm="row">
             <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
               <label class="editLabel">First name</label>
-              <input ng-model="user.first_name">
+              <input ng-model="vm.userObject.first_name">
             </md-input-container>
 
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Last Name</label>
-              <input ng-model="user.last_name">
+              <input ng-model="vm.userObject.last_name">
             </md-input-container>
           </div>
-
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Username</label>
-              <input ng-model="user.username">
+              <input ng-model="vm.userObject.userName">
             </md-input-container>
           </div>
-
           <div layout-gt-sm="row">
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">City</label>
-              <input ng-model="user.city">
+              <input ng-model="vm.userObject.city">
             </md-input-container>
-
             <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
               <label class="editLabel">State</label>
-              <input ng-model="user.state">
+              <input ng-model="vm.userObject.state">
               <div ng-messages="userForm.name.$error">
                 <p ng-message="minlength">Use 2 letter state abbreviation</p>
                 <p ng-message="maxlength">Use 2 letter state abbreviation</p>
                 <p ng-message="required">State is required</p>
               </div>
             </md-input-container>
-
           </div>
           <div layout-gt-sm="row">
-            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="">Save
+            <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.saveUserInfo(vm.userObject)">
+              <a href="#!user">Save</a>
             </md-button>
-            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click=""><a href="#!user">Cancel</a>
+            <md-button class="md-raised md-accent editButtons btnCancelCatchEdit" ng-click="">
+              <a href="#!user">Cancel</a>
             </md-button>
           </div>
         </form>

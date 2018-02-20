@@ -65,3 +65,25 @@
 .fa-edit {
   margin-left: 10px;
 }
+
+.tooltip {
+  color: rgb(177, 50, 50);
+  margin: 5px;
+}
+
+.swal-modal {
+  background-color: rgb(59,126,219);
+  border: 3px solid white;
+  color: #fff;
+}
+
+.swal-text {
+  font-family: 'Montserrat', sans-serif;
+  padding: 17px;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}

@@ -132,6 +132,25 @@ router.put('/saveCatchEdit', (req, res) => {
   }
 }); //end saving data
 
+//saving data from updating user data to database
+router.put('/saveUserInfo', (req, res) => {
+  if (req.isAuthenticated()) {
+    console.log('in saveUserInfo router');
+    const queryText = 'UPDATE user SET username = $1, first_name = $2, last_name = $3, city = $4, state = $5 WHERE userid = $6';
+    pool.query(queryText, [req.body.username, req.body.first_name, req.body.last_name, req.body.city, req.body.state, req.user.id])
+      .then((result) => {
+        console.log('result:', result);
+        res.send(result);
+      })
+      .catch((err) => {
+        console.log('error:', err);
+        res.sendStatus(500);
+      });
+  }
+}); //end saving data
+
+
+
 //getting data from database for edit catch view form
 router.get('/editCatch', function (req, res) {
   if (isAuthenticated()) {

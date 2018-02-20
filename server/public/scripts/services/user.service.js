@@ -23,6 +23,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
           self.getCatch();
+          console.log(self.userObject);
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
@@ -73,7 +74,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     self.editCatchData.item = items.items;
   } //end edit catch
 
-  
+
   //save catch edit in form and return to user view
   self.saveCatchEdit = function (data) {
     console.log('returned data from CatchEdit: ', data.item.body_of_water);
@@ -87,12 +88,45 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       })
   } //end catch edit in form
 
+  //save catch edit in form and return to user view
+  self.saveUserInfo = function (data) {
+    console.log('returned data from Updating User: ', data.item.first_name);
+    $http.put('/api/user/saveUserInfo', data)
+      .then(function (response) {
+        self.saveUserInfo.item = response.data;
+        console.log('response.data: ', response.data);
+      })
+      .catch(function (error) {
+        console.log('error in save user info: ', error);
+      })
+  } //end catch edit in form
+
+
+
   //Delete item from table/database
   self.deleteItem = function (eventid) {
-    console.log('deleteItem eventid ', eventid);
-    $http.delete(`/api/user/deleteItem/${eventid}`)
-      .then(function (response) {
-        self.getCatch();
+    swal({
+        text: "Are you sure you want to delete this Catch Data?",
+        icon: "warning",
+        buttons: ['No', 'Yes'],
+        dangerMode: true
       })
-  } //end delete table/database row
+      .then((deleting) => {
+        if (deleting) {
+          $http.delete(`/api/user/deleteItem/${eventid}`).then(function (response) {
+              swal("Catch data was deleted!")
+              self.getCatch();
+            })
+            .catch(function (error) {
+              console.log('deleteItem error', error);
+            })
+        } else {
+          swal({
+            text: "No problem!  The data is safe!!",
+            icon: "info",
+            timer: 2000
+          })
+        }
+      });
+  }
 }]);

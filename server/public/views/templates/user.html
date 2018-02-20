@@ -8,8 +8,9 @@
         <i class="fas fa-user-circle fa-10x"></i>
         <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
-            <a href="#!editUser">
+            <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
                 <i class="fas fa-pencil-alt" ng-click=""></i>
+                <div class="tooltip" ng-show="tooltip">Edit your user account information</div>
             </a>
         </h3>
     </div>
