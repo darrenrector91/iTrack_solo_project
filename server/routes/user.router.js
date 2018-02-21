@@ -37,7 +37,23 @@ router.post('/register', (req, res, next) => {
       state: req.body.state,
     };
     console.log('new user:', saveUser);
-    pool.query('INSERT INTO users (username, password, first_name, last_name, city, state) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [saveUser.username, saveUser.password, saveUser.first_name, saveUser.last_name, saveUser.city, saveUser.state], (err, result) => {
+    pool.query(`INSERT INTO users
+    (username,
+      password,
+      first_name,
+      last_name,
+      city,
+      state)
+      VALUES
+      ($1, $2, $3, $4, $5, $6)
+      RETURNING id`,
+      [saveUser.username,
+        saveUser.password,
+        saveUser.first_name,
+        saveUser.last_name,
+        saveUser.city,
+        saveUser.state],
+        (err, result) => {
       if (err) {
         console.log("Error inserting data: ", err);
         res.sendStatus(500);
@@ -78,7 +94,22 @@ Get data from dB for user catch table
 router.get('/events', (req, res) => {
   // query DB
   if (req.isAuthenticated()) {
-    const queryText = 'SELECT eventid, date, userid, species, event_city, event_state, rod, reel, tackle_bait, body_of_water FROM events JOIN users on users.id = events.userid WHERE users.id =$1;';
+    const queryText = `SELECT
+    eventid,
+    date,
+    userid,
+    species,
+    event_city,
+    event_state,
+    rod,
+    reel,
+    tackle_bait,
+    body_of_water
+    FROM
+    events
+    JOIN
+    users on users.id = events.userid
+    WHERE users.id =$1;`;
     pool.query(queryText, [req.user.id])
       // runs on successful query
       .then((result) => {
@@ -105,8 +136,27 @@ router.post('/addItem', function (req, res) {
   console.log('in POST router');
   if (req.isAuthenticated()) {
     //add catch event to user data table
-    const queryText = 'INSERT INTO events (date, event_city, event_state, userid, species, rod, reel,tackle_bait,body_of_water) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)';
-    pool.query(queryText, [req.body.date, req.body.event_city, req.body.event_state, req.user.id, req.body.species, req.body.rod, req.body.reel, req.body.tackle_bait, req.body.body_of_water])
+    const queryText = `INSERT INTO events
+    (date,
+      event_city,
+      event_state,
+      userid,
+      species,
+      rod,
+      reel, 
+      tackle_bait, 
+      body_of_water) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+    pool.query(queryText, [
+      req.body.date, 
+      req.body.event_city, 
+      req.body.event_state, 
+      req.user.id, 
+      req.body.species, 
+      req.body.rod, 
+      req.body.reel, 
+      req.body.tackle_bait, 
+      req.body.body_of_water])
       .then((result) => {
         console.log('result:', result);
         res.send(result);
