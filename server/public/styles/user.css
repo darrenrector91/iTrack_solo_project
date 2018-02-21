@@ -1,31 +1,35 @@
+.h1User {
+  font-size: 80px;
+  padding-top: 50px;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 4px;
+
+}
+
+.userBanner h1 {
+    margin: 0;
+    text-shadow: 2px 2px 6px #000;
+    text-align: center;
+    line-height: 90px;
+}
+
+.userBanner {
+  color: white;
+  background: url(../images/blur-boat.jpg) no-repeat; 
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  object-fit: cover;
+  border-bottom: 2px solid grey;
+}
+
+.userBanner-text {
+  padding-top: 130px;
+}
+
 .userViewUsernameCity {
   text-align: center;
-}
-
-.userBackImage {
-  color: white;
-  background-image: url(/../images/fly-rod.jpg);
-  height: 30vh;
-  border-bottom: 2px solid lightgrey;
-}
-
-/* .userImage {
-  height: 400px;
-  width: 100%;
-  object-fit: cover;
-  border-bottom: 2px solid lightgrey;
-  
-} */
-
-.imageTitle {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5em;
-  text-shadow: black 0.1em 0.1em 0.2em;
-  letter-spacing: 2px;
-  color: #fff;
 }
 
 #catchTable {
@@ -99,6 +103,19 @@
   font-size: 25px;
 }
 .fishform {
-  margin: auto;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;  
+}
+
+.userFormButtons {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.userFormInputs {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }

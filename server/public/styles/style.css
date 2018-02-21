@@ -12,11 +12,15 @@ html {
 
 .md-toolbar-tools {
   box-shadow: 3px 3px 3px rgb(83, 83, 83);
+  padding: 50px;
 }
 
-.md-truncate.flex {
-  width: 0;
+.md-truncate.bannerTitle {
+  font-family: 'Nanum Gothic Coding', monospace;
   font-size: 60px;
-  font-family: 'Lato', sans-serif;
-  margin: 20px;
+  color: #D1DA59;
+  text-shadow: 2px 2px 6px #000;
+  margin-left:  -15px;
+  /* margin-top: 40px; */
+
 }

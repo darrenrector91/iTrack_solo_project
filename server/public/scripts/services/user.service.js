@@ -1,16 +1,27 @@
 myApp.service('UserService', ['$http', '$location', function ($http, $location) {
   // console.log('UserService Loaded');
   var self = this;
+  var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
+
   self.userObject = {};
-  self.items = {
-    list: []
-  };
-  self.editCatchData = {
-    item: {}
-  };
-  self.saveCatchEdit = {
-    item: {}
-  };
+  self.items = {list:[]};
+  self.editCatchData = {item:{}};
+  self.saveCatchEdit = {item:{}};
+
+  function openPicker() {
+    fsClient.pick({
+      fromSources: ["local_file_system"],
+      accept: ["image/*"],
+      maxFiles: 1,
+      minFiles: 0,
+      transformations: {
+        crop: true
+      }
+    }).then(function (response) {
+      // declare this function to handle response
+      handleFilestack(response);
+    });
+  }
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
@@ -52,7 +63,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       .catch(function (response) {
         console.log('error on get request');
       });
-      //return promises*****************
+    //return promises*****************
   } //end getting table data
 
   // Send item list to server to be authenticated before adding
