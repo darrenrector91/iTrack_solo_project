@@ -90,7 +90,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   //save catch edit in form and return to user view
   self.saveUserInfo = function (data) {
-    console.log('returned data from Updating User: ', self.userObject.first_name);
+    console.log('returned data from updating user: ', self.userObject.first_name);
     return $http.put('/api/user/saveUserInfo', data)
       .then(function (response) {
         self.saveUserInfo.item = response.data;

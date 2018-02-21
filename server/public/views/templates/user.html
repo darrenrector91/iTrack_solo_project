@@ -16,7 +16,7 @@
     <hr>
     <!-- <div ng-include="'views/partials/nav.html'"></div> -->
     <form name="fishForm">
-        <md-input-container  class="fishForm">
+        <md-input-container class="fishForm">
             <label>Enter date</label>
             <md-datepicker ng-model="vm.newItem.date" name="dateField"></md-datepicker>
             <div ng-messages="myForm.dateField.$error">
@@ -105,10 +105,12 @@
                     <td>{{items.body_of_water}}</td>
                     <td>
                         <!-- <p><a ng-href="#!game/{{game._id}}">{{game.name}}</a></p> -->
-                        <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
-                            <i class="fas fa-edit"></i>
-                            <a ng-href="#!editCatch">Edit</a>
-                        </md-button>
+                        <a ng-href="#!editCatch">
+                            <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </md-button>
+                        </a>
                     </td>
                     <td>
                         <md-button class="md-raised md-warn generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
