@@ -1,22 +1,22 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div class="container">
     <div class="userBackImage">
-        <img class="userImage" src="../images/fly-rod.jpg" alt="" />
         <div class="imageTitle">fish. catch. itrack.</div>
     </div>
     <div class="userViewUsernameCity">
-        <i class="fas fa-user-circle fa-10x"></i>
-        <h1>{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
+        <!-- <i class="fas fa-user-circle fa-10x"></i> -->
+        <h1 class="usernames">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
-            <a href="#!editUser">
+            <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
                 <i class="fas fa-pencil-alt" ng-click=""></i>
+                <div class="tooltip" ng-show="tooltip">Edit your user account information</div>
             </a>
         </h3>
     </div>
     <hr>
-    <div ng-include="'views/partials/nav.html'"></div>
+    <!-- <div ng-include="'views/partials/nav.html'"></div> -->
     <form name="fishForm">
-        <md-input-container>
+        <md-input-container class="fishForm">
             <label>Enter date</label>
             <md-datepicker ng-model="vm.newItem.date" name="dateField"></md-datepicker>
             <div ng-messages="myForm.dateField.$error">
@@ -81,7 +81,7 @@
                     <th>Date</th>
                     <th>Event City</th>
                     <th>Event State</th>
-                    <th>UserID</th>
+                    <!-- <th>UserID</th> -->
                     <th>Species</th>
                     <th>Rod</th>
                     <th>Reel</th>
@@ -97,7 +97,7 @@
                     <td>{{items.date | date:'MMMM dd, yyyy'}}</td>
                     <td>{{items.event_city}}</td>
                     <td>{{items.event_state}}</td>
-                    <td>{{items.userid}}</td>
+                    <!-- <td>{{items.userid}}</td> -->
                     <td>{{items.species}}</td>
                     <td>{{items.rod}}</td>
                     <td>{{items.reel}}</td>
@@ -105,14 +105,21 @@
                     <td>{{items.body_of_water}}</td>
                     <td>
                         <!-- <p><a ng-href="#!game/{{game._id}}">{{game.name}}</a></p> -->
-                        <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
-                            <i class="fas fa-edit"></i>
-                            <a ng-href="#!editCatch/{{items.eventid}}">Edit Catch Data</a>
-                        </md-button>
+                        <a ng-href="#!editCatch">
+                            <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </md-button>
+                        </a>
                     </td>
                     <td>
+<<<<<<< HEAD
                         <md-button class="md-raised md-danger generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
+=======
+                        <md-button class="md-raised md-warn generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
+>>>>>>> dev
                             <i class="far fa-trash-alt"></i>
+                            Delete
                         </md-button>
                     </td>
                 </tr>

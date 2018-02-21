@@ -70,8 +70,17 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
         }
       }
     })
-    .when('/editCatch/:eventid', {
+    .when('/editCatch', {
       templateUrl: '/views/templates/editCatch.html',
+      controller: 'UserController as vm',
+      resolve: {
+        getCatch: function (UserService) {
+          return UserService.getCatch();
+        }
+      }
+    })
+    .when('/saveCatchEdit', {
+      templateUrl: '/views/templates/user.html',
       controller: 'UserController as vm',
       resolve: {
         getCatch: function (UserService) {

@@ -4,14 +4,18 @@
 
 .userBackImage {
   color: white;
+  background-image: url(/../images/fly-rod.jpg);
+  height: 30vh;
+  border-bottom: 2px solid lightgrey;
 }
 
-.userImage {
+/* .userImage {
   height: 400px;
   width: 100%;
   object-fit: cover;
   border-bottom: 2px solid lightgrey;
-}
+  
+} */
 
 .imageTitle {
   position: absolute;
@@ -22,7 +26,6 @@
   text-shadow: black 0.1em 0.1em 0.2em;
   letter-spacing: 2px;
   color: #fff;
-
 }
 
 #catchTable {
@@ -59,9 +62,43 @@
 
 .fa-pencil-alt {
   margin-left: 5px;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .fa-edit {
   margin-left: 10px;
+}
+
+.tooltip {
+  color: rgb(177, 50, 50);
+  margin: 5px;
+}
+
+.swal-modal {
+  background-color: rgb(59, 126, 219);
+  border: 3px solid white;
+  color: #fff;
+}
+
+.swal-text {
+  font-family: 'Montserrat', sans-serif;
+  padding: 17px;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.usernames {
+  font-size: 40px;
+}
+
+.cityInfo {
+  font-size: 25px;
+}
+.fishform {
+  margin: auto;
+  text-align: center;
 }

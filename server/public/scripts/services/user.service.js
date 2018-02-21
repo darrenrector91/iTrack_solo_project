@@ -8,21 +8,22 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   self.editCatchData = {
     item: {}
   };
-  self.updateItem = {
-    list: {}
+  self.saveCatchEdit = {
+    item: {}
   };
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
-      $http.get('/api/user').then(function (response) {
+      return $http.get('/api/user').then(function (response) {
         if (response.data.username) {
           // user has a current session on the server
-          self.userObject.userName = response.data.username;
+          self.userObject.username = response.data.username;
           self.userObject.first_name = response.data.first_name;
           self.userObject.last_name = response.data.last_name;
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
           self.getCatch();
+          // console.log(self.userObject);
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
           console.log('UserService -- getuser -- failure');
@@ -34,7 +35,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         $location.path("/home");
       });
     },
-
     self.logout = function () {
       console.log('UserService -- logout');
       $http.get('/api/user/logout').then(function (response) {
@@ -43,79 +43,88 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
     }
 
+  // getting table data for user view table from events table in database
   self.getCatch = function () {
-    console.log('service getting catch data');
-    $http.get('/api/user/events')
+    return $http.get('/api/user/events')
       .then(function (response) {
-        console.log('service has catch data');
-        console.log(response);
         self.items.list = response.data;
-        console.log('response.data', response.data);
-        console.log(self.items.list);
       })
       .catch(function (response) {
         console.log('error on get request');
       });
-  }
+      //return promises*****************
+  } //end getting table data
 
   // Send item list to server to be authenticated before adding
   self.addItem = function (data) {
-    console.log('service adding catch data');
-    $http.post('/api/user/addItem', data)
+    // console.log('service adding catch data', data);
+    return $http.post('/api/user/addItem', data)
       .then(function (response) {
-        swal("Good job!", "You added catch data!", "success");
-        console.log('service has added catch');
+        // console.log('service has added catch');
         self.getCatch();
       })
       .catch(function (err) {
-        console.log('error on post request - adding item');
+        // console.log('error on post request - adding item');
       })
     self.getCatch();
+  } //end add item
 
-  }
-
+  //send table row data from user view to edit catch view form
   self.editCatch = function (items) {
-    console.log('passed items', items);
+    // console.log('passed items', items);
     self.editCatchData.item = items.items;
-  }
+  } //end edit catch
 
-  //Delete item from table
+  //save catch edit in form and return to user view
+  self.saveCatchEdit = function (data) {
+    console.log('returned data from CatchEdit: ', data.item.body_of_water);
+    return $http.put('/api/user/saveCatchEdit', data)
+      .then(function (response) {
+        self.saveCatchEdit.item = response.data;
+        console.log('response.data: ', response.data);
+      })
+      .catch(function (error) {
+        console.log('save catch edit', error);
+      })
+  } //end catch edit in form
+
+  //save catch edit in form and return to user view
+  self.saveUserInfo = function (data) {
+    console.log('returned data from updating user: ', self.userObject.first_name);
+    return $http.put('/api/user/saveUserInfo', data)
+      .then(function (response) {
+        self.saveUserInfo.item = response.data;
+        console.log('response.data: ', response.data);
+      })
+      .catch(function (error) {
+        console.log('error in save user info: ', error);
+      })
+  } //end catch edit in form
+
+  //Delete item from table/database
   self.deleteItem = function (eventid) {
     swal({
-        text: "Are you sure you want to delete this event?",
+        text: "Are you sure you want to delete this Catch Data?",
         icon: "warning",
         buttons: ['No', 'Yes'],
-        dangerMode: true,
+        dangerMode: true
       })
       .then((deleting) => {
         if (deleting) {
-          $http.delete(`/api/user/deleteItem/${eventid}`).then(function (response) {
-            swal("The event was removed from your table!")
+          return $http.delete(`/api/user/deleteItem/${eventid}`).then(function (response) {
+              swal("Catch data was deleted!")
               self.getCatch();
             })
-            .catch(function (response) {
-              console.log('error deleting catch data row');
+            .catch(function (error) {
+              console.log('deleteItem error', error);
             })
         } else {
-          swal("You're information has NOT been removed!")
+          swal({
+            text: "No problem!  The data is safe!!",
+            icon: "info",
+            timer: 2000
+          })
         }
       });
-
   }
-
-  self.updateItem = function (eventid) {
-    console.log('updated catch item: ', items);
-    self.updateItem.catchItem = items.items;
-    $http.put('/updateItem/', items)
-      .then(function (response) {
-        swal("Great job!", "You edited your catch data!", "success");
-        self.getGames();
-      })
-      .catch(function (response) {
-        console.log('error updating catch item', response);
-      });
-  };
-
-  // self.editTaskObject.duedate = $filter('date')(self.editTaskObject.duedate, "MM-dd-yyyy");
-  // self.editTaskObject.duedate = new Date(self.editTaskObject.duedate);
 }]);
