@@ -17,7 +17,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       return $http.get('/api/user').then(function (response) {
         if (response.data.username) {
           // user has a current session on the server
-          self.userObject.userName = response.data.username;
+          self.userObject.username = response.data.username;
           self.userObject.first_name = response.data.first_name;
           self.userObject.last_name = response.data.last_name;
           self.userObject.city = response.data.city;
