@@ -8,7 +8,9 @@ html {
 
 .generalButton {
   margin: 10px;
-  display: block;
 }
 
+.md-toolbar-tools {
+  box-shadow: 3px 3px 3px rgb(83, 83, 83);
+}
 

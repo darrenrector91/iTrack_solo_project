@@ -8,8 +8,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable', 'ngMess
       .dark();
   });
 
-
-
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   // console.log('myApp -- config')
