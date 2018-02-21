@@ -14,3 +14,9 @@ html {
   box-shadow: 3px 3px 3px rgb(83, 83, 83);
 }
 
+.md-truncate.flex {
+  width: 0;
+  font-size: 60px;
+  font-family: 'Lato', sans-serif;
+  margin: 20px;
+}
