@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div class="container">
     <div class="backImage">
-        <!-- <img src="../images/fish-jump.jpg" alt="" /> -->
         <div class="userBanner">
             <div class="userBannerbox">
                 <div class="userBanner-text">
@@ -77,12 +76,12 @@
                         <div ng-message="required">This is required!</div>
                     </div>
                 </md-input-container>
-                <md-input-container>
+                <!-- <md-input-container>
                     <div>
                         <label>Image URL</label>
                         <input name="image_url" ng-model="vm.userService.image.list">
                     </div>
-                </md-input-container>
+                </md-input-container> -->
                 <md-input-container>
                     <md-button class="md-raised  generalButton" ng-model="vm.newItem.imageURL" ng-click="vm.openPicker(images.url)">Upload Image
                     </md-button>

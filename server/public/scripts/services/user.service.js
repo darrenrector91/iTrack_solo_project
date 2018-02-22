@@ -104,7 +104,6 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       });
   } //end getting table data
 
-  
 
   //send table row data from user view to edit catch view form
   self.editCatch = function (items) {

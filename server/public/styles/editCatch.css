@@ -2,3 +2,21 @@ md-input-container .md-input {
     font-size: 20px;
     color: #fff;
 }
+
+.editFormButtons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.btnSaveCatchEdit {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.btnCancelCatchEdit {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}

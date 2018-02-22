@@ -101,10 +101,14 @@
 
 .usernames {
   font-size: 40px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 
 .cityInfo {
   font-size: 25px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 .fishform {
   display: flex;
@@ -122,4 +126,16 @@
   padding-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+.editCatchFormParent {
+  display: flex;
+}
+
+.userFormInputs label {
+  font-size: 18px;
+}
+
+.userFormInputs input {
+  margin: 10px;
 }
