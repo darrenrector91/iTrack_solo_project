@@ -9,6 +9,7 @@
     background-color: #0487D9;
     box-shadow: 5px 3px 9px #000;
     width: 100%;
+    
 }
 
 .appLogo {
@@ -17,3 +18,7 @@
     margin-top: 50px;
 }
 
+.headerInput {
+    padding: 5px;
+    height: 20px;
+}

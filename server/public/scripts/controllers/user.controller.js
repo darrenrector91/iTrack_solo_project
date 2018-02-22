@@ -24,7 +24,12 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.saveCatchEdit(data);
   }
 
-  self.saveUserInfo = function(data) {
+  self.saveUserInfo = function (data) {
     UserService.saveUserInfo(data);
+  }
+
+  // Service for uploading files using filestack
+  self.openPicker = function (image) {
+    UserService.openPicker(image);
   }
 }]);

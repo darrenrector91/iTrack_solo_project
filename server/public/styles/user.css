@@ -15,8 +15,8 @@
 
 .userBanner {
   color: white;
-  background: url(../images/blur-boat.jpg) no-repeat; 
-  height: 60vh;
+  background: url(../images/fly-rod-reel2.jpg) no-repeat; 
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -30,6 +30,10 @@
 
 .userViewUsernameCity {
   text-align: center;
+}
+
+.userInfoSubmit {
+  width: 300px;
 }
 
 #catchTable {

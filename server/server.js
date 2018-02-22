@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-require('dotenv').config();
-
+const dotenv = require('dotenv').config();
 const passport = require('./strategies/sql.localstrategy');
 const sessionConfig = require('./modules/session-middleware');
 
@@ -27,6 +26,7 @@ app.use('/api/user', userRouter);
 app.use(express.static('server/public'));
 
 const PORT = process.env.PORT;
+const FILESTACK = process.env.FILESTACK;
 
 /** Listen * */
 app.listen(PORT, () => {

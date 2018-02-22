@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
-  if (req.isAuthenticated()) {
     const username = req.body.username;
     const password = encryptLib.encryptPassword(req.body.password);
     const first_name = req.body.first_name;
@@ -61,10 +60,6 @@ router.post('/register', (req, res, next) => {
         res.sendStatus(201);
       }
     });
-  } else {
-    // failure best handled on the server. do redirect here.
-    res.sendStatus(403);
-  }
 });
 
 // Handles login form authenticate/login POST
@@ -104,7 +99,8 @@ router.get('/events', (req, res) => {
     rod,
     reel,
     tackle_bait,
-    body_of_water
+    body_of_water,
+    image_url
     FROM
     events
     JOIN
@@ -145,8 +141,9 @@ router.post('/addItem', function (req, res) {
       rod,
       reel, 
       tackle_bait, 
-      body_of_water) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+      body_of_water,
+      image_url) 
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
     pool.query(queryText, [
       req.body.date, 
       req.body.event_city, 
@@ -156,7 +153,8 @@ router.post('/addItem', function (req, res) {
       req.body.rod, 
       req.body.reel, 
       req.body.tackle_bait, 
-      req.body.body_of_water])
+      req.body.body_of_water,
+      req.body.image_url])
       .then((result) => {
         console.log('result:', result);
         res.send(result);
