@@ -3,7 +3,7 @@
   <div ng-controller="EditUserController" layout="column" ng-cloak class="md-inline-form">
     <md-content layout-padding>
       <div>
-        <form name="userForm" class="userForm">
+        <form name="userForm" class="userForm" layout-align="center center">
           <h3> Edit User Information
           </h3>
           <div layout-gt-sm="row">
@@ -11,7 +11,6 @@
               <label class="editLabel">First name</label>
               <input ng-model="vm.userObject.first_name">
             </md-input-container>
-
             <md-input-container class="md-block" flex-gt-sm required>
               <label class="editLabel">Last Name</label>
               <input ng-model="vm.userObject.last_name">
@@ -28,7 +27,8 @@
               <label class="editLabel">City</label>
               <input ng-model="vm.userObject.city">
             </md-input-container>
-            <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
+            <!-- <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required> -->
+            <md-input-container>
               <label class="editLabel">State</label>
               <input ng-model="vm.userObject.state">
               <div ng-messages="userForm.name.$error">
@@ -38,7 +38,7 @@
               </div>
             </md-input-container>
           </div>
-          <div layout-gt-sm="row">
+          <div layout-gt-sm="row" layout-align="center center">
             <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.saveUserInfo(vm.userObject)">
               <a href="#!user">Save</a>
             </md-button>

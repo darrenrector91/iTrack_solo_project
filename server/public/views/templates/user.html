@@ -10,7 +10,6 @@
         </div>
     </div>
     <div class="userViewUsernameCity">
-        <!-- <i class="fas fa-user-circle fa-10x"></i> -->
         <h1 class="usernames">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
             <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
@@ -21,8 +20,8 @@
     </div>
     <hr>
     <div class="fishForm">
-        <form>
-            <div class="userFormInputs">
+        <form class="fishForm" layout-align="center center">
+            <div layout-gt-sm="row" layout-align="center center">
                 <md-input-container>
                     <label>Enter date</label>
                     <md-datepicker ng-model="vm.newItem.date" name="dateField" required></md-datepicker>
@@ -41,9 +40,10 @@
                     <div>
                         <label>State - 2 letter abbrev.</label>
                         <input name="state" ng-model="vm.newItem.event_state" md-maxlength="2">
-                        <!-- <div ng-message="md-maxlength">Only use two letter state abbreviation!</div> -->
                     </div>
                 </md-input-container>
+            </div>
+            <div layout-gt-sm="row" layout-align="center center">
                 <md-input-container>
                     <label>Species</label>
                     <input name="species" ng-model="vm.newItem.species" required>
@@ -52,97 +52,96 @@
                     </div>
                 </md-input-container>
                 <md-input-container>
-                    <div>
-                        <label>Rod</label>
-                        <input name="rod" ng-model="vm.newItem.rod">
-                    </div>
+                    <label>Rod</label>
+                    <input name="rod" ng-model="vm.newItem.rod">
                 </md-input-container>
                 <md-input-container>
-                    <div>
-                        <label>Reel</label>
-                        <input name="reel" ng-model="vm.newItem.reel">
-                    </div>
+                    <label>Reel</label>
+                    <input name="reel" ng-model="vm.newItem.reel">
                 </md-input-container>
                 <md-input-container>
-                    <div>
-                        <label>Tackle/Bait</label>
-                        <input name="tackle_bait" ng-model="vm.newItem.tackle_bait">
-                    </div>
+                    <label>Tackle/Bait</label>
+                    <input name="tackle_bait" ng-model="vm.newItem.tackle_bait">
                 </md-input-container>
-                <md-input-container>
-                    <label>Body of Water</label>
-                    <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
-                    <div ng-messages="fishForm.body_of_water.$error">
-                        <div ng-message="required">This is required!</div>
-                    </div>
-                </md-input-container>
-                <!-- <md-input-container>
-                    <div>
-                        <label>Image URL</label>
-                        <input name="image_url" ng-model="vm.userService.image.list">
-                    </div>
-                </md-input-container> -->
+                <div>
+                    <md-input-container>
+                        <label>Body of Water</label>
+                        <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
+                        <div ng-messages="fishForm.body_of_water.$error">
+                            <div ng-message="required">This is required!</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout-gt-sm="row" layout-align="center center">
                 <md-input-container>
                     <md-button class="md-raised  generalButton" ng-model="vm.newItem.imageURL" ng-click="vm.openPicker(images.url)">Upload Image
                     </md-button>
                 </md-input-container>
             </div>
+            <div layout-gt-sm="row" layout-align="center center" class="userUploadMessage">
+                <h4>(After upload, click submit to send form and image to table)</h4>
+            </div>
     </div>
-    <div class="userFormButtons">
-        <md-button class="md-raised md-accent generalButton userInfoSubmit" ng-click="vm.addItem(vm.newItem)">Submit
-        </md-button>
-    </div>
-    </form>
-    <hr>
-    <div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
-        <table id="catchTable">
-            <thead>
-                <tr>
-                    <th>Event ID</th>
-                    <th>Date</th>
-                    <th>Event City</th>
-                    <th>Event State</th>
-                    <th>Species</th>
-                    <th>Rod</th>
-                    <th>Reel</th>
-                    <th>Tackle/Bait</th>
-                    <th>Body of Water</th>
-                    <th>Image URL</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody ng-repeat="items in vm.items.list track by $index">
-                <tr>
-                    <td>{{items.eventid}}</td>
-                    <td>{{items.date | date:'MM-dd-yyyy'}}</td>
-                    <td>{{items.event_city}}</td>
-                    <td>{{items.event_state}}</td>
-                    <td>{{items.species}}</td>
-                    <td>{{items.rod}}</td>
-                    <td>{{items.reel}}</td>
-                    <td>{{items.tackle_bait}}</td>
-                    <td>{{items.body_of_water}}</td>
-                    <td>
-                        <a ng-href="{{items.image_url}}"><image src ="../images/image.svg"></image></a>
-                    </td>
-                    <td>
-                        <a ng-href="#!editCatch">
-                            <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
-                                <i class="fas fa-edit"></i>
-                                Edit
-                            </md-button>
-                        </a>
-                    </td>
-                    <td>
-                        <md-button class="md-raised md-warn generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
-                            <i class="far fa-trash-alt"></i>
-                            Delete
+</div>
+<div class="userFormButtons">
+    <md-button class="md-raised md-accent generalButton userInfoSubmit" ng-click="vm.addItem(vm.newItem)">Submit
+    </md-button>
+
+</div>
+</form>
+<hr>
+<div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
+    <table id="catchTable">
+        <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Date</th>
+                <th>Event City</th>
+                <th>Event State</th>
+                <th>Species</th>
+                <th>Rod</th>
+                <th>Reel</th>
+                <th>Tackle/Bait</th>
+                <th>Body of Water</th>
+                <th>Image URL</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="items in vm.items.list track by $index">
+            <tr>
+                <td>{{items.eventid}}</td>
+                <td>{{items.date | date:'MM-dd-yyyy'}}</td>
+                <td>{{items.event_city}}</td>
+                <td>{{items.event_state}}</td>
+                <td>{{items.species}}</td>
+                <td>{{items.rod}}</td>
+                <td>{{items.reel}}</td>
+                <td>{{items.tackle_bait}}</td>
+                <td>{{items.body_of_water}}</td>
+                <td>
+                    <a ng-href="{{items.image_url}}">
+                        <image src="../images/image.svg"></image>
+                    </a>
+                </td>
+                <td>
+                    <a ng-href="#!editCatch">
+                        <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
+                            <i class="fas fa-edit"></i>
+                            Edit
                         </md-button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    </a>
+                </td>
+                <td>
+                    <md-button class="md-raised md-warn generalButton" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)">
+                        <i class="far fa-trash-alt"></i>
+                        Delete
+                    </md-button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div>
 </div>

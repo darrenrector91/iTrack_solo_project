@@ -20,12 +20,14 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
-      fromSources: ["local_file_system"],
+      fromSources: ["local_file_system", "url", "imagesearch", "facebook", "instagram", "googledrive", "dropbox"],
       accept: ["image/*"],
       maxFiles: 1,
       minFiles: 0,
       transformations: {
-        crop: true
+        crop: true,
+        circle: true,
+        rotate: true
       }
     }).then(function (response) {
       self.image.list = response.filesUploaded;
@@ -47,7 +49,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   self.addItem = function (data) {
     console.log('in addItem:', self.image.list);
     data.image_url = self.image.list;
-    
+
     // console.log('service adding catch data', data);
     return $http.post('/api/user/addItem', data)
       .then(function (response) {
@@ -91,8 +93,8 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       self.getuser();
     }
 
-  
-    // getting table data for user view table from events table in database
+
+  // getting table data for user view table from events table in database
   self.getCatch = function () {
     return $http.get('/api/user/events')
       .then(function (response) {
@@ -119,7 +121,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
         self.saveCatchEdit.item = response.data;
         console.log('response.data: ', response);
         console.log(data);
-        
+
       })
       .catch(function (error) {
         console.log('save catch edit', error);

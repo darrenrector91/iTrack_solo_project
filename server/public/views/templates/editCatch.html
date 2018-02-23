@@ -8,9 +8,13 @@
             <!-- {{vm.editCatchData.item.eventid}} {{vm.editCatchData}} -->
           </h3>
           <div layout-gt-sm="row">
-            <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
-              <label class="editLabel">Date</label>
-              <input ng-model="vm.editCatchData.item.date" />
+            <md-input-container>
+              <label>Enter date</label>
+              <md-datepicker ng-model="vm.editCatchData.item.date" name="dateField" flex-gt-sm required></md-datepicker>
+              <div ng-messages="myForm.dateField.$error">
+                <div ng-message="valid">The entered value is not a date!</div>
+                <div ng-message="required">This date is required!</div>
+              </div>
             </md-input-container>
           </div>
           <div layout-gt-sm="row">
@@ -58,7 +62,7 @@
               <input ng-model="vm.editCatchData.item.image_url">
             </md-input-container>
           </div>
-          <div class="editFormButtons" layout-gt-sm="row">
+          <div class="editFormButtons" layout-gt-sm="row" layout-align="center center">
             <a ng-href="#!user">
               <md-button class="md-raised md-accent editButtons btnSaveCatchEdit" ng-click="vm.saveCatchEdit(vm.editCatchData)">
                 Save

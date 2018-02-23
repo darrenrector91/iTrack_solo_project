@@ -1,10 +1,23 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngTable', 'ngMessages'])
-  .config(function ($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
+  .config(function($mdThemingProvider) {
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('blue', {
+      'default': '400', // by default use shade 400 from the blue palette for primary intentions
+      'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+      'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+      'hue-3': '800' // use shade 800 for the <code>md-hue-3</code> class
+    })
       .warnPalette('red')
-      .accentPalette('lime')
-      .backgroundPalette('grey')
+      .accentPalette('lime', {
+        'default': 'A200', // by default use shade A200 from the blue palette for primary intentions
+        'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+        'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+        'hue-3': '800' // use shade 800 for the <code>md-hue-3</code> class
+      })
+      .backgroundPalette('grey', {
+        'default': '50', // by default use shade 50 from the blue palette for primary intentions
+      })
       .dark();
   });
 

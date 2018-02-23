@@ -31,7 +31,9 @@ body {
 }
 
 .editButtons {
-    margin-left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 a {
