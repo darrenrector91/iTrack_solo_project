@@ -105,7 +105,8 @@ router.get('/events', (req, res) => {
     events
     JOIN
     users on users.id = events.userid
-    WHERE users.id =$1;`;
+    WHERE users.id =$1
+    ORDER BY date ASC;`;
     pool.query(queryText, [req.user.id])
       // runs on successful query
       .then((result) => {

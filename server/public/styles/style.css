@@ -8,6 +8,8 @@ html {
 
 .generalButton {
   margin: 10px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 
 .md-toolbar-tools {
@@ -23,4 +25,40 @@ html {
   margin-left:  -15px;
   /* margin-top: 40px; */
 
+}
+
+.techDiv {
+  font-family: 'Montserrat', sans-serif;
+  padding: 25px;
+
+}
+
+.techTitle {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 25px;
+  font-size: 4em;
+  border-top: 2px solid rgb(99, 99, 102);
+  border-bottom: 2px solid rgb(99, 99, 102);
+  background-color: rgba(138, 138, 216, 0.3);
+  color: papayawhip;
+
+  text-shadow: 2px 2px 6px #000;
+
+}
+
+.techContainer {
+  padding: 10px;
+  list-style-type: none;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 4em;
+  color: papayawhip;
+  text-shadow: 2px 2px 6px #000;
+}
+
+.techList {
+  margin-bottom: 10px;
 }

@@ -86,6 +86,10 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
         }
       }
     })
+    .when('/technologies', {
+      templateUrl: '/views/templates/technologies.html',
+      controller: 'UserController as vm'
+    })
     .otherwise({
       template: '<h1>404</h1>'
     });

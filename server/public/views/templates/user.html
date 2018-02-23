@@ -114,7 +114,7 @@
                 </tr>
             </thead>
             <tbody ng-repeat="items in vm.items.list track by $index">
-                <tr>
+                <tr class="catchTableRow">
                     <td>{{items.eventid}}</td>
                     <td>{{items.date | date:'MM-dd-yyyy'}}</td>
                     <td>{{items.event_city}}</td>
@@ -146,4 +146,5 @@
         </table>
     </div>
 </div>
+<div ng-include="'views/partials/nav.html'"></div>
 </div>
