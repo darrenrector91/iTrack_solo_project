@@ -1,0 +1,17 @@
+.swal-modal {
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(42, 124, 196);
+    color: rgb(60, 59, 59);
+  }
+  
+  .swal-text {
+    font-family: 'Montserrat', sans-serif;
+    padding: 17px;
+    display: block;
+    margin: 22px;
+    text-align: center;
+    color: rgb(101, 101, 101);
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
