@@ -29,8 +29,7 @@ Link to software that is required to install the app (e.g. node).
 Steps to get the development environment running.
 
 ## Screen Shot
-../images/edit-pencil.svg
-/Users/darrenrector/Documents/prime/soloProject/iTrack_solo_project/server/public/images/iTrack_screenshots/iTrack_edit_user.png
+
 <img src="../images/iTrack_screenshots/iTrack_login.png" alt="iTrack Landing view">
 <img src="../images/iTrack_screenshots/iTrack_user_view.png" alt="iTrack User view">
 <img src="../images/iTrack_screenshots/iTrack_user_table.png" alt="iTrack User table">
