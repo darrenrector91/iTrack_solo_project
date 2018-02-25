@@ -94,6 +94,10 @@
 
 }
 
+.catchTableRow {
+  font-size: 20px;
+}
+
 .usernames {
   font-size: 40px;
   text-shadow: 2px 2px 6px #000;

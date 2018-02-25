@@ -106,7 +106,7 @@
     <table id="catchTable">
         <thead>
             <tr>
-                <th>Event ID</th>
+                <!-- <th>Event ID</th> -->
                 <th>Date</th>
                 <th>Event City</th>
                 <th>Event State</th>
@@ -122,7 +122,7 @@
         </thead>
         <tbody ng-repeat="items in vm.items.list track by $index">
             <tr class="catchTableRow">
-                <td>{{items.eventid}}</td>
+                <!-- <td>{{items.eventid}}</td> -->
                 <td>{{items.date | date:'MM-dd-yyyy'}}</td>
                 <td>{{items.event_city}}</td>
                 <td>{{items.event_state}}</td>

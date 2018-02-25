@@ -53,6 +53,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     self.image.list = imageURL;
     console.log(self.image.list);
   }
+
   // Send item list to server
   self.addItem = function (data) {
     console.log('in addItem:', self.image.list);
@@ -61,6 +62,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     // console.log('service adding catch data', data);
     return $http.post('/api/user/addItem', data)
       .then(function (response) {
+        swal("Form data and image were successfully added to the table!")
         console.log(data);
         self.getCatch();
       })
