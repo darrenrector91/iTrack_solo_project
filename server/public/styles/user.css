@@ -14,7 +14,7 @@
 .userBanner {
   color: white;
   background: url(../images/fly-rod-reel2.jpg) no-repeat;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -40,6 +40,7 @@
   height: 200px;
   width: 90%;
   text-align: center;
+  border: 2px solid #000;
   border-collapse: collapse;
   background-color: rgb(152, 181, 206);
   color: #000;
@@ -65,6 +66,8 @@
   text-align: center;
   height: 20px;
   font-size: 20px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 
 .fa-pencil-alt {
@@ -118,14 +121,18 @@
   align-items: flex-start;
 }
 
+.fa-file-image {
+  color: #fff;
+}
+
 .fa-pencil-alt {
   margin-top: 5px;
-  /* color: #000; */
+  color: rgb(42, 115, 193);
 }
 
 .fa-trash-alt {
   margin-top: 3px;
-  /* color: #000; */
+  color: rgb(131, 46, 46);
 }
 
 .tableEditBtn {
@@ -145,13 +152,3 @@
   overflow: hidden;
   outline: none;
 }
-
-/* .technologiesLink {
-  background-color: Transparent;
-  background-repeat: no-repeat;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  color: ghostwhite;
-} */

@@ -25,7 +25,7 @@
             layout-align="center center" md-no-flicker>
             <form layout-align="center center">
                 <div layout-gt-sm="row" layout-align="center center">
-                    <div class="formMessage" ng-show="formMessage">Fill out form and upload image then click Submit</div>
+                    <div class="formMessage" ng-show="formMessage">Fill out the form and upload an image then click Submit</div>
                 </div>
                 <div layout-gt-sm="row" layout-align="center center">
 
@@ -130,7 +130,8 @@
                 <td>{{items.body_of_water}}</td>
                 <td>
                     <a ng-href="{{items.image_url}}">
-                        <image src="../images/photoIcon.svg"></image>
+                        <!-- <image src="../images/photoIcon.svg"></image> -->
+                        <i class="far fa-file-image"></i>
                     </a>
                 </td>
                 <td>
