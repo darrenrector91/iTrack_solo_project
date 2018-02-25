@@ -6,9 +6,53 @@ html {
   font-size: 14px;
 }
 
+.fishForm label {
+  color: rgb(33, 150, 243);
+  font-size: 20px;
+  text-shadow: 2px 2px 6px #000;
+
+  /* margin: 30px; */
+}
+
+.md-input-focused {
+  font-size: 25px;
+}
+
+md-input-container .md-input {
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+  order: 2;
+  display: block;
+  margin-top: 0;
+  background: none;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  padding-left: 2px;
+  padding-right: 10px;
+  border-width: 0 0 1px 0;
+  line-height: 26px;
+  height: 30px;
+  -ms-flex-preferred-size: 26px;
+  border-radius: 0;
+  border-style: solid;
+  width: 100%;
+  box-sizing: border-box;
+  float: left;
+  border-color: white;
+  /* color: rgb(33, 150, 243); */
+  text-shadow: 2px 2px 6px #000;
+
+
+}
+
+md-input-container:not(.md-input-has-value) input:not(:focus) {
+  color: transparent;
+  font-size: 20px;
+}
+
 .generalButton {
   margin: 10px;
-  text-shadow: 2px 2px 6px #000;
+  /* text-shadow: 2px 2px 6px #000; */
 
 }
 
@@ -25,6 +69,19 @@ html {
   margin-left:  -15px;
   /* margin-top: 40px; */
 
+}
+
+.md-input-focused {
+  font-size: 25px;
+}
+
+input:not(:focus) {
+  font-size: 25px;
+}
+
+.uploadImageBtn {
+  margin-top: -80px;
+  width: 200px;
 }
 
 .techDiv {

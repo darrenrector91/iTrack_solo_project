@@ -33,7 +33,8 @@
 }
 
 .userInfoSubmit {
-  width: 300px;
+  width: 200px;
+  margin-top: -50px;
 }
 
 #catchTable {
@@ -80,31 +81,29 @@
 .tooltip {
   color: rgb(177, 50, 50);
   margin: 5px;
-}
-
-.swal-modal {
-  background-color: rgb(59, 126, 219);
-  border: 3px solid white;
-  color: #fff;
-}
-
-.swal-text {
-  font-family: 'Montserrat', sans-serif;
-  padding: 17px;
-  display: block;
-  margin: 22px;
-  text-align: center;
-  color: #fff;
   font-size: 20px;
-  font-weight: 700;
+  text-shadow: 2px 2px 6px #000;
+
+}
+
+.formMessage {
+  color: rgb(177, 50, 50);
+  margin: 5px;
+  font-size: 20px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 
 .usernames {
   font-size: 40px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 
 .cityInfo {
   font-size: 25px;
+  text-shadow: 2px 2px 6px #000;
+
 }
 .fishform {
   display: flex;

@@ -20,7 +20,15 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
-      fromSources: ["local_file_system", "url", "imagesearch", "facebook", "instagram", "googledrive", "dropbox"],
+      fromSources: [
+        "local_file_system",
+        "url",
+        "imagesearch",
+        "facebook",
+        "instagram",
+        "googledrive",
+        "dropbox"
+      ],
       accept: ["image/*"],
       maxFiles: 1,
       minFiles: 0,
