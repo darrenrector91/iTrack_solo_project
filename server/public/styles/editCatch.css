@@ -10,3 +10,7 @@ md-input-container .md-input {
 .editFormDate_md-datepicker-floating-label {
     font-size: 30px;
 }
+
+.editCatchForm {
+    border-color: #fff;
+}

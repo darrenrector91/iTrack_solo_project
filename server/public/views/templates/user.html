@@ -10,9 +10,9 @@
             </div>
         </div>
     </div>
-    <div class="userViewUsernameCity">
-        <h1 class="username">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
-        <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
+    <div class="userViewUsernameCity" md-no-flicker>
+        <h1 md-no-flicker class="username">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
+        <h3 md-no-flicker class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
             <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
                 <image src="../images/edit-pencil.svg"></image>
                 <div class="tooltip" ng-show="tooltip">Edit your user account information</div>
@@ -20,9 +20,9 @@
         </h3>
     </div>
     <hr>
-    <md-content layout-padding>
-        <div class="fishForm" ng-mouseenter="formMessage=true" ng-mouseleave="formMessage=false">
-            <form>
+    <md-content layout-padding class="catchForm" layout-align="center center">
+        <div class="fishForm" ng-cloak class="md-inline-form" ng-mouseenter="formMessage=true" ng-mouseleave="formMessage=false" layout-align="center center"  md-no-flicker>
+            <form layout-align="center center">
                 <div layout-gt-sm="row" layout-align="center center">
                     <div class="formMessage" ng-show="formMessage">Fill out form and upload image then click Submit</div>
                 </div>
@@ -101,7 +101,7 @@
 </form>
 </div>
 <!-- <hr> -->
-<div class="grid catchTable table table-hover" layout="horizontal" layout-align="center center" layout-wrap>
+<div class="grid catchTable table table-hover" layout="horizontal" layout-align="center center" ng-cloak class="md-inline-form" layout-wrap>
     <table id="catchTable">
         <thead>
             <tr>

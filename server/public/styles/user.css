@@ -38,11 +38,12 @@
 #catchTable {
   font-family: 'Arimo', sans-serif;
   height: 200px;
-  width: 100%;
+  width: 90%;
   text-align: center;
   border-collapse: collapse;
   background-color: rgb(152, 181, 206);
   color: #000;
+  margin-top: 20px;
 }
 
 .editFormTitle {
@@ -69,10 +70,6 @@
   text-align: center;
   height: 20px;
   font-size: 20px;
-}
-
-.fa-user-circle {
-  margin-top: 10px;
 }
 
 .fa-pencil-alt {
@@ -125,4 +122,10 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+
+.catchForm {
+  width: 60%;
+  margin-left: 19%;
 }
