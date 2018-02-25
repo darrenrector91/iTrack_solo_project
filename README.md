@@ -30,13 +30,13 @@ Steps to get the development environment running.
 
 ## Screen Shot
 
-## iTrack Landing View
+iTrack Landing View
 (https://user-images.githubusercontent.com/12476601/36647517-5ae600be-1a4c-11e8-8d0c-1b6a04959153.png)
 
-## iTrack User View
+iTrack User View
 (https://user-images.githubusercontent.com/12476601/36647546-d7679418-1a4c-11e8-8a04-6f9aa14117b2.png)
 
-## iTrack User Table
+iTrack User Table
 (https://user-images.githubusercontent.com/12476601/36647545-d2a6570c-1a4c-11e8-845e-d0f389df6bbb.png)
 
 ## Documentation
