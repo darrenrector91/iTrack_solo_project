@@ -46,6 +46,11 @@
   color: #000;
 }
 
+.editFormTitle {
+  font-size: 30px;
+  text-align: center;
+}
+
 #catchTable td,
 #catchTable th {
   border: 1px solid #ddd;
