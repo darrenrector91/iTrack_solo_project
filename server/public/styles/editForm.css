@@ -2,8 +2,24 @@
     width: 80%;
     border: 2px solid rgb(189, 189, 189);
     border-radius: 10px;
-    padding: 10px;
-    background-color: #303030;
+    padding: 30px;
+    background-color: #5a8bb582;
     color: #fff;
     margin-top: 15%;
+}
+
+.editUserTitle {
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 6px #000;
+}
+
+.editUserFirstRow {
+    margin-top: 20px;
+}
+
+.editFormTitle {
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 6px #000;
 }

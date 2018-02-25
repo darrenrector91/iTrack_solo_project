@@ -3,8 +3,15 @@
   <div layout="column" ng-cloak class="md-inline-form" layout-align="center center">
     <md-content layout-padding layout-align="center center">
       <form name="userForm" class="userForm fishForm editForm" layout-align="center center">
-        <h3> Edit User Information
-        </h3>
+        <h3 class="editUserTitle"> Edit User Information</h3>
+        <hr>
+        <div layout-gt-sm="row" class="editUserFirstRow">
+          <md-input-container class="md-block" flex-gt-sm required>
+            <label class="editLabel">Username</label>
+            <input ng-model="vm.userObject.username">
+          </md-input-container>
+
+        </div>
         <div layout-gt-sm="row">
           <md-input-container class="md-block" dividerColor="primary" flex-gt-sm required>
             <label class="editLabel">First name</label>
@@ -14,12 +21,6 @@
           <md-input-container class="md-block" flex-gt-sm required>
             <label class="editLabel">Last Name</label>
             <input ng-model="vm.userObject.last_name">
-          </md-input-container>
-        </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm required>
-            <label class="editLabel">Username</label>
-            <input ng-model="vm.userObject.username">
           </md-input-container>
         </div>
         <div layout-gt-sm="row">

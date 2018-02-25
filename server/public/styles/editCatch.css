@@ -14,3 +14,8 @@ md-input-container .md-input {
 .editCatchForm {
     border-color: #fff;
 }
+
+.editCatchDate {
+    margin-top: 20px;
+    width: 100%;
+}
