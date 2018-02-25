@@ -7,7 +7,7 @@ html {
 }
 
 .fishForm label {
-  color: rgb(33, 150, 243);
+  /* color: rgb(33, 150, 243); */
   font-size: 20px;
   text-shadow: 2px 2px 6px #000;
 }
