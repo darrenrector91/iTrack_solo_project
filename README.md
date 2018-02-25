@@ -4,13 +4,13 @@ ITrack is a MEAN stack application that gives a user the ability to track fishin
 
 ## Built With
 
-* Node
-* Express
 * AngularJS
 * Angular Material
-* Sweet alerts
-* Heroku
-* SQL Server
+* Filestack
+* PostgreSQL
+* Node.js
+* Express.js
+* Sweet Alerts
 
 
 ## Getting Started
