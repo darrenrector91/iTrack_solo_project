@@ -30,9 +30,14 @@ Steps to get the development environment running.
 
 ## Screen Shot
 
-<img src="../images/iTrack_screenshots/iTrack_login.png" alt="iTrack Landing view">
-<img src="../images/iTrack_screenshots/iTrack_user_view.png" alt="iTrack User view">
-<img src="../images/iTrack_screenshots/iTrack_user_table.png" alt="iTrack User table">
+## iTrack Landing View
+(https://user-images.githubusercontent.com/12476601/36647517-5ae600be-1a4c-11e8-8d0c-1b6a04959153.png)
+
+## iTrack User View
+
+
+## iTrack User Table
+
 
 ## Documentation
  The link below is scope work done prior to setting out on this endeavor
