@@ -6,7 +6,6 @@
 }
 
 .userBanner h1 {
-  margin: 0;
   text-shadow: 2px 2px 6px #000;
   text-align: center;
   line-height: 90px;
@@ -103,17 +102,17 @@
   font-size: 20px;
 }
 
-.usernames {
+.username {
   font-size: 40px;
   text-shadow: 2px 2px 6px #000;
-  margin: 0;
+  margin-top: 20px;
 
 }
 
 .cityInfo {
-  font-size: 25px;
+  font-size: 20px;
   text-shadow: 2px 2px 6px #000;
-  margin: 0;
+  margin-top: -15px;
 }
 
 .fishform {
