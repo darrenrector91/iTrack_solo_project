@@ -21,7 +21,8 @@
     </div>
     <hr>
     <md-content layout-padding class="catchForm" layout-align="center center">
-        <div class="fishForm" ng-cloak class="md-inline-form" ng-mouseenter="formMessage=true" ng-mouseleave="formMessage=false" layout-align="center center"  md-no-flicker>
+        <div class="fishForm" ng-cloak class="md-inline-form" ng-mouseenter="formMessage=true" ng-mouseleave="formMessage=false"
+            layout-align="center center" md-no-flicker>
             <form layout-align="center center">
                 <div layout-gt-sm="row" layout-align="center center">
                     <div class="formMessage" ng-show="formMessage">Fill out form and upload image then click Submit</div>
@@ -46,7 +47,6 @@
                         <div>
                             <label>State</label>
                             <input name="state" ng-model="vm.newItem.event_state" md-maxlength="2">
-                            <!-- <div ng-message="md-maxlength">Only use two letter state abbreviation!</div> -->
                         </div>
                     </md-input-container>
                 </div>
@@ -100,12 +100,11 @@
 </div>
 </form>
 </div>
-<!-- <hr> -->
-<div class="grid catchTable table table-hover" layout="horizontal" layout-align="center center" ng-cloak class="md-inline-form" layout-wrap>
+<div class="grid catchTable table table-hover" layout="horizontal" layout-align="center center" ng-cloak class="md-inline-form"
+    layout-wrap>
     <table id="catchTable">
         <thead>
             <tr>
-                <!-- <th>Event ID</th> -->
                 <th>Date</th>
                 <th>Event City</th>
                 <th>Event State</th>
@@ -121,7 +120,6 @@
         </thead>
         <tbody ng-repeat="items in vm.items.list track by $index">
             <tr class="catchTableRow">
-                <!-- <td>{{items.eventid}}</td> -->
                 <td>{{items.date | date:'MM-dd-yyyy'}}</td>
                 <td>{{items.event_city}}</td>
                 <td>{{items.event_state}}</td>
@@ -133,7 +131,6 @@
                 <td>
                     <a ng-href="{{items.image_url}}">
                         <image src="../images/photoIcon.svg"></image>
-                        <!-- <i class="far fa-image"></i> -->
                     </a>
                 </td>
                 <td>
@@ -141,20 +138,18 @@
                         <button class="tableEditBtn" aria-label="edit button" ng-click="vm.editCatch({items})">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
-                        <!-- <button class="md-raised md-primary generalButton tableEditBtn" aria-label="edit button" ng-click="vm.editCatch({items})"> -->
-                        <!-- </button> -->
                     </a>
                 </td>
                 <td>
-                    <!-- <button class="md-raised md-warn generalButton tableDeleteBtn" aria-label="delete button" ng-click="vm.deleteItem(items.eventid)"> -->
                     <button class="tableDeleteBtn" ng-click="vm.deleteItem(items.eventid)">
                         <i class="far fa-trash-alt"></i>
                     </button>
-                    <!-- </button> -->
                 </td>
             </tr>
         </tbody>
     </table>
+    <div>
+        <a href="#!technologies">*</a>
+    </div>
 </div>
-<div ng-include="'views/partials/nav.html'"></div>
 </div>
