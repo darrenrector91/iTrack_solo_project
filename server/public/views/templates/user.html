@@ -15,7 +15,7 @@
         <h1 class="usernames">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
             <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
-                <i class="fas fa-pencil-alt" ng-click=""></i>
+                <image src="../images/edit-pencil.svg"></image>
                 <div class="tooltip" ng-show="tooltip">Edit your user account information</div>
             </a>
         </h3>
@@ -79,7 +79,7 @@
                     </md-input-container>
                     <md-input-container>
                         <div>
-                            <label>Water name</label>
+                            <label>Body of Water</label>
                             <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
                             <div ng-messages="fishForm.body_of_water.$error">
                                 <div ng-message="required">This is required!</div>
@@ -89,20 +89,20 @@
                 </div>
                 <div layout-gt-sm="row" layout-align="center center">
                     <md-input-container>
-                        <md-button class="md-raised  generalButton uploadImageBtn" ng-model="vm.newItem.imageURL" ng-click="vm.openPicker(images.url)">Upload Image
+                        <md-button class="md-raised generalButton userInfoSubmit" ng-model="vm.newItem.imageURL" ng-click="vm.openPicker(images.url)">Upload Image
                         </md-button>
                     </md-input-container>
-                </div>
-                <div layout-gt-sm="row" class="userFormButtons">
-                    <md-button class="md-raised md-accent generalButton userInfoSubmit" ng-click="vm.addItem(vm.newItem)">Submit
-                    </md-button>
+                    <md-input-container>
+                        <md-button class="md-raised md-accent generalButton userInfoSubmit" ng-click="vm.addItem(vm.newItem)">Submit
+                        </md-button>
+                    </md-input-container>
                 </div>
         </div>
 </div>
 </form>
 </div>
-<hr>
-<div class="grid catchTable" layout="horizontal" layout-align="center center" layout-wrap>
+<!-- <hr> -->
+<div class="grid catchTable table table-hover" layout="horizontal" layout-align="center center" layout-wrap>
     <table id="catchTable">
         <thead>
             <tr>
@@ -139,8 +139,9 @@
                 <td>
                     <a ng-href="#!editCatch">
                         <md-button class="md-raised md-primary generalButton" aria-label="edit button" ng-click="vm.editCatch({items})">
-                            <i class="fas fa-edit"></i>
-                            Edit
+                            <!-- <i class="fas fa-edit"></i> -->
+                            <!-- <image src="../images/edit-pencil.svg"></image> -->
+                            <i class="material-icons">mode_edit</i>
                         </md-button>
                     </a>
                 </td>
@@ -153,7 +154,6 @@
             </tr>
         </tbody>
     </table>
-</div>
 </div>
 <div ng-include="'views/partials/nav.html'"></div>
 </div>

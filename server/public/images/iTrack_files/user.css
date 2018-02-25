@@ -33,7 +33,7 @@
 
 .userInfoSubmit {
   width: 200px;
-  margin-top: -40px;
+  margin: 0;
 }
 
 #catchTable {
@@ -52,28 +52,13 @@
   padding: 8px;
 }
 
-#catchTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
 #catchTable th {
   padding: 20px;
-  /* padding-bottom: 12px; */
-  /* text-align: left; */
   background-color: rgb(38, 126, 226);
   color: white;
   text-align: center;
   height: 20px;
   font-size: 20px;
-}
-
-.fa-user-circle {
-  margin-top: 10px;
-}
-
-.fa-pencil-alt {
-  margin-left: 5px;
-  /* color: #fff; */
 }
 
 .fa-edit {
@@ -101,14 +86,11 @@
 .usernames {
   font-size: 40px;
   text-shadow: 2px 2px 6px #000;
-  margin: 0;
-
 }
 
 .cityInfo {
   font-size: 25px;
   text-shadow: 2px 2px 6px #000;
-  margin: 0;
 }
 
 .fishform {
