@@ -96,6 +96,10 @@ Add additional notes about how to deploy this on a live system
 ## Acknowledgments
 
 * Kris Szafranski for his expert tuteledge and guidance
+<<<<<<< HEAD
 * Dane Smith for always answering the obvious questions and walking through the samllest of problems
+=======
+* Dane Smith for always anse=wering the obvious questions and walking through the samllest of problems
+>>>>>>> dev
 * Monica Wheeler for sitting next to me and listening to me groan all day and for helping me through some blockers
 

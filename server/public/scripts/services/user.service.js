@@ -39,7 +39,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       }
     }).then(function (response) {
       self.image.list = response.filesUploaded;
-      console.log('response from filestack', self.image.list);
+      // console.log('response from filestack', self.image.list);
       self.getImageURL(self.image.list);
     });
   }
@@ -49,14 +49,14 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
     for (let i = 0; i < response.length; i++) {
       imageURL = response[i].url;
     }
-    console.log('image URL:', imageURL);
+    // console.log('image URL:', imageURL);
     self.image.list = imageURL;
-    console.log(self.image.list);
+    // console.log(self.image.list);
   }
 
   // Send item list to server
   self.addItem = function (data) {
-    console.log('in addItem:', self.image.list);
+    // console.log('in addItem:', self.image.list);
     data.image_url = self.image.list;
 
     // console.log('service adding catch data', data);
@@ -134,7 +134,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
               self.getCatch();
             })
             .catch(function (error) {
-              console.log('deleteItem error', error);
+              // console.log('deleteItem error', error);
             })
         } else {
           swal({
@@ -151,11 +151,11 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   self.getCatch = function () {
     return $http.get('/api/user/events')
       .then(function (response) {
-        console.log(response);
+        // console.log(response);
         self.items.list = response.data;
       })
       .catch(function (response) {
-        console.log('error on get request');
+        // console.log('error on get request');
       });
   } //end getting table data
 
@@ -169,30 +169,30 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
 
   //save catch edit in form and return to user view
   self.saveCatchEdit = function (data) {
-    console.log('returned data from CatchEdit: ', data.item.body_of_water);
+    // console.log('returned data from CatchEdit: ', data.item.body_of_water);
     return $http.put('/api/user/saveCatchEdit', data)
       .then(function (response) {
         self.saveCatchEdit.item = response.data;
-        console.log('response.data: ', response);
-        console.log(data);
+        // console.log('response.data: ', response);
+        // console.log(data);
 
       })
       .catch(function (error) {
-        console.log('save catch edit', error);
+        // console.log('save catch edit', error);
       })
   } //end catch edit in form
 
   //save catch edit in form and return to user view
   self.saveUserInfo = function (data) {
-    console.log('returned data from updating user: ', self.userObject.first_name);
+    // console.log('returned data from updating user: ', self.userObject.first_name);
     return $http.put('/api/user/saveUserInfo', data)
       .then(function (response) {
         self.saveUserInfo.item = response.data;
         self.getuser();
-        console.log('response.data: ', response.data);
+        // console.log('response.data: ', response.data);
       })
       .catch(function (error) {
-        console.log('error in save user info: ', error);
+        // console.log('error in save user info: ', error);
       })
 
   } //end catch edit in form

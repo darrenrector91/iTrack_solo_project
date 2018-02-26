@@ -35,7 +35,7 @@ router.post('/register', (req, res, next) => {
       city: req.body.city,
       state: req.body.state,
     };
-    console.log('new user:', saveUser);
+    // console.log('new user:', saveUser);
     pool.query(`INSERT INTO users
     (username,
       password,
@@ -54,7 +54,7 @@ router.post('/register', (req, res, next) => {
         saveUser.state],
         (err, result) => {
       if (err) {
-        console.log("Error inserting data: ", err);
+        // console.log("Error inserting data: ", err);
         res.sendStatus(500);
       } else {
         res.sendStatus(201);
@@ -110,13 +110,13 @@ router.get('/events', (req, res) => {
     pool.query(queryText, [req.user.id])
       // runs on successful query
       .then((result) => {
-        console.log('query results', result);
+        // console.log('query results', result);
         // console.log(eventid);
         res.send(result.rows);
       })
       // error handling
       .catch((err) => {
-        console.log('error making select query:', err);
+        // console.log('error making select query:', err);
         res.sendStatus(500);
       });
   } else {
@@ -130,7 +130,7 @@ router.get('/events', (req, res) => {
  ***********************************
 Insert catch data into table */
 router.post('/addItem', function (req, res) {
-  console.log('in POST router');
+  // console.log('in POST router');
   if (req.isAuthenticated()) {
     //add catch event to user data table
     const queryText = `INSERT INTO events
@@ -157,12 +157,12 @@ router.post('/addItem', function (req, res) {
       req.body.body_of_water,
       req.body.image_url])
       .then((result) => {
-        console.log('result:', result);
+        // console.log('result:', result);
         res.send(result);
       })
       // erorr handling
       .catch((err) => {
-        console.log('error:', err);
+        // console.log('error:', err);
         res.sendStatus(500);
       });
   } else {
@@ -176,7 +176,7 @@ router.post('/addItem', function (req, res) {
 saving data from edit catch view form back to database */
 router.put('/saveCatchEdit', (req, res) => {
   if (req.isAuthenticated()) {
-    console.log('in saveCatchEdit router');
+    // console.log('in saveCatchEdit router');
     const queryText = `UPDATE events SET
     date = $1,
     event_city = $2,
@@ -198,11 +198,11 @@ router.put('/saveCatchEdit', (req, res) => {
       req.body.item.body_of_water,
       req.body.item.eventid])
       .then((result) => {
-        console.log('result:', result);
+        // console.log('result:', result);
         res.send(result);
       })
       .catch((err) => {
-        console.log('error:', err);
+        // console.log('error:', err);
         res.sendStatus(500);
       });
   }
@@ -213,7 +213,7 @@ router.put('/saveCatchEdit', (req, res) => {
 saving data from updating user data to database */
 router.put('/saveUserInfo', (req, res) => {
   if (req.isAuthenticated()) {
-    console.log('in saveUserInfo router');
+    // console.log('in saveUserInfo router');
     const queryText = `UPDATE users SET
     username = $1,
     first_name = $2,
@@ -229,11 +229,11 @@ router.put('/saveUserInfo', (req, res) => {
       req.body.state,
       req.user.id])
       .then((result) => {
-        console.log('result:', result);
+        // console.log('result:', result);
         res.send(result.rows);
       })
       .catch((err) => {
-        console.log('error:', err);
+        // console.log('error:', err);
         res.sendStatus(500);
       });
   }
@@ -246,7 +246,7 @@ router.put('/saveUserInfo', (req, res) => {
 getting data from database for edit catch view form */
 router.get('/editCatch', function (req, res) {
   if (isAuthenticated()) {
-    console.log('in get event');
+    // console.log('in get event');
     const queryText =
     `SELECT
     date,
@@ -261,11 +261,11 @@ router.get('/editCatch', function (req, res) {
     WHERE eventid = $1`;
     pool.query(queryText, [req.params.id])
       .then((result) => {
-        console.log('query results:', result);
+        // console.log('query results:', result);
         res.send(result);
       })
       .catch((err) => {
-        console.log('error making query:', err);
+        // console.log('error making query:', err);
         res.sendStatus(500);
       });
   }
@@ -276,15 +276,15 @@ router.get('/editCatch', function (req, res) {
 ******************************
 delete table/database row */
 router.delete('/deleteItem/:eventid', function (req, res) {
-  console.log('in router.delete');
+  // console.log('in router.delete');
   const queryText = 'DELETE FROM events WHERE eventid = $1';
   pool.query(queryText, [req.params.eventid])
     .then((result) => {
-      console.log('result:', result.rows);
+      // console.log('result:', result.rows);
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log('error:', err);
+      // console.log('error:', err);
       res.sendStatus(500);
     });
 }); //end delete row

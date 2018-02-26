@@ -1,7 +1,6 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
 <div class="container">
     <div class="backImage">
-        <!-- <img src="../images/fish-jump.jpg" alt="" /> -->
         <div class="userBanner">
             <div class="userBannerbox">
                 <div class="userBanner-text">
@@ -14,7 +13,7 @@
         <h1 md-no-flicker class="username">{{vm.userObject.first_name}} {{vm.userObject.last_name}}</h1>
         <h3 md-no-flicker class="cityInfo">{{vm.userObject.city}}, {{vm.userObject.state}}
             <a ng-href="#!editUser" ng-mouseover="tooltip=true" ng-mouseleave="tooltip=false">
-                <image src="../images/edit-pencil.svg"></image>
+                <image src="../images/icons/edit-pencil.svg"></image>
                 <div class="tooltip" ng-show="tooltip">Edit your user account information</div>
             </a>
         </h3>
@@ -130,7 +129,6 @@
                 <td>{{items.body_of_water}}</td>
                 <td>
                     <a ng-href="{{items.image_url}}">
-                        <!-- <image src="../images/photoIcon.svg"></image> -->
                         <i class="far fa-file-image"></i>
                     </a>
                 </td>

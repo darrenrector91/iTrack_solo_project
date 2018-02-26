@@ -53,15 +53,15 @@ md-input-container:not(.md-input-has-value) input:not(:focus) {
 
 .md-toolbar-tools {
   box-shadow: 3px 3px 3px rgb(83, 83, 83);
-  padding: 50px;
+  /* padding: 50px; */
 }
 
 .md-truncate.bannerTitle {
   font-family: 'Nanum Gothic Coding', monospace;
-  font-size: 60px;
-  color: #D1DA59;
-  text-shadow: 2px 2px 6px #000;
-  margin-left:  -15px;
+  font-size: 40px;
+  color: #3993F3;
+  text-shadow: 2px 2px 2px #000;
+  /* margin-left:  px; */
   /* margin-top: 40px; */
 
 }
