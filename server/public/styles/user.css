@@ -35,6 +35,10 @@
   margin-top: -40px;
 }
 
+.userFormBtn {
+  margin-top: 40px;
+}
+
 #catchTable {
   font-family: 'Arimo', sans-serif;
   height: 200px;
@@ -45,6 +49,7 @@
   background-color: rgb(152, 181, 206);
   color: #000;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 #catchTable td,
