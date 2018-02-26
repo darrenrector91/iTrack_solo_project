@@ -4,14 +4,13 @@ ITrack is a MEAN stack application that gives a user the ability to track fishin
 
 ## Built With
 
-* Node
-* Express
 * AngularJS
 * Angular Material
-* Sweet alerts
-* ngTable
-* Heroku
-* SQL Server
+* Filestack
+* PostgreSQL
+* Node.js
+* Express.js
+* Sweet Alerts
 
 
 ## Getting Started
@@ -22,7 +21,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 Link to software that is required to install the app (e.g. node).
 
-- [Node.js](https://nodejs.org/en/)
 - List other prerequisites here
 
 
@@ -30,53 +28,58 @@ Link to software that is required to install the app (e.g. node).
 
 Steps to get the development environment running.
 
-```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
-);
-```
-
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+iTrack Landing View
+![itrack_login](https://user-images.githubusercontent.com/12476601/36647573-50a24990-1a4d-11e8-83ff-76e7fc4f9a42.png)
+(https://user-images.githubusercontent.com/12476601/36647517-5ae600be-1a4c-11e8-8d0c-1b6a04959153.png)
+
+iTrack User View
+![itrack_user_view](https://user-images.githubusercontent.com/12476601/36647583-7bf20e82-1a4d-11e8-848f-7f1678bd84e0.png)
+(https://user-images.githubusercontent.com/12476601/36647546-d7679418-1a4c-11e8-8a04-6f9aa14117b2.png)
+
+iTrack User Table
+![itrack_user_table](https://user-images.githubusercontent.com/12476601/36647585-7f8b6ce6-1a4d-11e8-873a-b5b08a22605a.png)
+(https://user-images.githubusercontent.com/12476601/36647545-d2a6570c-1a4c-11e8-845e-d0f389df6bbb.png)
 
 ## Documentation
+ The link below is scope work done prior to setting out on this endeavor
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+https://docs.google.com/document/d/1-5uQwW6wjcj8giqbQs1jLdDMFNfnZQxYvwMqIwdec7s/edit?usp=sharing
 
 ### Completed Features
 
 High level list of items completed.
 
-
-- { } Design User Intro/Login View
+- {x} Design User Intro/Login View
 - {x} Passport, using Local Strategy
 - {x} Design and implement Register User View
-- { } Add Track/Add Fish View
+- {x} Add Track/Add Fish View
 - {t} Add table to Track/Add Fish View with header data,edit button and delete button
 - {t} Add track catch information form to Track/Add Fish View
-- { } Add Edit table row button functionality to Track/Add Fish View table
-- { } Add Delete row button functionality to Track/Add Fish View table
-- { } Design and implement Edit Catch View
-- { } Add edit catch information form to Edit Catch View
-- { } Add user notification to verify catch data updated
-- { } Add navigation to get user back to Track/Add Fish View after verification notification
-- { } Design and implement Edit User Info View
-- { } Add edit user information form to Edit User View
-- { } Add user notification to verify user data updated
-- { } Add navigation to get user back to Track/Add Fish View after verification notification
+- {x} Add Edit table row button functionality to Track/Add Fish View table
+- {x} Add Delete row button functionality to Track/Add Fish View table
+- {x} Design and implement Edit Catch View
+- {x} Add edit catch information form to Edit Catch View
+- {x} Add user notification to verify catch data updated
+- {x} Add navigation to get user back to Track/Add Fish View after verification notification
+- {x} Design and implement Edit User Info View
+- {x} Add edit user information form to Edit User View
+- {x} Add user notification to verify user data updated
+- {x} Add navigation to get user back to Track/Add Fish View after verification notification
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
+Stretch features completed.
 
-- { } Front-end design and CSS 
-- { } Add ability for user to add image of fish and store it
-- { } Live testing
-- { } Angular Material 
-- { } Filestack implementation
+- {x} Front-end design and CSS 
+- {x} Add ability for user to add image of fish and store it
+- {x} Live testing
+- {x} Angular Material 
+- {x} Filestack implementation
+
+Features that will be completed in the future.
+
 - { } Add drop boxes for fishing gear and populate from database instead of using inputs
 - { } Google maps API implementation
 
@@ -85,11 +88,14 @@ Features that you would like to add at some point in the future.
 
 Add additional notes about how to deploy this on a live system
 
-## Authors
+## Author
 
 * Darren G. Rector
 
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Kris Szafranski for his expert tuteledge and guidance
+* Dane Smith for always answering the obvious questions and walking through the samllest of problems
+* Monica Wheeler for sitting next to me and listening to me groan all day and for helping me through some blockers
+
