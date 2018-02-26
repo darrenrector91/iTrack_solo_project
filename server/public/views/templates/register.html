@@ -35,7 +35,7 @@
                 </md-input-container>
                 <md-input-container class="md-block" flex-gt-sm ng-minlength="2" ng-maxlength="2" required>
                   <label class="editLabel">State</label>
-                  <input ng-model="vm.user.state">
+                  <input ng-model="vm.user.state" md-maxlength="2">
                   <div ng-messages="userForm.name.$error">
                     <p ng-message="minlength">Use 2 letter state abbreviation</p>
                     <p ng-message="maxlength">Use 2 letter state abbreviation</p>
