@@ -30,7 +30,7 @@
 
                     <md-input-container>
                         <label>Date</label>
-                        <md-datepicker ng-model="vm.newItem.date" name="dateField" required></md-datepicker>
+                        <md-datepicker ng-model="vm.newItem.date" name="dateField"></md-datepicker>
                         <div ng-messages="myForm.dateField.$error">
                             <div ng-message="valid">The entered value is not a date!</div>
                             <div ng-message="required">This date is required!</div>
@@ -52,7 +52,7 @@
                 <div layout-gt-sm="row" layout-align="center center">
                     <md-input-container>
                         <label>Species</label>
-                        <input name="species" ng-model="vm.newItem.species" required>
+                        <input name="species" ng-model="vm.newItem.species">
                         <div ng-messages="colorForm.species.$error">
                             <div ng-message="required">This is required!</div>
                         </div>
@@ -78,7 +78,7 @@
                     <md-input-container>
                         <div>
                             <label>Body of Water</label>
-                            <input name="body_of_water" ng-model="vm.newItem.body_of_water" required>
+                            <input name="body_of_water" ng-model="vm.newItem.body_of_water">
                             <div ng-messages="fishForm.body_of_water.$error">
                                 <div ng-message="required">This is required!</div>
                             </div>

@@ -14,6 +14,7 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.newItem = UserService.newItem;
   self.addItem = function (data) {
     UserService.addItem(data);
+    self.newItem = '';
   }
   // Service to delete item
   self.deleteItem = function (eventid) {
