@@ -9,7 +9,6 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.saveCatchEdit = UserService.saveCatchEdit;
   self.saveUserInfo = UserService.saveUserInfo;
 
-
   // Service to add item
   self.newItem = UserService.newItem;
   self.addItem = function (data) {
