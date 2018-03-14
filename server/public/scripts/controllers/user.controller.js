@@ -9,6 +9,15 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   self.saveCatchEdit = UserService.saveCatchEdit;
   self.saveUserInfo = UserService.saveUserInfo;
 
+  // finding body of water on map
+  self.mapLocation = function (items) {
+    const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
+
+    UserService.mapLocation(items);
+    let bodyOfWater = items.body_of_water;
+    console.log('bodyOfWater ', bodyOfWater);
+  };
+
   // Service to add item
   self.newItem = UserService.newItem;
   self.addItem = function (data) {
@@ -35,12 +44,5 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.openPicker(image);
   };
 
-  // finding body of water on map
-  self.mapLocation = function (items) {
-    UserService.mapLocation(items)
-    console.log('from controller ', items);
-    console.log('location from controller' , items.event_city, items.event_state);
-    
-    
-  };
+
 }]);

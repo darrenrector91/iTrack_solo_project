@@ -1,4 +1,4 @@
-myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http, $location, $mdDialog) {
+myApp.service('UserService', ['$http', '$location', '$mdDialog',  function ($http, $location, $mdDialog) {
   // console.log('UserService Loaded');
   var self = this;
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
@@ -18,7 +18,25 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     list: []
   };
 
+  self.results = {
+    list: []
+  };
+
   self.mapLocation = function (items, ev) {
+    console.log('service showing lake', items.body_of_water);
+    const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
+    let water = items.body_of_water;
+    console.log('water', water);
+
+
+    // $http({
+    //   method: 'GET',
+    //   url: <iframe width="600" height="450" frameborder="0" style="border:0" src='https://www.google.com/maps/embed/v1/place?key=API&q=Lake Sakakawea Van Hook Arm'>
+    //   </iframe>
+    // }).then(function (response) {
+    //   self.results.list = response.data;
+    //   console.log(response.data);
+    // })
     $mdDialog.show({
       controller: MapModalController,
       controllerAs: 'vm',
@@ -38,32 +56,11 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     const self = this;
     self.items = item;
     console.log(item);
-    console.log(item.body_of_water);
-    
+
     self.closeModal = function () {
-        self.hide();
+      self.hide();
     }
-}
-
-
-
-
-  self.adminViewMemberPastRides = function (member, ev) {
-    $mdDialog.show({
-      controller: MyPastRidesController,
-      controllerAs: 'vm',
-      templateUrl: '../views/admin/templates/view-member-past-rides-modal.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      resolve: {
-        item: function () {
-          return member;
-        }
-      }
-    })
   }
-
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
