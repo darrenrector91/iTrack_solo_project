@@ -1,6 +1,6 @@
 # iTrack Solo Project
 
-ITrack is a MEAN stack application that gives a user the ability to track fishing statistics including gear used, fish caught and location of catch.
+ITrack is a web application that gives a user the ability to track fishing statistics including gear used, fish caught and location of catch.
 
 ## Built With
 
