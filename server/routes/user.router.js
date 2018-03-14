@@ -4,6 +4,8 @@ const userStrategy = require('../strategies/sql.localstrategy');
 const pool = require('../modules/pool.js');
 const router = express.Router();
 
+
+
 // Handles Ajax request for user information if user is authenticated
 router.get('/', (req, res) => {
   // check if logged in

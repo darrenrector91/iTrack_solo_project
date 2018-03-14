@@ -1,4 +1,4 @@
-myApp.service('UserService', ['$http', '$location', function ($http, $location) {
+myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http, $location, $mdDialog) {
   // console.log('UserService Loaded');
   var self = this;
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
@@ -17,6 +17,53 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
   self.image = {
     list: []
   };
+
+  self.mapLocation = function (items, ev) {
+    $mdDialog.show({
+      controller: MapModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/map-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+  }
+
+  function MapModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.items = item;
+    console.log(item);
+    console.log(item.body_of_water);
+    
+    self.closeModal = function () {
+        self.hide();
+    }
+}
+
+
+
+
+  self.adminViewMemberPastRides = function (member, ev) {
+    $mdDialog.show({
+      controller: MyPastRidesController,
+      controllerAs: 'vm',
+      templateUrl: '../views/admin/templates/view-member-past-rides-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      resolve: {
+        item: function () {
+          return member;
+        }
+      }
+    })
+  }
+
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
