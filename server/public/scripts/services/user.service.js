@@ -4,23 +4,37 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
 
   self.userObject = {};
-  self.items = {
-    list: []
-  };
-  self.editCatchData = {
-    item: {}
-  };
-  self.saveCatchEdit = {
-    item: {}
-  };
+  self.items = {list: []};
+  self.editCatchData = {item: {}};
+  self.saveCatchEdit = {item: {}};
+  self.image = {list: []};
+  self.results = {list: []};
 
-  self.image = {
-    list: []
-  };
+  self.imageModal = function (items, ev) {
+    $mdDialog.show({
+      controller: ImageModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/image-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+  }
 
-  self.results = {
-    list: []
-  };
+  function ImageModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.items = item;
+    console.log(self.items);
+    
+    self.closeModal = function () {
+      self.hide();
+    }
+  }
 
   self.mapLocation = function (items, ev) {
     console.log('service showing lake', items.body_of_water);
@@ -73,7 +87,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
       }
     }).then(function (response) {
       self.image.list = response.filesUploaded;
-      // console.log('response from filestack', self.image.list);
+      console.log('response from filestack', self.image.list);
       self.getImageURL(self.image.list);
     });
   }

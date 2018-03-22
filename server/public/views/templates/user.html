@@ -134,9 +134,13 @@
                     </button>
                 </td>
                 <td>
-                    <a ng-href="{{items.image_url}}">
-                        <i class="far fa-file-image"></i>
-                    </a>
+                    <button ng-click="vm.imageModal(items, ev)">
+                        <!-- <a ng-href="{{items.image_url}}">
+                            <i class="far fa-file-image"></i>
+                        </a> -->
+                        Image
+                    </button>
+
                 </td>
                 <td>
                     <a ng-href="#!editCatch">

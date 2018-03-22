@@ -17,6 +17,11 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     console.log('bodyOfWater ', bodyOfWater);
   };
 
+  self.imageModal = function (items) {
+    console.log(items.image_url);
+    UserService.imageModal(items.image_url);
+  }
+
   // Service to add item
   self.newItem = UserService.newItem;
   self.addItem = function (data) {
