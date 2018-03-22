@@ -1,4 +1,4 @@
-myApp.service('UserService', ['$http', '$location', '$mdDialog',  function ($http, $location, $mdDialog) {
+myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http, $location, $mdDialog) {
   // console.log('UserService Loaded');
   var self = this;
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
@@ -27,16 +27,6 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog',  function ($htt
     const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
     let water = items.body_of_water;
     console.log('water', water);
-
-
-    // $http({
-    //   method: 'GET',
-    //   url: <iframe width="600" height="450" frameborder="0" style="border:0" src='https://www.google.com/maps/embed/v1/place?key=API&q=Lake Sakakawea Van Hook Arm'>
-    //   </iframe>
-    // }).then(function (response) {
-    //   self.results.list = response.data;
-    //   console.log(response.data);
-    // })
     $mdDialog.show({
       controller: MapModalController,
       controllerAs: 'vm',
