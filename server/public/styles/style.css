@@ -119,13 +119,10 @@ a {
   height: 1100px;
   width: auto;
   padding: 5px;
-  /* background-color: rgb(153, 169, 184); */
-  background: #4B79A1;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #283E51, #4B79A1);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #283E51, #4B79A1);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2b5876;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 .modalImage {
