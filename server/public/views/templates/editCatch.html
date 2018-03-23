@@ -1,11 +1,11 @@
 <div ng-include="'views/partials/logout.header.html'"></div>
-<div class="container" md-no-flicker>
-  <div layout="column" ng-cloak class="md-inline-form" layout-align="center center">
-    <md-content layout-padding class="formParent" layout-align="center center">
+<div class="editCatchContainer">
+  <div layout="column" ng-cloak class="md-inline-form">
+    <md-content layout-padding class="formParent">
       <form name="userForm" class="userForm fishForm editCatchForm">
         <h3 class="editFormTitle"> Edit Catch Information</h3>
         <hr>
-        <div layout-gt-sm="row" class="editCatchDate" layout-align="center center">
+        <div layout-gt-sm="row" class="editCatchDate">
           <md-input-container class="editFormDate">
             <label>Enter date</label>
             <md-datepicker md-hide-icons="calendar" ng-model="vm.editCatchData.item.date" name="dateField" required></md-datepicker>

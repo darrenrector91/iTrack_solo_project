@@ -18,8 +18,8 @@ myApp.controller('UserController', ['UserService', function (UserService) {
   };
 
   self.imageModal = function (items) {
-    console.log(items.image_url);
-    UserService.imageModal(items.image_url);
+    console.log(items);
+    UserService.imageModal(items);
   }
 
   // Service to add item
