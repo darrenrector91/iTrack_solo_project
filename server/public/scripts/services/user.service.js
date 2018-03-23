@@ -9,6 +9,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   self.saveCatchEdit = {item: {}};
   self.image = {list: []};
   self.results = {list: []};
+  self.map = {list:[]};
 
   self.imageModal = function (items, ev) {
     $mdDialog.show({
@@ -17,6 +18,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
       templateUrl: '../views/templates/image-modal.html',
       parent: angular.element(document.body),
       targetEvent: ev,
+      mapURL: '',
       clickOutsideToClose: true,
       resolve: {
         item: function () {
@@ -24,6 +26,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         }
       }
     })
+    console.log(templateUrl);
   }
 
   function ImageModalController($mdDialog, item, UserService) {
@@ -48,6 +51,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
+      template: 'ng-src=https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=Chicago',
       resolve: {
         item: function () {
           return items;
@@ -58,9 +62,8 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
 
   function MapModalController($mdDialog, item, UserService) {
     const self = this;
-    self.items = item;
-    console.log(item);
-
+    self.map = item;
+    console.log(item.body_of_water);
     self.closeModal = function () {
       self.hide();
     }
