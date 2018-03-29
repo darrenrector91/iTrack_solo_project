@@ -96,6 +96,7 @@
                     </md-input-container>
                 </div>
         </div>
+    </md-content>
 </div>
 </form>
 </div>
@@ -126,11 +127,11 @@
                 <td>{{items.rod}}</td>
                 <td>{{items.reel}}</td>
                 <td>{{items.tackle_bait}}</td>
-                <td>{{items.body_of_water}}</td>
                 <td>
-                    <a ng-href="{{items.image_url}}">
-                        <i class="far fa-file-image"></i>
-                    </a>
+                    <md-button class="md-raised" ng-click="vm.mapLocation(items)" disabled>View Map</md-button>
+                </td>
+                <td>
+                    <md-button class="md-raised md-accent" ng-click="vm.imageModal(items)">Image</md-button>
                 </td>
                 <td>
                     <a ng-href="#!editCatch">
@@ -147,8 +148,4 @@
             </tr>
         </tbody>
     </table>
-    <div>
-        <a href="#!technologies">*</a>
-    </div>
-</div>
 </div>

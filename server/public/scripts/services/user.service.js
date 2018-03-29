@@ -1,22 +1,73 @@
-myApp.service('UserService', ['$http', '$location', function ($http, $location) {
+myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http, $location, $mdDialog) {
   // console.log('UserService Loaded');
   var self = this;
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
 
   self.userObject = {};
-  self.items = {
-    list: []
-  };
-  self.editCatchData = {
-    item: {}
-  };
-  self.saveCatchEdit = {
-    item: {}
-  };
+  self.items = {list: []};
+  self.editCatchData = {item: {}};
+  self.saveCatchEdit = {item: {}};
+  self.image = {list: []};
+  self.results = {list: []};
+  self.map = {list:[]};
 
-  self.image = {
-    list: []
-  };
+  self.imageModal = function (items, ev) {
+    $mdDialog.show({
+      controller: ImageModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/image-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      mapURL: '',
+      clickOutsideToClose: true,
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+    console.log(templateUrl);
+  }
+
+  function ImageModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.items = item;
+    console.log(self.items);
+    
+    self.closeModal = function () {
+      self.hide();
+    }
+  }
+
+  self.mapLocation = function (items, ev) {
+    console.log('service showing lake', items.body_of_water);
+    const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
+    let water = items.body_of_water;
+    console.log('water', water);
+    $mdDialog.show({
+      controller: MapModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/map-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      template: 'ng-src=https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=Chicago',
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+  }
+
+  function MapModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.map = item;
+    console.log(item.body_of_water);
+    self.closeModal = function () {
+      self.hide();
+    }
+  }
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
@@ -39,7 +90,7 @@ myApp.service('UserService', ['$http', '$location', function ($http, $location) 
       }
     }).then(function (response) {
       self.image.list = response.filesUploaded;
-      // console.log('response from filestack', self.image.list);
+      console.log('response from filestack', self.image.list);
       self.getImageURL(self.image.list);
     });
   }
