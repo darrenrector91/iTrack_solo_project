@@ -48,12 +48,9 @@
   border-collapse: collapse;
   background-color: rgb(152, 181, 206);
   color: #000;
-<<<<<<< HEAD
   margin-top: 20px;
   margin-bottom: 50px;
-=======
-  margin: 20px;
->>>>>>> google-map-modal
+  /* margin: 20px; */
 }
 
 #catchTable td,
