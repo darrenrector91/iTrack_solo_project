@@ -48,5 +48,11 @@ myApp.controller('UserController', ['UserService', function (UserService) {
     UserService.openPicker(image);
   };
 
+  self.reply = UserService.randomGif; //link controller to service 
+  self.btnRandom = function (){
+    UserService.random();
+  }
+  // console.log('random:', self.reply);
+
 
 }]);

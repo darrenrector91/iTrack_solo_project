@@ -4,39 +4,28 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
 
   self.userObject = {};
-  self.items = {list: []};
-  self.editCatchData = {item: {}};
-  self.saveCatchEdit = {item: {}};
-  self.image = {list: []};
-  self.results = {list: []};
-  self.map = {list:[]};
+  self.items = {
+    list: []
+  };
+  self.editCatchData = {
+    item: {}
+  };
+  self.saveCatchEdit = {
+    item: {}
+  };
+  self.image = {
+    list: []
+  };
+  self.results = {
+    list: []
+  };
+  self.map = {
+    list: []
+  };
+  self.randomGif = {};
 
-  self.imageModal = function (items, ev) {
-    $mdDialog.show({
-      controller: ImageModalController,
-      controllerAs: 'vm',
-      templateUrl: '../views/templates/image-modal.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      mapURL: '',
-      clickOutsideToClose: true,
-      resolve: {
-        item: function () {
-          return items;
-        }
-      }
-    })
-    console.log(templateUrl);
-  }
+  self.getLocation = function () {
 
-  function ImageModalController($mdDialog, item, UserService) {
-    const self = this;
-    self.items = item;
-    console.log(self.items);
-    
-    self.closeModal = function () {
-      self.hide();
-    }
   }
 
   self.mapLocation = function (items, ev) {
@@ -64,10 +53,42 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     const self = this;
     self.map = item;
     console.log(item.body_of_water);
+    let water = item.body_of_water;
+    console.log(water);
     self.closeModal = function () {
       self.hide();
     }
   }
+
+  self.imageModal = function (items, ev) {
+    $mdDialog.show({
+      controller: ImageModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/image-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      mapURL: '',
+      clickOutsideToClose: true,
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+    console.log(templateUrl);
+  }
+
+  function ImageModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.items = item;
+    console.log(self.items);
+
+    self.closeModal = function () {
+      self.hide();
+    }
+  }
+
+
 
   self.openPicker = function openPicker(image) {
     fsClient.pick({
@@ -78,9 +99,10 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         "facebook",
         "instagram",
         "googledrive",
-        "dropbox"
+        "dropbox",
+        "picasa"
       ],
-      accept: ["image/*"],
+      accept: ["image/*", "video/*", "audio/*", ".pdf", ".doc", ".docx", ".docm", "text/plain"],
       maxFiles: 1,
       minFiles: 0,
       transformations: {
@@ -248,5 +270,14 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
 
   } //end catch edit in form
 
-
+  self.random = function () {
+    $http({
+      method: 'GET',
+      url: 'http://ip-api.com/json'
+    }).then(function (response) {
+      self.randomGif.result = response.data.data;
+      console.log(response.data);
+      console.log('response', response.data.data);
+    })
+  }
 }]);
