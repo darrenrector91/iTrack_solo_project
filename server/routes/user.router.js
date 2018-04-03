@@ -102,6 +102,8 @@ router.get('/events', (req, res) => {
     reel,
     tackle_bait,
     body_of_water,
+    lat,
+    lon,
     image_url
     FROM
     events
@@ -145,8 +147,10 @@ router.post('/addItem', function (req, res) {
       reel, 
       tackle_bait, 
       body_of_water,
+      lat,
+      lon,
       image_url) 
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`;
     pool.query(queryText, [
       req.body.date, 
       req.body.event_city, 
@@ -155,8 +159,10 @@ router.post('/addItem', function (req, res) {
       req.body.species, 
       req.body.rod, 
       req.body.reel, 
-      req.body.tackle_bait, 
+      req.body.tackle_bait,
       req.body.body_of_water,
+      req.body.lat,
+      req.body.lon,
       req.body.image_url])
       .then((result) => {
         // console.log('result:', result);

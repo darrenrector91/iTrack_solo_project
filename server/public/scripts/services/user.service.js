@@ -4,12 +4,52 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   var fsClient = filestack.init('ANrUiCs67RpGoTbV2Wtg4z');
 
   self.userObject = {};
-  self.items = {list: []};
-  self.editCatchData = {item: {}};
-  self.saveCatchEdit = {item: {}};
-  self.image = {list: []};
-  self.results = {list: []};
-  self.map = {list:[]};
+  self.items = {
+    list: []
+  };
+  self.editCatchData = {
+    item: {}
+  };
+  self.saveCatchEdit = {
+    item: {}
+  };
+  self.image = {
+    list: []
+  };
+  self.results = {
+    list: []
+  };
+  self.map = {
+    list: []
+  };
+  self.location = {};
+
+  self.getMap = function (items, ev) {
+    console.log('lat', items.lat, 'lon', items.lon);
+    $mdDialog.show({
+      controller: MapModalController,
+      controllerAs: 'vm',
+      templateUrl: '../views/templates/map-modal.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      template: 'ng-src=https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=Chicago',
+      resolve: {
+        item: function () {
+          return items;
+        }
+      }
+    })
+  }
+
+  function MapModalController($mdDialog, item, UserService) {
+    const self = this;
+    self.map = item;
+    console.log(item.lat, item.lon);
+    self.closeModal = function () {
+      self.hide();
+    }
+  }
 
   self.imageModal = function (items, ev) {
     $mdDialog.show({
@@ -33,42 +73,13 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     const self = this;
     self.items = item;
     console.log(self.items);
-    
+
     self.closeModal = function () {
       self.hide();
     }
   }
 
-  self.mapLocation = function (items, ev) {
-    console.log('service showing lake', items.body_of_water);
-    const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
-    let water = items.body_of_water;
-    console.log('water', water);
-    $mdDialog.show({
-      controller: MapModalController,
-      controllerAs: 'vm',
-      templateUrl: '../views/templates/map-modal.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose: true,
-      template: 'ng-src=https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=Chicago',
-      resolve: {
-        item: function () {
-          return items;
-        }
-      }
-    })
-  }
-
-  function MapModalController($mdDialog, item, UserService) {
-    const self = this;
-    self.map = item;
-    console.log(item.body_of_water);
-    self.closeModal = function () {
-      self.hide();
-    }
-  }
-
+  // use Filestack for uploading images
   self.openPicker = function openPicker(image) {
     fsClient.pick({
       fromSources: [
@@ -78,16 +89,19 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         "facebook",
         "instagram",
         "googledrive",
-        "dropbox"
+        "dropbox",
+        "picasa"
       ],
-      accept: ["image/*"],
-      maxFiles: 1,
+      // file formats allowed for upload
+      accept: ["image/*", "video/*", "audio/*", ".pdf", ".doc", ".docx", ".docm", "text/plain"],
+      maxFiles: 1, //number of files allowed to upload at one time
       minFiles: 0,
       transformations: {
         crop: true,
         circle: true,
         rotate: true
       }
+      //response from filestack
     }).then(function (response) {
       self.image.list = response.filesUploaded;
       console.log('response from filestack', self.image.list);
@@ -108,9 +122,12 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   // Send item list to server
   self.addItem = function (data) {
     // console.log('in addItem:', self.image.list);
+    // console.log('in addItem', self.location.lat, self.location.lon);
     data.image_url = self.image.list;
+    data.lat = self.location.lat;
+    data.lon = self.location.lon;
 
-    // console.log('service adding catch data', data);
+    console.log('service adding catch data', data);
     return $http.post('/api/user/addItem', data)
       .then(function (response) {
         swal("Form data and image were successfully added to the table!")
@@ -121,6 +138,16 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         // console.log('error on post request - adding item');
       })
   } //end add item
+
+  // GET latitude and longitude user location for map usage
+  self.latLong = function () {
+    $http({
+      method: 'GET',
+      url: 'http://ip-api.com/json'
+    }).then(function (response) {
+      self.location = response.data;
+    })
+  }
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
@@ -133,6 +160,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
           self.getCatch();
+          self.latLong();
           // console.log(self.userObject);
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
@@ -249,4 +277,5 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   } //end catch edit in form
 
 
+  
 }]);

@@ -23,9 +23,9 @@
         <div class="fishForm" ng-cloak class="md-inline-form" ng-mouseenter="formMessage=true" ng-mouseleave="formMessage=false"
             layout-align="center center" md-no-flicker>
             <form layout-align="center center">
-                <div layout-gt-sm="row" layout-align="center center">
+                <!-- <div layout-gt-sm="row" layout-align="center center">
                     <div class="formMessage" ng-show="formMessage">Fill out the form and upload an image then click Submit</div>
-                </div>
+                </div> -->
                 <div layout-gt-sm="row" layout-align="center center">
 
                     <md-input-container>
@@ -94,6 +94,10 @@
                         <md-button class="md-raised md-accent generalButton userInfoSubmit" ng-click="vm.addItem(vm.newItem)">Submit
                         </md-button>
                     </md-input-container>
+                    <!-- <md-input-container>
+                        <md-button class="md-raised md-warning generalButton userInfoSubmit" ng-click="vm.getCoords()">Get Location
+                        </md-button>
+                    </md-input-container> -->
                 </div>
         </div>
     </md-content>
@@ -112,7 +116,8 @@
                 <th>Rod</th>
                 <th>Reel</th>
                 <th>Tackle/Bait</th>
-                <th>Body of Water</th>
+                <!-- <th>Body of Water</th> -->
+                <th>Location Coordinates</th>
                 <th>Image URL</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -127,8 +132,8 @@
                 <td>{{items.rod}}</td>
                 <td>{{items.reel}}</td>
                 <td>{{items.tackle_bait}}</td>
-                <td>
-                    <md-button class="md-raised" ng-click="vm.mapLocation(items)" disabled>View Map</md-button>
+                <td>{{items.lat}}, {{items.lon}}
+                    <md-button class="md-raised" ng-click="vm.mapLocation(items)">View Map</md-button>
                 </td>
                 <td>
                     <md-button class="md-raised md-accent" ng-click="vm.imageModal(items)">Image</md-button>
