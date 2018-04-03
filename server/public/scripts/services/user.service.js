@@ -22,7 +22,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   self.map = {
     list: []
   };
-  self.randomGif = {};
+  self.location = {};
 
   self.getLocation = function () {
 
@@ -88,8 +88,6 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     }
   }
 
-
-
   self.openPicker = function openPicker(image) {
     fsClient.pick({
       fromSources: [
@@ -125,14 +123,18 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     // console.log('image URL:', imageURL);
     self.image.list = imageURL;
     // console.log(self.image.list);
+
   }
 
   // Send item list to server
   self.addItem = function (data) {
     // console.log('in addItem:', self.image.list);
+    // console.log('in addItem', self.location.lat, self.location.lon);
     data.image_url = self.image.list;
+    data.lat = self.location.lat;
+    data.lon = self.location.lon;
 
-    // console.log('service adding catch data', data);
+    console.log('service adding catch data', data);
     return $http.post('/api/user/addItem', data)
       .then(function (response) {
         swal("Form data and image were successfully added to the table!")
@@ -143,6 +145,19 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         // console.log('error on post request - adding item');
       })
   } //end add item
+
+  // GET latitude and longitude user location for map usage
+  self.latLong = function () {
+    $http({
+      method: 'GET',
+      url: 'http://ip-api.com/json'
+    }).then(function (response) {
+      self.location = response.data;
+      // let lat = response.data.lat;
+      // let lon = response.data.lon;
+      // console.log(lat, lon);
+    })
+  }
 
   self.getuser = function () {
       // console.log('UserService -- getuser');
@@ -155,6 +170,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
           self.userObject.city = response.data.city;
           self.userObject.state = response.data.state;
           self.getCatch();
+          self.latLong();
           // console.log(self.userObject);
           // console.log('UserService -- getuser -- User Data: ', response.data.id);
         } else {
@@ -270,14 +286,6 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
 
   } //end catch edit in form
 
-  self.random = function () {
-    $http({
-      method: 'GET',
-      url: 'http://ip-api.com/json'
-    }).then(function (response) {
-      self.randomGif.result = response.data.data;
-      console.log(response.data);
-      console.log('response', response.data.data);
-    })
-  }
+
+  
 }]);
