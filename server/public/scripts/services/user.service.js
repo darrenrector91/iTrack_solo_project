@@ -24,15 +24,8 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   };
   self.location = {};
 
-  self.getLocation = function () {
-
-  }
-
-  self.mapLocation = function (items, ev) {
-    console.log('service showing lake', items.body_of_water);
-    const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
-    let water = items.body_of_water;
-    console.log('water', water);
+  self.getMap = function (items, ev) {
+    console.log('lat', items.lat, 'lon', items.lon);
     $mdDialog.show({
       controller: MapModalController,
       controllerAs: 'vm',
@@ -52,9 +45,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
   function MapModalController($mdDialog, item, UserService) {
     const self = this;
     self.map = item;
-    console.log(item.body_of_water);
-    let water = item.body_of_water;
-    console.log(water);
+    console.log(item.lat, item.lon);
     self.closeModal = function () {
       self.hide();
     }
@@ -88,6 +79,7 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     }
   }
 
+  // use Filestack for uploading images
   self.openPicker = function openPicker(image) {
     fsClient.pick({
       fromSources: [
@@ -100,14 +92,16 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
         "dropbox",
         "picasa"
       ],
+      // file formats allowed for upload
       accept: ["image/*", "video/*", "audio/*", ".pdf", ".doc", ".docx", ".docm", "text/plain"],
-      maxFiles: 1,
+      maxFiles: 1, //number of files allowed to upload at one time
       minFiles: 0,
       transformations: {
         crop: true,
         circle: true,
         rotate: true
       }
+      //response from filestack
     }).then(function (response) {
       self.image.list = response.filesUploaded;
       console.log('response from filestack', self.image.list);
@@ -123,7 +117,6 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
     // console.log('image URL:', imageURL);
     self.image.list = imageURL;
     // console.log(self.image.list);
-
   }
 
   // Send item list to server
@@ -153,9 +146,6 @@ myApp.service('UserService', ['$http', '$location', '$mdDialog', function ($http
       url: 'http://ip-api.com/json'
     }).then(function (response) {
       self.location = response.data;
-      // let lat = response.data.lat;
-      // let lon = response.data.lon;
-      // console.log(lat, lon);
     })
   }
 

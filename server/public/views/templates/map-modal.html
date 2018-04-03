@@ -3,9 +3,14 @@
         <div class="mapModalHeader">
             <h2 class="imageModalTitle">{{vm.map.body_of_water}}</h2>
             <h3 class="imageModalTitle">{{vm.map.event_city}}, {{vm.map.event_state}}</h3>
+            <h3>{{vm.map.lat}}, {{vm.map.lon}}</h3>
         </div>
-        <div id="map"></div>
-        <iframe class="modalContent" width="1000" height="450" frameborder="5" style="border:5" ng-src='https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=sakakawea+van+hook+arm'>
-        </iframe>
+        <!-- <iframe class="modalContent" width="1000" height="450" frameborder="5" style="border:5" ng-src='https://www.google.com/maps/embed/v1/place?key=AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s&q=sakakawea+van+hook+arm'>
+        </iframe> -->
+        <div id="map">
+            <ng-map center='{{vm.map.lat}}, {{vm.map.lon}}'></ng-map>
+        </div>
+
+
     </div>
 </div>

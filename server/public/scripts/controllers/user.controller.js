@@ -11,10 +11,8 @@ myApp.controller('UserController', ['UserService', function (UserService) {
 
   // finding body of water on map
   self.mapLocation = function (items) {
-    // const API = 'AIzaSyBm4aUk3dBt6BGPOdW3eqCB6njJPTH-f6s';
-    UserService.mapLocation(items);
-    let bodyOfWater = items.body_of_water;
-    console.log('bodyOfWater ', bodyOfWater);
+    console.log(items.lat,items.lon);
+    UserService.getMap(items);
   };
 
   self.imageModal = function (items) {
