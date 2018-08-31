@@ -86,7 +86,7 @@ Features that will be completed in the future.
 Add additional notes about how to deploy this on a live system
 
 ## Live version
-(deployed on Heroku and takes 30 seconds to deply, please be patient)<br>
+(released on Heroku and takes 30 seconds to deploy, please be patient)<br>
 https://itrack-fishing-app.herokuapp.com/
 
 ## Author
