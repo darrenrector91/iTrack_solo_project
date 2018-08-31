@@ -32,7 +32,7 @@ Steps to get the development environment running.
 
 iTrack Landing View
 ![itrack_login](https://user-images.githubusercontent.com/12476601/36647573-50a24990-1a4d-11e8-83ff-76e7fc4f9a42.png)
-(https://user-images.githubusercontent.com/12476601/36647517-5ae600be-1a4c-11e8-8d0c-1b6a04959153.png)
+//(https://user-images.githubusercontent.com/12476601/36647517-5ae600be-1a4c-11e8-8d0c-1b6a04959153.png)
 
 iTrack User View
 ![itrack_user_view](https://user-images.githubusercontent.com/12476601/36647583-7bf20e82-1a4d-11e8-848f-7f1678bd84e0.png)
@@ -96,6 +96,6 @@ Add additional notes about how to deploy this on a live system
 ## Acknowledgments
 
 * Kris Szafranski for his expert tuteledge and guidance
-* Dane Smith for always anse=wering the obvious questions and walking through the samllest of problems
+* Dane Smith for always answering the obvious questions and walking through the samllest of problems
 * Monica Wheeler for sitting next to me and listening to me groan all day and for helping me through some blockers
 
