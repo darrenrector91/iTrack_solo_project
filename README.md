@@ -1,6 +1,6 @@
 # iTrack Solo Project
 
-ITrack is a web application that gives a user the ability to track fishing statistics including gear used, fish caught and location of catch.
+iTrack is a web application that gives a user the ability to track fishing statistics including gear used, fish caught and location of catch.
 
 ## Built With
 
