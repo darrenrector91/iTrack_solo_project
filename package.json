@@ -33,7 +33,9 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
-    "sweetalert": "^2.1.0"
+    "sweetalert": "^2.1.0",
+    "deep-extend": ">=0.5.1"
+    
   },
   "devDependencies": {},
   "author": "Darren G. Rector"
